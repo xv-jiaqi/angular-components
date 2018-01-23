@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { deepClone } from './../utils/common';
 
 @Component({
+  moduleId: module.id,
   selector: 'gt-menu',
   templateUrl: './menu.component.html',
 })
@@ -21,22 +22,24 @@ export class MenuComponent implements OnInit, AfterViewInit {
   constructor(private _router: Router) {}
 
   ngOnInit () {
-    const url = this._router.url.replace(/\?.*/g, '');
-    for (let i = 0; i < this.menus.length; i++) {
-      if (url.indexOf(this.menus[i].activeLink) > -1) {
-        this.menus[i].selected = true;
-        return;
-      }
-      if (this.menus[i].items && this.menus[i].items.length) {
-        for (let j = 0; j < this.menus[i].items.length; j++) {
-          if (url.indexOf(this.menus[i].items[j].activeLink) > -1) {
-            this.menus[i].selected = true;
-            this.menus[i].items[j].selected = true;
-            return;
+    setTimeout(() => {
+      const url = this._router.url.replace(/\?.*/g, '');
+      for (let i = 0; i < this.menus.length; i++) {
+        if (url.indexOf(this.menus[i].activeLink) > -1) {
+          this.menus[i].selected = true;
+          return;
+        }
+        if (this.menus[i].items && this.menus[i].items.length) {
+          for (let j = 0; j < this.menus[i].items.length; j++) {
+            if (url.indexOf(this.menus[i].items[j].activeLink) > -1) {
+              this.menus[i].selected = true;
+              this.menus[i].items[j].selected = true;
+              return;
+            }
           }
         }
       }
-    }
+    });
   }
 
   /** component will recreate if router to different module, so set current sub height after view render **/
