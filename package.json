@@ -7,12 +7,7 @@
     "build-doc": "gulp doc-bundles",
     "demo-app": "gulp serve:devapp",
     "doc-app": "gulp serve:docapp",
-    "test": "gulp test",
-    "tslint": "gulp lint",
-    "stylelint": "gulp lint",
-    "e2e": "gulp e2e",
     "deploy": "gulp deploy:devapp",
-    "webdriver-manager": "webdriver-manager",
     "docs": "gulp docs",
     "api": "gulp api-docs"
   },
