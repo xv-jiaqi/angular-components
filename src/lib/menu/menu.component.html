@@ -1,0 +1,27 @@
+<ul class="gt-menu">
+  <li class="gt-menu__cell" *ngFor="let item of menus; let parentIndex = index;">
+    <a class="gt-menu__link" routerLink="item.link" *ngIf="!(item.items && item.items.length)">
+      <i class="gt-icon" [ngClass]="item.icon"></i>
+      <span class="gt-menu__txt">{{item.label}}</span>
+    </a>
+    <ng-container *ngIf="item.items && item.items.length">
+      <div class="gt-menu__hd"
+           [ngClass]="{'gt--open': item.selected, 'gt--sel': item.selected}"
+           (click)="toggleMenu($event, parentIndex)">
+        <i class="gt-icon" [ngClass]="item.icon"></i>
+        <span class="gt-menu__txt">{{item.label}}</span>
+        <i class="gt-icon icon-arrow-down"></i>
+      </div>
+      <ul class="gt-menu__sub" [ngStyle]="{height: item.selected ? currentSubHeight : '0px'}">
+        <li class="gt-menu__sub__cell"
+            *ngFor="let subItem of item.items;
+          let childIndex = index;"
+            (click)="subMenuClick(parentIndex, childIndex)">
+          <a class="gt-menu__sub__link" [ngClass]="{'gt--sel': subItem.selected}">
+            <span class="gt-menu__txt">{{subItem.label}}</span>
+          </a>
+        </li>
+      </ul>
+    </ng-container>
+  </li>
+</ul>

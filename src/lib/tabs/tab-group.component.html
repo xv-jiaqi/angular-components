@@ -1,0 +1,15 @@
+<div>
+  <gt-tab-header [tabType]="tabType">
+    <a class="gt-tab__cell"
+       *ngFor="let tab of tabs; let i = index"
+       [ngClass]="{'gt--sel': i === selectedIndex}"
+       (click)="setSelectedIndex(i)">
+      <span class="gt-tab__label">{{tab.label}}</span>
+    </a>
+  </gt-tab-header>
+  <ng-container *ngFor="let tab of tabs; let i = index">
+    <gt-tab-body *ngIf="i === selectedIndex"
+                  [content]="tab.content">
+    </gt-tab-body>
+  </ng-container>
+</div>

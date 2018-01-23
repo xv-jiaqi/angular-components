@@ -1,0 +1,42 @@
+
+<span class="hljs-comment">/* tslint:disable */</span>
+<span class="hljs-comment">/** DO NOT MANUALLY EDIT THIS FILE, IT IS GENERATED VIA GULP 'build-examples-module' */</span>
+<span class="hljs-keyword">import</span> { NgModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormsModule, ReactiveFormsModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { CommonModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/common'</span>;
+<span class="hljs-keyword">import</span> { Ng5Module } <span class="hljs-keyword">from</span> <span class="hljs-string">'../ng5-module'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> LiveExample {
+  title: <span class="hljs-built_in">string</span>;
+  component: <span class="hljs-built_in">any</span>;
+  additionalFiles?: <span class="hljs-built_in">string</span>[] | <span class="hljs-literal">null</span>;
+  selectorName?: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>;
+}
+
+<span class="hljs-keyword">import</span> { TabsOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./tabs-overview/tabs-overview-example.component'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_COMPONENTS: {[key: <span class="hljs-built_in">string</span>]: LiveExample} = {
+  <span class="hljs-string">'tabs-overview-component'</span>: {
+    title: <span class="hljs-string">'Tabs'</span>,
+    component: TabsOverviewExampleComponent,
+    additionalFiles: <span class="hljs-literal">null</span>,
+    selectorName: <span class="hljs-literal">null</span>
+  },
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_LIST = [
+  TabsOverviewExampleComponent,
+];
+
+<span class="hljs-meta">@NgModule</span>({
+  declarations: EXAMPLE_LIST,
+  entryComponents: EXAMPLE_LIST,
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    Ng5Module
+  ],
+  exports: EXAMPLE_LIST,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ExampleModule { }

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angular Material</title>
+  <base href="/">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="node_modules/jnat-get-ui-core/dist/theme/default.css">
+  <link rel="stylesheet" href="node_modules/jnat-get-ui-core/dist/theme/gt.css">
+</head>
+<body>
+  <app-root>Loading...</app-root>
+
+  <script src="node_modules/core-js/client/core.js"></script>
+  <script src="node_modules/web-animations-js/web-animations.min.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/hammerjs/hammer.min.js"></script>
+
+  <script>
+    System.import('system-config.js').then(function () {
+      System.import('main');
+    }).catch(console.error.bind(console));
+  </script>
+</body>
+</html>
