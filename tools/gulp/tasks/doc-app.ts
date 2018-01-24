@@ -28,6 +28,7 @@ const appVendors = [
   'web-animations-js',
   'moment',
   'tslib',
+  'jnat-get-ui-core',
   'highlight.js'
 ];
 
@@ -35,18 +36,18 @@ const appVendors = [
 const vendorGlob = `+(${appVendors.join('|')})/**/*.+(html|css|js|map)`;
 
 /** Glob that matches all assets that need to be copied to the output. */
-const assetsGlob = join(appDir, `**/*.+(html|css|svg)`);
+const assetsGlob = join(appDir, `**/*.+(html|css|svg|png|ico)`);
 
 task(':watch:docapp', () => {
   watchFiles(join(appDir, '**/*.ts'), [':build:docapp:ts']);
-  watchFiles(join(appDir, '**/*.scss'), [':build:docapp:scss']);
+  watchFiles(join(appDir, '**/*.less'), [':build:docapp:less']);
   watchFiles(join(appDir, '**/*.html'), [':build:docapp:assets']);
   watchFiles(join(appDir, 'examples/**'), ['build-highlighted-examples']);
 
   // Custom watchers for all packages that are used inside of the demo-app. This is necessary
   // because we only want to build the changed package (using the build-no-bundles task).
-  watchFiles(join(componentPackage.sourceDir, '**/!(*.scss)'), [`${buildConfig.packageName}:build-no-bundles`]);
-  watchFiles(join(componentPackage.sourceDir, '**/*.scss'), [`:build:docapp:${buildConfig.packageName}-with-styles`]);
+  watchFiles(join(componentPackage.sourceDir, '**/!(*.less)'), [`${buildConfig.packageName}:build-no-bundles`]);
+  watchFiles(join(componentPackage.sourceDir, '**/*.less'), [`:build:docapp:${buildConfig.packageName}-with-styles`]);
   watchFiles(join(componentPackage.sourceDir, '**/*.md'), ['markdown-docs-component']);
 });
 
@@ -71,12 +72,12 @@ task(':serve:docapp', serverTask(outDir, true));
 // The themes for the demo-app are built by using the SCSS mixins from Material.
 // Therefore when SCSS files have been changed, the custom theme needs to be rebuilt.
 task(':build:docapp:ng5-with-styles', sequenceTask(
-  'ng5:build-no-bundles', ':build:docapp:scss'
+  'ng5:build-no-bundles', ':build:docapp:less'
 ));
 
 task('build:docapp', sequenceTask(
   `${buildConfig.packageName}:build-no-bundles`,
-  [':build:docapp:assets', ':build:docapp:scss', ':build:docapp:ts', 'docs']
+  [':build:docapp:assets', ':build:docapp:less', ':build:docapp:ts', 'docs']
 ));
 
 task('serve:docapp', ['build:docapp'], sequenceTask([':serve:docapp', ':watch:docapp']));

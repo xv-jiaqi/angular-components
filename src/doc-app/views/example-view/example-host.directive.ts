@@ -1,7 +1,7 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[ng5-example-host]'
+  selector: '[gt-example-host]'
 })
 
 export class ExampleHostDirective {

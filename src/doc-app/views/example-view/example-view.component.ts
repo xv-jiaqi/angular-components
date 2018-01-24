@@ -1,10 +1,10 @@
 import { Component, ComponentFactoryResolver, Input, ViewChild } from '@angular/core';
-import { EXAMPLE_COMPONENTS, LiveExample } from '../examples/example-module';
+import { EXAMPLE_COMPONENTS, LiveExample } from '../../examples/example-module';
 import { ExampleHostDirective } from './example-host.directive';
 
 @Component({
   moduleId: module.id,
-  selector: 'ng5-example-view',
+  selector: 'gt-example-view',
   templateUrl: './example-view.component.html'
 })
 

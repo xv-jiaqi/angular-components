@@ -67,8 +67,7 @@ export class ComponentGrouper implements Processor {
       const documentInfo = getDocumentPackageInfo(doc);
 
       const packageName = documentInfo.packageName;
-      const packageDisplayName = documentInfo.packageName.substr(0, 1).toUpperCase() +
-        documentInfo.packageName.substr(1);
+      const packageDisplayName = documentInfo.packageName;
 
       const moduleImportPath = `${packageName}/${documentInfo.entryPointName}`;
       const groupName = packageName + '-' + documentInfo.name;
@@ -124,7 +123,7 @@ function getDocumentPackageInfo(doc: Document) {
 
   return {
     name: groupName,
-    packageName: pathSegments[0] === 'lib' ? 'ng5' : pathSegments[0],
+    packageName: 'get-ui-ng',
     entryPointName: pathSegments[1],
   };
 }

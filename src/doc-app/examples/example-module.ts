@@ -4,7 +4,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Ng5Module } from '../gt-module';
+import { GtModule } from '../gt-module';
 
 export interface LiveExample {
   title: string;
@@ -35,7 +35,7 @@ export const EXAMPLE_LIST = [
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    Ng5Module
+    GtModule
   ],
   exports: EXAMPLE_LIST,
 })

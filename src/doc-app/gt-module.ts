@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { GtTabsModule } from 'get-ui-ng';
+import { GtTabsModule, GtMenuModule } from 'get-ui-ng';
 
 @NgModule({
   exports: [
-    GtTabsModule
+    GtTabsModule,
+    GtMenuModule
   ]
 })
 

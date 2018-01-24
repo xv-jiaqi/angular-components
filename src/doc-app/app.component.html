@@ -1,6 +1,23 @@
-<h1>Doc App</h1>
-<ng5-example-view [example]="'tabs-overview-component'"></ng5-example-view>
-<ng5-tab-group>
-  <ng5-tab label="Label1">Content1</ng5-tab>
-  <ng5-tab label="Label2">Content2</ng5-tab>
-</ng5-tab-group>
+<header class="gt-header" id="top">
+  <a href="home.html" class="gt-brand">
+    <img src="images/logo.png" class="gt-logo">
+    <h1 class="gt-heading">Ng云组件DEMO展示站点</h1>
+  </a>
+</header>
+<section class="gt-container">
+  <div class="gt-bar">
+    <div class="gt-menu-wrap">
+      <gt-menu [menus]="menuList"></gt-menu>
+    </div>
+  </div>
+  <div class="gt-main count-arabic-wrap">
+    <div class="gt-content">
+      <h1>Doc App</h1>
+      <gt-example-view [example]="'tabs-overview-component'"></gt-example-view>
+      <gt-tab-group>
+        <gt-tab label="Label1">Content1</gt-tab>
+        <gt-tab label="Label2">Content2</gt-tab>
+      </gt-tab-group>
+    </div>
+  </div>
+</section>

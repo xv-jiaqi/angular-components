@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   moduleId: module.id,
-  selector: 'ng5-doc-view',
+  selector: 'gt-doc-view',
   templateUrl: './doc-view.component.html'
 })
 

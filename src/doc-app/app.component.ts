@@ -2,12 +2,13 @@ import {
   Component, ComponentFactoryResolver, ElementRef, EmbeddedViewRef, Injector, OnInit,
   ViewContainerRef
 } from '@angular/core';
-import { ExampleViewComponent } from './example-view/example-view.component';
+import { ExampleViewComponent } from './views/example-view/example-view.component';
 
 @Component({
   moduleId: module.id,
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 
 export class AppComponent implements OnInit {
@@ -19,10 +20,10 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._elementRef.nativeElement.innerHTML = '<div ng-docs-example="tabs-overview-component"></ng5-example-view>';
+    this._elementRef.nativeElement.innerHTML = '<div gt-docs-example="tabs-overview-component"></ng5-example-view>';
 
     const exampleElements =
-      this._elementRef.nativeElement.querySelectorAll('[ng-docs-example]');
+      this._elementRef.nativeElement.querySelectorAll('[gt-docs-example]');
 
     console.log(exampleElements);
 

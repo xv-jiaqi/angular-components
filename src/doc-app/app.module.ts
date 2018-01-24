@@ -4,10 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ExampleModule } from './examples/example-module';
-import { ExampleViewComponent } from './example-view/example-view.component';
-import { ExampleHostDirective } from './example-view/example-host.directive';
-import { DocViewComponent } from './doc-view/doc-view.component';
-import { Ng5Module } from './gt-module';
+import { ExampleViewComponent } from './views/example-view/example-view.component';
+import { ExampleHostDirective } from './views/example-view/example-host.directive';
+import { DocViewComponent } from './views/doc-view/doc-view.component';
+import { GtModule } from './gt-module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { Ng5Module } from './gt-module';
     BrowserAnimationsModule,
     HttpClientModule,
     ExampleModule,
-    Ng5Module
+    GtModule
   ],
   declarations: [
     AppComponent,

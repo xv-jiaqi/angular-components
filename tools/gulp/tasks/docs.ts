@@ -1,8 +1,8 @@
-import {task, src, dest} from 'gulp';
-import {Dgeni} from 'dgeni';
+import { task, src, dest } from 'gulp';
+import { Dgeni } from 'dgeni';
 import * as path from 'path';
-import {buildConfig, sequenceTask} from 'build-tools';
-import {apiDocsPackage} from '../../dgeni';
+import { buildConfig, sequenceTask } from 'build-tools';
+import { apiDocsPackage } from '../../dgeni';
 
 // There are no type definitions available for these imports.
 const markdown = require('gulp-markdown');
@@ -12,7 +12,7 @@ const rename = require('gulp-rename');
 const flatten = require('gulp-flatten');
 const htmlmin = require('gulp-htmlmin');
 const hljs = require('highlight.js');
-const dom  = require('gulp-dom');
+const dom = require('gulp-dom');
 
 const {outputDir, packagesDir} = buildConfig;
 
@@ -102,11 +102,11 @@ task('markdown-docs-component', () => {
   };
 
   return src(['src/lib/**/!(README).md', 'guides/*.md'])
-      .pipe(rename({prefix: `${buildConfig.packageName}-`}))
-      .pipe(markdown(markdownOptions))
-      .pipe(transform(transformMarkdownFiles))
-      .pipe(dom(createTagNameAliaser('docs-markdown')))
-      .pipe(dest('src/doc-app/docs/markdown'));
+    .pipe(rename({prefix: `${buildConfig.packageName}-`}))
+    .pipe(markdown(markdownOptions))
+    .pipe(transform(transformMarkdownFiles))
+    .pipe(dom(createTagNameAliaser('docs-markdown')))
+    .pipe(dest('src/doc-app/docs/markdown'));
 });
 
 /**
@@ -121,10 +121,10 @@ task('build-highlighted-examples', () => {
   };
 
   return src('src/doc-app/examples/**/*.+(html|css|ts)')
-      .pipe(flatten())
-      .pipe(rename(renameFile))
-      .pipe(highlight())
-      .pipe(dest('src/doc-app/docs/examples'));
+    .pipe(flatten())
+    .pipe(rename(renameFile))
+    .pipe(highlight())
+    .pipe(dest('src/doc-app/docs/examples'));
 });
 
 /** Generates API docs from the source JsDoc using dgeni. */
@@ -146,7 +146,7 @@ task('minify-html-files', ['api-docs'], () => {
 /** Copies example sources to be used as stackblitz assets for the docs site. */
 task('copy-stackblitz-examples', () => {
   src(path.join(packagesDir, 'doc-examples', '**/*'))
-      .pipe(dest(path.join(DIST_DOCS, 'stackblitz', 'examples')));
+    .pipe(dest(path.join(DIST_DOCS, 'stackblitz', 'examples')));
 });
 
 /** Updates the markdown file's content to work inside of the docs app. */
@@ -191,7 +191,7 @@ function fixMarkdownDocLinks(link: string, filePath: string): string {
  * @param classPrefix The prefix to use for the alias class.
  */
 function createTagNameAliaser(classPrefix: string) {
-  return function() {
+  return function () {
     MARKDOWN_TAGS_TO_CLASS_ALIAS.forEach(tag => {
       for (const el of this.querySelectorAll(tag)) {
         el.classList.add(`${classPrefix}-${tag}`);
