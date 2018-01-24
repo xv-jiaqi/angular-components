@@ -8,8 +8,8 @@
     </a>
   </gt-tab-header>
   <ng-container *ngFor="let tab of tabs; let i = index">
-    <gt-tab-body *ngIf="i === selectedIndex"
-                  [content]="tab.content">
+    <gt-tab-body [ngStyle]="{display: i !== selectedIndex ? 'none' : null}"
+                 [content]="tab.content">
     </gt-tab-body>
   </ng-container>
 </div>

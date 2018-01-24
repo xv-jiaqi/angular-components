@@ -1,7 +1,7 @@
 <header class="gt-header" id="top">
   <a href="home.html" class="gt-brand">
     <img src="images/logo.png" class="gt-logo">
-    <h1 class="gt-heading">Ng云组件DEMO展示站点</h1>
+    <h1 class="gt-heading">Ng云组件文档中心</h1>
   </a>
 </header>
 <section class="gt-container">
@@ -12,12 +12,7 @@
   </div>
   <div class="gt-main count-arabic-wrap">
     <div class="gt-content">
-      <h1>Doc App</h1>
-      <gt-example-view [example]="'tabs-overview-component'"></gt-example-view>
-      <gt-tab-group>
-        <gt-tab label="Label1">Content1</gt-tab>
-        <gt-tab label="Label2">Content2</gt-tab>
-      </gt-tab-group>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </section>

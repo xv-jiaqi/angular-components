@@ -1,10 +1,10 @@
-import {task} from 'gulp';
-import {sync as glob} from 'glob';
+import { task } from 'gulp';
+import { sync as glob } from 'glob';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as ts from 'typescript';
-import {buildConfig} from 'build-tools';
-import { LiveExample } from '../../../src/doc-app/examples/example-module';
+import { buildConfig } from 'build-tools';
+
 const {packagesDir} = buildConfig;
 
 interface ExampleMetadata {
@@ -201,7 +201,7 @@ task('build-examples-module', () => {
 
   for (const sourcePath of matchedFiles) {
     const sourceContent = fs.readFileSync(sourcePath, 'utf-8');
-    const { primaryComponent, secondaryComponents } =
+    const {primaryComponent, secondaryComponents} =
       parseExampleMetadata(sourcePath, sourceContent);
 
     if (primaryComponent) {

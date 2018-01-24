@@ -8,12 +8,15 @@ import { ExampleViewComponent } from './views/example-view/example-view.componen
 import { ExampleHostDirective } from './views/example-view/example-host.directive';
 import { DocViewComponent } from './views/doc-view/doc-view.component';
 import { GtModule } from './gt-module';
+import { AppRouterModule } from './app-router.module';
+import { ComponentViewComponent } from './views/component-view/component-view.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AppRouterModule,
     ExampleModule,
     GtModule
   ],
@@ -21,7 +24,8 @@ import { GtModule } from './gt-module';
     AppComponent,
     ExampleViewComponent,
     ExampleHostDirective,
-    DocViewComponent
+    DocViewComponent,
+    ComponentViewComponent
   ],
   entryComponents: [
     AppComponent,

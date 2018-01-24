@@ -1,6 +1,7 @@
 import { Component, ComponentFactoryResolver, Input, ViewChild } from '@angular/core';
 import { EXAMPLE_COMPONENTS, LiveExample } from '../../examples/example-module';
 import { ExampleHostDirective } from './example-host.directive';
+import { GtTabType } from 'get-ui-ng';
 
 @Component({
   moduleId: module.id,
@@ -13,17 +14,22 @@ export class ExampleViewComponent {
 
   exampleData: LiveExample;
 
-  url: string;
+  htmlUrl: string;
+  tsUrl: string;
+  cssUrl: string;
+
+  tabType = GtTabType.BUTTON;
 
   @Input()
   set example(value: string) {
-    console.log(EXAMPLE_COMPONENTS[value]);
     if (value && EXAMPLE_COMPONENTS[value]) {
       this._example = value;
       this.exampleData = EXAMPLE_COMPONENTS[value];
 
       this._setComponent();
-      this.url = this.exampleFileUrl('ts');
+      this.htmlUrl = this.exampleFileUrl('html');
+      this.tsUrl = this.exampleFileUrl('ts');
+      this.cssUrl = this.exampleFileUrl('css');
     } else {
       console.log(`MISSING EXAMPLE ${value}`);
     }

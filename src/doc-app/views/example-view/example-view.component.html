@@ -1,7 +1,15 @@
 <div>
   <h1>Doc Example</h1>
 </div>
-<pre class="hljs hljs-ts"><code><gt-doc-view [exampleUrl]="url"></gt-doc-view>
-</code>
-</pre>
+<gt-tab-group [tabType]="tabType">
+  <gt-tab [label]="'HTML'">
+    <pre class="hljs hljs-html"><code><gt-doc-view [exampleUrl]="htmlUrl"></gt-doc-view></code></pre>
+  </gt-tab>
+  <gt-tab [label]="'TS'">
+    <pre class="hljs hljs-ts"><code><gt-doc-view [exampleUrl]="tsUrl"></gt-doc-view></code></pre>
+  </gt-tab>
+  <gt-tab [label]="'CSS'">
+    <pre class="hljs hljs-less"><code><gt-doc-view [exampleUrl]="cssUrl"></gt-doc-view></code></pre>
+  </gt-tab>
+</gt-tab-group>
 <ng-template gt-example-host></ng-template>

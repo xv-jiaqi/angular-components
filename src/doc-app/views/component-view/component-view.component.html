@@ -1,4 +1,8 @@
 <gt-tab-group>
-  <gt-tab label="OVERVIEW"></gt-tab>
-  <gt-tab label="API"></gt-tab>
+  <gt-tab [label]="'OVERVIEW'">
+    <gt-doc-view [exampleUrl]="markdownUrl"></gt-doc-view>
+  </gt-tab>
+  <gt-tab [label]="'API'">
+    <gt-doc-view [exampleUrl]="apiUrl"></gt-doc-view>
+  </gt-tab>
 </gt-tab-group>
