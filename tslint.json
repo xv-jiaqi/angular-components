@@ -125,7 +125,7 @@
     "component-selector": [
       true,
       ["element", "attribute"],
-      ["ng5", "app"],
+      ["gt", "app"],
       "kebab-case"
     ],
     "angular-whitespace": [true, "check-interpolation"],
