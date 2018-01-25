@@ -1,4 +1,6 @@
-export const menuList = [
+import { GtMenus } from 'get-ui-ng';
+
+export const menuList: GtMenus = [
   {
     label: 'Navigate',
     name: 'assistant',

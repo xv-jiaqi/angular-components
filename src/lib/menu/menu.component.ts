@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { deepClone } from './../utils/common';
+import { GtMenus } from './menu';
 
 @Component({
   moduleId: module.id,
@@ -8,12 +9,12 @@ import { deepClone } from './../utils/common';
   templateUrl: './menu.component.html',
 })
 export class MenuComponent implements OnInit, AfterViewInit {
-  private _menus;
+  private _menus: GtMenus;
 
-  @Input() set menus (value) {
+  @Input() set menus(value: GtMenus) {
     this._menus = deepClone(value);
   }
-  get menus () {
+  get menus(): GtMenus {
     return this._menus;
   }
 
@@ -25,15 +26,17 @@ export class MenuComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       const url = this._router.url.replace(/\?.*/g, '');
       for (let i = 0; i < this.menus.length; i++) {
-        if (url.indexOf(this.menus[i].activeLink) > -1) {
+        if (url.indexOf(this.menus[i].activeLink || '') > -1) {
           this.menus[i].selected = true;
           return;
         }
-        if (this.menus[i].items && this.menus[i].items.length) {
-          for (let j = 0; j < this.menus[i].items.length; j++) {
-            if (url.indexOf(this.menus[i].items[j].activeLink) > -1) {
+
+        const subMenus = this.menus[i].items || [];
+        if (subMenus.length) {
+          for (let j = 0; j < subMenus.length; j++) {
+            if (url.indexOf(subMenus[j].activeLink) > -1) {
               this.menus[i].selected = true;
-              this.menus[i].items[j].selected = true;
+              subMenus[j].selected = true;
               return;
             }
           }
@@ -66,13 +69,15 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
   subMenuClick (parentIndex: number, childIndex: number) {
     for (let i = 0; i < this.menus.length; i++) {
-      if (this.menus[i].items) {
-        for (let j = 0; j < this.menus[i].items.length; j++) {
-          this.menus[i].items[j].selected = false;
+      const subMenus = this.menus[i].items || [];
+      if (subMenus) {
+        for (let j = 0; j < subMenus.length; j++) {
+          subMenus[j].selected = false;
         }
       }
     }
-    this.menus[parentIndex].items[childIndex].selected = true;
-    this._router.navigateByUrl(this.menus[parentIndex].items[childIndex].link);
+
+    (this.menus[parentIndex].items || [])[childIndex].selected = true;
+    this._router.navigateByUrl((this.menus[parentIndex].items || [])[childIndex].link);
   }
 }
