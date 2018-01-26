@@ -5,6 +5,7 @@ import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core'
   templateUrl: './tab.component.html'
 })
 export class GtTabComponent implements OnInit {
+  /** Tab名称 */
   @Input() label: string;
 
   /**
