@@ -1,25 +1,20 @@
 {
   "name": "ng5",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "Angular Ng5",
-  "main": "./bundles/ng5.umd.js",
-  "module": "./esm5/ng5.es5.js",
-  "es2015": "./esm2015/ng5.js",
-  "typings": "./ng5.d.ts",
+  "description": "Get-UI-NG",
+  "main": "./bundles/get-ui-ng.umd.js",
+  "module": "./esm5/get-ui-ng.es5.js",
+  "es2015": "./esm2015/get-ui-ng.js",
+  "typings": "./get-ui-ng.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/littledian/angular-component.git"
   },
   "keywords": [
     "angular",
-    "ng5",
     "components"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/littledian/angular-component/issues"
-  },
-  "homepage": "https://github.com/littledian/angular-component#readme",
   "peerDependencies": {
     "@angular/core": "0.0.0-NG",
     "@angular/common": "0.0.0-NG"
