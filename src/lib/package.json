@@ -7,8 +7,8 @@
   "es2015": "./esm2015/get-ui-ng.js",
   "typings": "./get-ui-ng.d.ts",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/littledian/angular-component.git"
+    "type": "github",
+    "url": "https://192.168.10.75/pt-front-dev/get-ui-ng4.git"
   },
   "keywords": [
     "angular",
