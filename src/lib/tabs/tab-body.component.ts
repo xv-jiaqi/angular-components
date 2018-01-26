@@ -1,5 +1,8 @@
 import { Component, Directive, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 
+/**
+ * @docs-private
+ */
 @Directive({
   selector: '[gtTabBodyHost]'
 })
@@ -11,6 +14,9 @@ export class GtTabBodyHost {
   ) { }
 }
 
+/**
+ * @docs-private
+ */
 @Component({
   selector: 'gt-tab-body',
   templateUrl: './tab-body.component.html'

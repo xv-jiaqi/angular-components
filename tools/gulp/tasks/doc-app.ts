@@ -49,6 +49,7 @@ task(':watch:docapp', () => {
   watchFiles(join(componentPackage.sourceDir, '**/!(*.less)'), [`${buildConfig.packageName}:build-no-bundles`]);
   watchFiles(join(componentPackage.sourceDir, '**/*.less'), [`:build:docapp:${buildConfig.packageName}-with-styles`]);
   watchFiles(join(componentPackage.sourceDir, '**/*.md'), ['markdown-docs-component']);
+  watchFiles(join(componentPackage.sourceDir, '**/*.ts'), ['api-docs']);
 });
 
 /** Path to the demo-app tsconfig file. */

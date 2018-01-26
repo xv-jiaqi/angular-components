@@ -13,6 +13,7 @@ import { GtTabType } from './tab-type';
 export class GtTabGroupComponent implements OnInit {
 
   private _selectedIndex: number = 0;
+  /** 当前选中索引的默认值 */
   @Input()
   set selectedIndex(value: number) {
     this._selectedIndex = value;
@@ -22,6 +23,7 @@ export class GtTabGroupComponent implements OnInit {
   }
 
   private _tabType: GtTabType = GtTabType.LINE;
+  /** Tab类型，默认为LINE */
   @Input()
   set tabType(value: GtTabType) {
     this._tabType = value;
@@ -30,7 +32,9 @@ export class GtTabGroupComponent implements OnInit {
     return this._tabType;
   }
 
-  @Output() selectedIndexChange = new EventEmitter();
+  /** 选中的索引更改事件 */
+  @Output()
+  selectedIndexChange: EventEmitter<number> = new EventEmitter();
 
   @ContentChildren(GtTabComponent) tabs: QueryList<GtTabComponent>;
 
@@ -38,6 +42,10 @@ export class GtTabGroupComponent implements OnInit {
 
   ngOnInit() { }
 
+  /**
+   * @docs-private
+   * @param {number} index
+   */
   setSelectedIndex(index: number) {
     this.selectedIndex = index;
     this.selectedIndexChange.emit(index);

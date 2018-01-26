@@ -7,6 +7,9 @@ import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core'
 export class GtTabComponent implements OnInit {
   @Input() label: string;
 
+  /**
+   * @docs-private
+   */
   @ViewChild(TemplateRef) content: TemplateRef<any>;
 
   constructor() { }
