@@ -28,7 +28,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
       for (let i = 0; i < this.menus.length; i++) {
         if (url.indexOf(this.menus[i].activeLink || '') > -1) {
           this.menus[i].selected = true;
-          return;
+          if ((this.menus[i].items || []).length === 0) {
+            return;
+          }
         }
 
         const subMenus = this.menus[i].items || [];
