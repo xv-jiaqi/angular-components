@@ -6,6 +6,9 @@ const routes: Routes = [
   {
     path: 'tabs',
     component: ComponentViewComponent
+  }, {
+    path: 'menu',
+    component: ComponentViewComponent
   }
 ];
 

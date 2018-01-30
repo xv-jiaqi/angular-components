@@ -11,13 +11,18 @@ import { GtMenus } from './menu';
 export class MenuComponent implements OnInit, AfterViewInit {
   private _menus: GtMenus;
 
-  @Input() set menus(value: GtMenus) {
+  /** 菜单配置项 */
+  @Input()
+  set menus(value: GtMenus) {
     this._menus = deepClone(value);
   }
   get menus(): GtMenus {
     return this._menus;
   }
 
+  /**
+   * @docs-private
+   */
   currentSubHeight;
 
   constructor(private _router: Router) {}
@@ -55,6 +60,11 @@ export class MenuComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * @docs-private
+   * @param e
+   * @param {number} index
+   */
   toggleMenu (e, index: number) {
     for (let i = 0; i < this.menus.length; i++) {
       this.menus[i].selected = i === index;
@@ -69,6 +79,11 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this.currentSubHeight = target.nextElementSibling.scrollHeight + 'px';
   }
 
+  /**
+   * @docs-private
+   * @param {number} parentIndex
+   * @param {number} childIndex
+   */
   subMenuClick (parentIndex: number, childIndex: number) {
     for (let i = 0; i < this.menus.length; i++) {
       const subMenus = this.menus[i].items || [];

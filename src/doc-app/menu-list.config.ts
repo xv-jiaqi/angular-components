@@ -3,7 +3,7 @@ import { GtMenus } from 'get-ui-ng';
 export const menuList: GtMenus = [
   {
     label: 'Navigate',
-    name: 'assistant',
+    name: 'navigate',
     icon: 'icon-home',
     items: [
       {
@@ -11,6 +11,11 @@ export const menuList: GtMenus = [
         name: 'tabs',
         link: '/tabs',
         activeLink: '/tabs'
+      },  {
+        label: 'Menu',
+        name: 'menu',
+        link: '/menu',
+        activeLink: '/menu'
       }
     ]
   }
