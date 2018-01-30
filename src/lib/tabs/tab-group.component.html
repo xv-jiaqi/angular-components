@@ -4,7 +4,10 @@
        *ngFor="let tab of tabs; let i = index"
        [ngClass]="{'gt--sel': i === selectedIndex}"
        (click)="setSelectedIndex(i)">
-      <span class="gt-tab__label">{{tab.label}}</span>
+      <span *ngIf="!tab.templateLabel" class="gt-tab__label">{{tab.textLabel}}</span>
+      <ng-template [ngIf]="tab.templateLabel">
+        <ng-template [gtTemplatePortalOutlet]="tab.templateLabel"></ng-template>
+      </ng-template>
     </a>
   </gt-tab-header>
   <ng-container *ngFor="let tab of tabs; let i = index">

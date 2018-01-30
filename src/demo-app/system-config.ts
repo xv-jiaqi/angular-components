@@ -38,6 +38,8 @@ System.config({
 
     // Component mappings
     'get-ui-ng': 'dist/packages/get-ui-ng/public-api.js',
+    'get-ui-ng/portal-base': 'dist/packages/get-ui-ng/portal/portal-base.js',
+    'get-ui-ng/portal': 'dist/packages/get-ui-ng/portal/index.js',
     'get-ui-ng/tabs': 'dist/packages/get-ui-ng/tabs/index.js',
     'get-ui-ng/menu': 'dist/packages/get-ui-ng/menu/index.js'
   },

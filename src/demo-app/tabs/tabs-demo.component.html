@@ -1,5 +1,10 @@
 <gt-tab-group [tabType]="tabType">
   <gt-tab label="Label1">Content1</gt-tab>
-  <gt-tab label="Label2">Content2</gt-tab>
+  <gt-tab>
+    <ng-template gt-tab-label>
+      <div>Label2</div>
+    </ng-template>
+    Content2
+  </gt-tab>
 </gt-tab-group>
 <p>Tabs-Demo</p>
