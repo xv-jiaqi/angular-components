@@ -1,5 +1,5 @@
 import { Directive, TemplateRef, ViewContainerRef } from '@angular/core';
-import { GtTemplatePortal } from 'get-ui-ng/portal';
+import { GtTemplatePortal } from './portal-base';
 
 @Directive({
   selector: '[gt-tab-label]'

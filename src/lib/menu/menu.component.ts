@@ -62,8 +62,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
   /**
    * @docs-private
-   * @param e
-   * @param {number} index
    */
   toggleMenu (e, index: number) {
     for (let i = 0; i < this.menus.length; i++) {
@@ -81,8 +79,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
   /**
    * @docs-private
-   * @param {number} parentIndex
-   * @param {number} childIndex
    */
   subMenuClick (parentIndex: number, childIndex: number) {
     for (let i = 0; i < this.menus.length; i++) {

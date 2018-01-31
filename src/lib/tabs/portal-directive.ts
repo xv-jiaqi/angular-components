@@ -60,18 +60,3 @@ export class GtComponentPortalOutlet<T> extends GtPortalOutlet implements OnDest
     return ref as any as ComponentRef<T>;
   }
 }
-
-@NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    GtTemplatePortalOutlet,
-    GtComponentPortalOutlet
-  ],
-  exports: [
-    GtTemplatePortalOutlet,
-    GtComponentPortalOutlet
-  ]
-})
-export class GtPortalModule { }

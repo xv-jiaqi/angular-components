@@ -44,7 +44,6 @@ export class GtTabGroupComponent implements OnInit {
 
   /**
    * @docs-private
-   * @param {number} index
    */
   setSelectedIndex(index: number) {
     this.selectedIndex = index;
