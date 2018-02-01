@@ -7,4 +7,6 @@ export * from './tab.component';
 
 export * from './tab-label.directive'
 
+export * from './portal-base';
+export * from './portal-directive';
 export * from './tab-type';
