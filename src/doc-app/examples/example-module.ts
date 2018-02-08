@@ -13,9 +13,16 @@ export interface LiveExample {
   selectorName?: string | null;
 }
 
+import { MenuOverviewExampleComponent } from './menu-overview/menu-overview-example.component';
 import { TabsOverviewExampleComponent } from './tabs-overview/tabs-overview-example.component';
 
 export const EXAMPLE_COMPONENTS: {[key: string]: LiveExample} = {
+  'menu-overview-component': {
+    title: 'Menu',
+    component: MenuOverviewExampleComponent,
+    additionalFiles: null,
+    selectorName: null
+  },
   'tabs-overview-component': {
     title: 'Tabs',
     component: TabsOverviewExampleComponent,
@@ -25,6 +32,7 @@ export const EXAMPLE_COMPONENTS: {[key: string]: LiveExample} = {
 };
 
 export const EXAMPLE_LIST = [
+  MenuOverviewExampleComponent,
   TabsOverviewExampleComponent,
 ];
 

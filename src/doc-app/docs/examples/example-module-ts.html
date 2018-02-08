@@ -13,9 +13,16 @@
   selectorName?: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>;
 }
 
+<span class="hljs-keyword">import</span> { MenuOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./menu-overview/menu-overview-example.component'</span>;
 <span class="hljs-keyword">import</span> { TabsOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./tabs-overview/tabs-overview-example.component'</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_COMPONENTS: {[key: <span class="hljs-built_in">string</span>]: LiveExample} = {
+  <span class="hljs-string">'menu-overview-component'</span>: {
+    title: <span class="hljs-string">'Menu'</span>,
+    component: MenuOverviewExampleComponent,
+    additionalFiles: <span class="hljs-literal">null</span>,
+    selectorName: <span class="hljs-literal">null</span>
+  },
   <span class="hljs-string">'tabs-overview-component'</span>: {
     title: <span class="hljs-string">'Tabs'</span>,
     component: TabsOverviewExampleComponent,
@@ -25,6 +32,7 @@
 };
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_LIST = [
+  MenuOverviewExampleComponent,
   TabsOverviewExampleComponent,
 ];
 

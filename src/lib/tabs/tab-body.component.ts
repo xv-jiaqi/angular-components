@@ -1,4 +1,5 @@
 import { Component, Directive, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { GtTemplatePortal } from './portal-base';
 
 /**
  * @docs-private
@@ -6,12 +7,10 @@ import { Component, Directive, Input, OnInit, TemplateRef, ViewChild, ViewContai
 @Directive({
   selector: '[gtTabBodyHost]'
 })
-export class GtTabBodyHost {
-  @Input() content: TemplateRef<any>;
-
-  constructor(
-    public viewContainerRef: ViewContainerRef
-  ) { }
+export class GtTabBodyHost extends GtTemplatePortal<any> {
+  constructor(templateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef) {
+    super(templateRef, viewContainerRef);
+  }
 }
 
 /**

@@ -1,0 +1,41 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { GtMenus } <span class="hljs-keyword">from</span> <span class="hljs-string">'get-ui-ng'</span>;
+
+<span class="hljs-comment">/**
+ * @title Menu
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  moduleId: <span class="hljs-built_in">module</span>.id,
+  selector: <span class="hljs-string">'gt-menu-overview-example'</span>,
+  templateUrl: <span class="hljs-string">'./menu-overview-example.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./menu-overview-example.component.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MenuOverviewExampleComponent {
+  menuList: GtMenus = [
+    {
+      label: <span class="hljs-string">'Navigate'</span>,
+      name: <span class="hljs-string">'navigate'</span>,
+      icon: <span class="hljs-string">'icon-home'</span>,
+      items: [
+        {
+          label: <span class="hljs-string">'Menu'</span>,
+          name: <span class="hljs-string">'menu'</span>,
+          link: <span class="hljs-string">'/menu'</span>,
+          activeLink: <span class="hljs-string">'/menu'</span>
+        }
+      ]
+    }, {
+      label: <span class="hljs-string">'Form'</span>,
+      name: <span class="hljs-string">'form'</span>,
+      icon: <span class="hljs-string">'icon-home'</span>,
+      items: [
+        {
+          label: <span class="hljs-string">'Datetime'</span>,
+          name: <span class="hljs-string">'datetime'</span>,
+          link: <span class="hljs-string">'/datetime'</span>,
+          activeLink: <span class="hljs-string">'/datetime'</span>
+        }
+      ]
+    }
+  ];
+}
