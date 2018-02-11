@@ -24,6 +24,7 @@
     "types": [],
     "baseUrl": ".",
     "paths": {
+      "get-ui-ng": ["../../dist/packages/get-ui-ng/public-api"],
       "get-ui-ng/*": ["../../dist/packages/get-ui-ng/*"]
     }
   },
