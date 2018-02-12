@@ -1,0 +1,14 @@
+<button class="gt-btn-solid" (click)="toast('toast-info')">Toast-Info</button>
+<button class="gt-btn-solid gt--success" (click)="toast('toast-success')">Toast-Success</button>
+<button class="gt-btn-solid gt--warning" (click)="toast('toast-warning')">Toast-Warning</button>
+<button class="gt-btn-solid gt--error" (click)="toast('toast-error')">Toast-Error</button>
+<button class="gt-btn-solid" (click)="info()">Info</button>
+<button class="gt-btn-solid" (click)="confirm()">Confirm</button>
+<button class="gt-btn-solid" (click)="modal()">自定义</button>
+<gt-modal-wrap>
+  <gt-modal-header>这是头部</gt-modal-header>
+  <gt-modal-body>这是身体</gt-modal-body>
+  <gt-modal-footer>
+    <button class="gt-btn-solid" (click)="closeModal()">点我关闭</button>
+  </gt-modal-footer>
+</gt-modal-wrap>

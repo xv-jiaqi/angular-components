@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRouterModule } from './app-router.module';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { GtModule } from './gt-module';
+import { ModalDemoComponent } from './modal/modal-demo.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { GtModule } from './gt-module';
   ],
   declarations: [
     AppComponent,
-    TabsDemoComponent
+    TabsDemoComponent,
+    ModalDemoComponent
   ],
   bootstrap: [
     AppComponent

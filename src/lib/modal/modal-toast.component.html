@@ -1,0 +1,5 @@
+<gt-modal-wrap [showAnimation]="false" [showShadow]="false">
+  <div class="gt-toast" (click)="closeModal()" [ngClass]="{'gt--error': type === 'toast-error', 'gt--warning': type === 'toast-warning', 'gt--success': type === 'toast-success', 'gt--info': type === 'toast-info'}">
+    <i class="gt-icon" [ngClass]="{'icon-cross': type === 'toast-error', 'icon-warning': type === 'toast-warning', 'icon-right': type === 'toast-success', 'icon-info': type === 'toast-info'}"></i>{{message}}
+  </div>
+</gt-modal-wrap>

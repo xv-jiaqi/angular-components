@@ -1,0 +1,12 @@
+<gt-modal-wrap>
+  <gt-modal-header *ngIf="!options.hideHeader">
+    <div class="gt-modal__header__title">{{options.title}}</div>
+    <span class="gt-modal__header__close" *ngIf="options.hideCloseIcon" (click)="close('cancel')"><i class="gt-icon icon-cross-fat"></i></span>
+  </gt-modal-header>
+  <gt-modal-body>
+    <p class="gt-modal__p">{{options.body}}</p>
+  </gt-modal-body>
+  <gt-modal-footer *ngIf="!options.hideFooter">
+    <button type="button" *ngFor="let item of options.buttons" [ngClass]="item.class" (click)="close(item.event)">{{item.label}}</button>
+  </gt-modal-footer>
+</gt-modal-wrap>
