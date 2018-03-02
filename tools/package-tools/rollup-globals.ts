@@ -7,11 +7,20 @@ export const dashCaseToCamelCase =
   (str: string) => str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 
 /** List of potential secondary entry-points for the material package. */
-const matSecondaryEntryPoints = getSubdirectoryNames(join(buildConfig.packagesDir, 'lib'));
+const baseSecondaryEntryPoints = getSubdirectoryNames(join(buildConfig.packagesDir, 'lib'));
+
+/** List of potential secondary entry-points for the cdk package. */
+const utilsSecondaryEntryPoints = getSubdirectoryNames(join(buildConfig.packagesDir, 'utils'));
 
 /** Object with all material entry points in the format of Rollup globals. */
-const rollupComponentEntryPoints = matSecondaryEntryPoints.reduce((globals: any, entryPoint: string) => {
-  globals[`${buildConfig.packageName}/${entryPoint}`] = `ng.${buildConfig.packageName}.${dashCaseToCamelCase(entryPoint)}`;
+const rollupComponentEntryPoints = baseSecondaryEntryPoints.reduce((globals: any, entryPoint: string) => {
+  globals[`${buildConfig.packageName}/base/${entryPoint}`] = `ng.base.${dashCaseToCamelCase(entryPoint)}`;
+  return globals;
+}, {});
+
+/** Object with all cdk entry points in the format of Rollup globals. */
+const rollupUtilsEntryPoints = utilsSecondaryEntryPoints.reduce((globals: any, entryPoint: string) => {
+  globals[`${buildConfig.packageName}/utils/${entryPoint}`] = `ng.utils.${dashCaseToCamelCase(entryPoint)}`;
   return globals;
 }, {});
 
@@ -38,6 +47,7 @@ export const rollupGlobals = {
   [buildConfig.packageName]: `ng.${buildConfig.packageName}`,
 
   // Include secondary entry-points of the cdk and material packages
+  ...rollupUtilsEntryPoints,
   ...rollupComponentEntryPoints,
 
   'rxjs/BehaviorSubject': 'Rx',

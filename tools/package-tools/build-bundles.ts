@@ -176,7 +176,7 @@ export class PackageBundler {
    */
   private getResolvedSecondaryEntryPointImportPaths(bundleOutputDir: string) {
     return this.buildPackage.secondaryEntryPoints.reduce((map, p) => {
-      map[`${this.buildPackage.name}/${p}`] =
+      map[`${buildConfig.packageName}/${this.buildPackage.name}/${p}`] =
           join(dirname(bundleOutputDir), this.buildPackage.name, `${p}.es5.js`);
       return map;
     }, {} as {[key: string]: string});

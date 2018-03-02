@@ -8,7 +8,7 @@ import {red, grey, green, yellow} from 'chalk';
 import * as minimist from 'minimist';
 
 /** Packages that will be published to NPM by the release task. */
-export const releasePackages = [buildConfig.packageName];
+export const releasePackages = ['base'];
 
 /** Parse command-line arguments for release task. */
 const argv = minimist(process.argv.slice(3));

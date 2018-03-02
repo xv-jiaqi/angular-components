@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GtTabType } from 'get-ui-ng/tabs';
+import { GtTabType } from 'get-ui-ng/base';
 
 @Component({
   moduleId: module.id,

@@ -9,8 +9,7 @@
     "target": "es5",
     "types": ["jasmine"],
     "paths": {
-      "get-ui-ng/base/*": ["./*"],
-      "get-ui-ng/utils/*": ["../../dist/packages/utils/*/public-api"]
+      "get-ui-ng/utils/*": ["./*"]
     }
   },
   "angularCompilerOptions": {
