@@ -42,6 +42,8 @@ System.config({
     'get-ui-ng/menu': 'dist/packages/get-ui-ng/menu/index.js',
     'get-ui-ng/bar': 'dist/packages/get-ui-ng/bar/index.js',
     'get-ui-ng/datepicker': 'dist/packages/get-ui-ng/datepicker/index.js',
+    'get-ui-ng/menu': 'dist/packages/get-ui-ng/menu/index.js',
+    'get-ui-ng/modal': 'dist/packages/get-ui-ng/modal/index.js'
   },
   packages: {
     // Thirdparty barrels.

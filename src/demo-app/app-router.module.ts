@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { BarDemoComponent } from './bar/bar-demo.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import { ModalDemoComponent } from './modal/modal-demo.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,9 @@ const routes: Routes = [
   {
     path: 'datepicker',
     component: DatepickerComponent
+  }, {
+    path: 'modal',
+    component: ModalDemoComponent
   }
 ];
 

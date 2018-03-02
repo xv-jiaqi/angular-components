@@ -1,0 +1,8 @@
+<div class="gt-modal" [ngClass]="{'gt-fade': showAnimation, 'gt-in': gtIn}" [ngStyle]="{display: display}">
+  <div class="gt-modal__scroll">
+    <div [ngClass]="{'gt-backdrop': showShadow}"></div>
+    <div class="gt-modal__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

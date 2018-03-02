@@ -6,6 +6,7 @@ import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { BarDemoComponent } from './bar/bar-demo.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { GtModule } from './gt-module';
+import { ModalDemoComponent } from './modal/modal-demo.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,8 @@ import { GtModule } from './gt-module';
     TabsDemoComponent,
     BarDemoComponent,
     DatepickerComponent
+    TabsDemoComponent,
+    ModalDemoComponent
   ],
   bootstrap: [
     AppComponent

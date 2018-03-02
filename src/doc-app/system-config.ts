@@ -42,6 +42,7 @@ System.config({
     'get-ui-ng/tabs': 'dist/packages/get-ui-ng/tabs/index.js',
     'get-ui-ng/menu': 'dist/packages/get-ui-ng/menu/index.js',
     'get-ui-ng/bar': 'dist/packages/get-ui-ng/bar/index.js'
+    'get-ui-ng/modal': 'dist/packages/get-ui-ng/modal/index.js'
   },
   packages: {
     // Thirdparty barrels.
