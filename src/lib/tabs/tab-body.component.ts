@@ -1,5 +1,5 @@
 import { Component, Directive, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { GtTemplatePortal } from './portal-base';
+import { GtTemplatePortal } from 'get-ui-ng/utils/portal';
 
 /**
  * @docs-private

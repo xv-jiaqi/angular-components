@@ -10,11 +10,11 @@
     "newLine": "lf",
     "module": "es2015",
     "moduleResolution": "node",
-    "outDir": "../../dist/packages/base",
+    "outDir": "../../dist/packages/utils",
     "rootDir": ".",
     "rootDirs": [
       ".",
-      "../../dist/packages/base"
+      "../../dist/packages/utils"
     ],
     "sourceMap": true,
     "inlineSources": true,
@@ -24,8 +24,7 @@
     "types": [],
     "baseUrl": ".",
     "paths": {
-      "get-ui-ng/utils/*": ["../../dist/packages/utils/*"],
-      "get-ui-ng/base/*": ["../../dist/packages/base/*"]
+      "get-ui-ng/utils/*": ["../../dist/packages/utils/*"]
     }
   },
   "files": [
@@ -36,7 +35,7 @@
     "annotateForClosureCompiler": false,
     "strictMetadataEmit": true,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "get-ui-ng/base",
+    "flatModuleId": "get-ui-ng/utils",
     "skipTemplateCodegen": true,
     "fullTemplateTypeCheck": true
   }

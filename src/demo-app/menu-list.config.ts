@@ -1,4 +1,4 @@
-import { GtMenus } from 'get-ui-ng';
+import { GtMenus } from 'get-ui-ng/base';
 
 export const menuList: GtMenus = [
   {

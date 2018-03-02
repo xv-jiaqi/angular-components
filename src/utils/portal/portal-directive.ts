@@ -3,7 +3,6 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { GtComponentPortal, GtPortalOutlet, GtTemplatePortal } from './portal-base';
-import { CommonModule } from '@angular/common';
 
 @Directive({
   selector: '[gtTemplatePortalOutlet]'
@@ -14,7 +13,7 @@ export class GtTemplatePortalOutlet<T> extends GtPortalOutlet implements OnDestr
   }
 
   constructor(private _viewContainerRef: ViewContainerRef) {
-    super()
+    super();
   }
 
   ngOnDestroy(): void {

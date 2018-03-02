@@ -1,9 +1,11 @@
 import { createPackageBuildTasks } from 'build-tools';
 import {
+  utilPackage,
   examplesPackage,
   componentPackage,
 } from './packages';
 
+createPackageBuildTasks(utilPackage);
 createPackageBuildTasks(componentPackage);
 createPackageBuildTasks(examplesPackage);
 

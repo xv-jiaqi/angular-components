@@ -5,6 +5,7 @@ import {
   buildConfig, copyFiles, buildLessTask, sequenceTask, watchFiles, remapSourcemap
 } from 'build-tools';
 import {
+  utilPackage,
   componentPackage
 } from '../packages';
 import { sync as glob } from 'glob';
@@ -44,8 +45,9 @@ task(':watch:devapp', () => {
 
   // Custom watchers for all packages that are used inside of the demo-app. This is necessary
   // because we only want to build the changed package (using the build-no-bundles task).
-  watchFiles(join(componentPackage.sourceDir, '**/!(*.less)'), [`${buildConfig.packageName}:build-no-bundles`]);
-  watchFiles(join(componentPackage.sourceDir, '**/*.less'), [`:build:devapp:${buildConfig.packageName}-with-styles`]);
+  watchFiles(join(utilPackage.sourceDir, '**/!(*.less)'), ['utils:build-no-bundles']);
+  watchFiles(join(componentPackage.sourceDir, '**/!(*.less)'), ['base:build-no-bundles']);
+  watchFiles(join(componentPackage.sourceDir, '**/*.less'), [':build:devapp:base-with-styles']);
 });
 
 /** Path to the demo-app tsconfig file. */
@@ -70,11 +72,12 @@ task(':serve:devapp', serverTask(outDir, true));
 // The themes for the demo-app are built by using the SCSS mixins from Material.
 // Therefore when SCSS files have been changed, the custom theme needs to be rebuilt.
 task(':build:devapp:ng5-with-styles', sequenceTask(
-  'ng5:build-no-bundles', ':build:devapp:less'
+  'base:build-no-bundles', ':build:devapp:less'
 ));
 
 task('build:devapp', sequenceTask(
-  `${buildConfig.packageName}:build-no-bundles`,
+  'utils:build-no-bundles',
+  'base:build-no-bundles',
   [':build:devapp:assets', ':build:devapp:less', ':build:devapp:ts']
 ));
 

@@ -38,10 +38,13 @@ System.config({
 
     // TODO(devversion): replace once the index.ts file for the Material package has been added.
     // Component mappings
-    'get-ui-ng': 'dist/packages/get-ui-ng/public-api.js',
-    'get-ui-ng/tabs': 'dist/packages/get-ui-ng/tabs/index.js',
-    'get-ui-ng/menu': 'dist/packages/get-ui-ng/menu/index.js',
-    'get-ui-ng/modal': 'dist/packages/get-ui-ng/modal/index.js'
+    'get-ui-ng/utils/portal': 'dist/packages/utils/portal/index.js',
+    'get-ui-ng/utils': 'dist/packages/utils/public-api.js',
+
+    'get-ui-ng/base/tabs': 'dist/packages/base/tabs/index.js',
+    'get-ui-ng/base/menu': 'dist/packages/base/menu/index.js',
+    'get-ui-ng/base/modal': 'dist/packages/base/modal/index.js',
+    'get-ui-ng/base': 'dist/packages/base/public-api.js'
   },
   packages: {
     // Thirdparty barrels.
