@@ -8,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class StepperDemoComponent implements OnInit {
+  private _currentIndex: number;
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._currentIndex = 2;
+  }
+
+  prevStep() {
+    this._currentIndex -= 1;
+  }
+
+  nextStep() {
+    this._currentIndex += 1;
+  }
 }

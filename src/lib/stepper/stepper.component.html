@@ -1,0 +1,19 @@
+<div>
+  <div class="gt-step">
+    <ng-container *ngFor="let step of steps; let i = index">
+      <div class="gt-step__cell"
+           [ngClass]="{'gt-step__cell--cur': i == currentIndex, 'gt-step__cell--past': i < currentIndex}">
+        <p class="gt-step__label">{{ step.labelText }}</p>
+        <div class="gt-step__symbol">{{ step.symbolText }}</div>
+        <span class="gt-step__des">{{ step.description }}</span>
+      </div>
+    </ng-container>
+    <div class="gt-step__line">
+      <div class="gt-step__line__cur"></div>
+    </div>
+  </div>
+  
+  <ng-container *ngFor="let step of steps;">
+    <gt-step-body [content]="step.content"></gt-step-body>
+  </ng-container>
+</div>

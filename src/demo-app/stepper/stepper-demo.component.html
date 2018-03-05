@@ -1,0 +1,19 @@
+<gt-stepper current="{{_currentIndex}}">
+  <gt-step label="第1步" symbol="1" description="第1步的描述">
+    第1步内容
+  </gt-step>
+  <gt-step label="第2步" symbol="2" description="第2步的描述">
+    第2步内容
+  </gt-step>
+  <gt-step label="第3步" symbol="3" description="第3步的描述">
+    第3步内容
+  </gt-step>
+  <gt-step label="第4步" symbol="4" description="第4步的描述">
+    第4步内容
+  </gt-step>
+  <gt-step label="第5步" symbol="5" description="第5步的描述">
+    第5步内容
+  </gt-step>
+</gt-stepper>
+<a class="gt-btn-solid" (click)="prevStep()" [attr.disabled]="_currentIndex === 0 ? true : null">上一步</a>
+<a class="gt-btn-solid" (click)="nextStep()" [attr.disabled]="_currentIndex === 4 ? true : null">下一步</a>
