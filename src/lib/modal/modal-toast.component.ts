@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { GtModalWrapComponent } from './modal-wrap.component';
-import { GtToastType } from './modal-toast-type';
+import { GtToastType } from './modal-toast';
 
 @Component({
   moduleId: module.id,

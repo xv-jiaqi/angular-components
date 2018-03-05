@@ -1,6 +1,6 @@
 import { ApplicationRef, ComponentFactoryResolver, EmbeddedViewRef, Injectable, Injector } from '@angular/core';
 import { GtModalToastComponent } from './modal-toast.component';
-import { GtToastType } from './modal-toast-type';
+import { GtToastOption } from './modal-toast';
 
 @Injectable()
 
@@ -15,7 +15,7 @@ export class GtModalToastService {
     private _injector: Injector
   ) { }
 
-  toast (options: {type: GtToastType, message: string, timeout?: number}) {
+  toast (options: GtToastOption) {
     /** clear async task **/
     clearTimeout(this._timer);
 

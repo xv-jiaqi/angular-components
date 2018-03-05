@@ -1,0 +1,24 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { GtModalDialogService, GtModalToastService, GtToastType } <span class="hljs-keyword">from</span> <span class="hljs-string">'get-ui-ng/base'</span>;
+
+<span class="hljs-comment">/**
+ * @title Modal-Confirm
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  moduleId: <span class="hljs-built_in">module</span>.id,
+  templateUrl: <span class="hljs-string">'./modal-confirm-overview-example.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./modal-confirm-overview-example.component.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ModalConfirmOverviewExampleComponent {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> _toastService: GtModalToastService,
+    <span class="hljs-keyword">private</span> _dialogService: GtModalDialogService
+  </span>) { }
+
+  confirm() {
+    <span class="hljs-keyword">this</span>._dialogService.confirm(<span class="hljs-string">'产品跑路了吗？'</span>).then(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> result ?
+      <span class="hljs-keyword">this</span>._toastService.toast({<span class="hljs-keyword">type</span>: GtToastType.INFO, message: <span class="hljs-string">'产品已经跑路了'</span>}) :
+      <span class="hljs-keyword">this</span>._toastService.toast({<span class="hljs-keyword">type</span>: GtToastType.INFO, message: <span class="hljs-string">'产品暂时还没跑路'</span>})
+    )
+  }
+}

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRouterModule } from './app-router.module';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 import { GtModule } from './gt-module';
 import { ModalDemoComponent } from './modal/modal-demo.component';
 import { StepperDemoComponent } from './stepper/stepper-demo.component';
@@ -11,13 +12,14 @@ import { StepperDemoComponent } from './stepper/stepper-demo.component';
   imports: [
     BrowserModule,
     GtModule,
-    AppRouterModule
+    AppRouterModule,
   ],
   declarations: [
     AppComponent,
     TabsDemoComponent,
-    ModalDemoComponent,
-    StepperDemoComponent
+    StepperDemoComponent,
+    DatepickerComponent,
+    ModalDemoComponent
   ],
   bootstrap: [
     AppComponent

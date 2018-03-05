@@ -9,6 +9,9 @@ const routes: Routes = [
   }, {
     path: 'menu',
     component: ComponentViewComponent
+  }, {
+    path: 'modal',
+    component: ComponentViewComponent
   }
 ];
 

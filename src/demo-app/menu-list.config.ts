@@ -11,6 +11,12 @@ export const menuList: GtMenus = [
         name: 'tabs',
         link: '/tabs',
         activeLink: '/tabs'
+      },
+      {
+        label: 'Datepicker',
+        name: 'datepicker',
+        link: '/datepicker',
+        activeLink: '/datepicker'
       }, {
         label: 'Modal',
         name: 'modal',

@@ -14,12 +14,40 @@
 }
 
 <span class="hljs-keyword">import</span> { MenuOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./menu-overview/menu-overview-example.component'</span>;
+<span class="hljs-keyword">import</span> { ModalConfirmOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./modal-confirm-overview/modal-confirm-overview-example.component'</span>;
+<span class="hljs-keyword">import</span> { ModalInfoOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./modal-info-overview/modal-info-overview-example.component'</span>;
+<span class="hljs-keyword">import</span> { ModalToastOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./modal-toast-overview/modal-toast-overview-example.component'</span>;
+<span class="hljs-keyword">import</span> { ModalWrapOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./modal-wrap-overview/modal-wrap-overview-example.component'</span>;
 <span class="hljs-keyword">import</span> { TabsOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./tabs-overview/tabs-overview-example.component'</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_COMPONENTS: {[key: <span class="hljs-built_in">string</span>]: LiveExample} = {
   <span class="hljs-string">'menu-overview-component'</span>: {
     title: <span class="hljs-string">'Menu'</span>,
     component: MenuOverviewExampleComponent,
+    additionalFiles: <span class="hljs-literal">null</span>,
+    selectorName: <span class="hljs-literal">null</span>
+  },
+  <span class="hljs-string">'modal-confirm-overview-component'</span>: {
+    title: <span class="hljs-string">'Modal-Confirm'</span>,
+    component: ModalConfirmOverviewExampleComponent,
+    additionalFiles: <span class="hljs-literal">null</span>,
+    selectorName: <span class="hljs-literal">null</span>
+  },
+  <span class="hljs-string">'modal-info-overview-component'</span>: {
+    title: <span class="hljs-string">'Modal-Info'</span>,
+    component: ModalInfoOverviewExampleComponent,
+    additionalFiles: <span class="hljs-literal">null</span>,
+    selectorName: <span class="hljs-literal">null</span>
+  },
+  <span class="hljs-string">'modal-toast-overview-component'</span>: {
+    title: <span class="hljs-string">'Modal-Toast'</span>,
+    component: ModalToastOverviewExampleComponent,
+    additionalFiles: <span class="hljs-literal">null</span>,
+    selectorName: <span class="hljs-literal">null</span>
+  },
+  <span class="hljs-string">'modal-wrap-overview-component'</span>: {
+    title: <span class="hljs-string">'Modal-Wrap'</span>,
+    component: ModalWrapOverviewExampleComponent,
     additionalFiles: <span class="hljs-literal">null</span>,
     selectorName: <span class="hljs-literal">null</span>
   },
@@ -33,6 +61,10 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_LIST = [
   MenuOverviewExampleComponent,
+  ModalConfirmOverviewExampleComponent,
+  ModalInfoOverviewExampleComponent,
+  ModalToastOverviewExampleComponent,
+  ModalWrapOverviewExampleComponent,
   TabsOverviewExampleComponent,
 ];
 

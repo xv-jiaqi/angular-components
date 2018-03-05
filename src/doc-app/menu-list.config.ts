@@ -18,5 +18,17 @@ export const menuList: GtMenus = [
         activeLink: '/menu'
       }
     ]
+  }, {
+    label: 'Popup',
+    name: 'popup',
+    icon: 'icon-home',
+    items: [
+      {
+        label: 'modal',
+        name: 'modal',
+        link: '/modal',
+        activeLink: '/modal'
+      }
+    ]
   }
 ];

@@ -31,5 +31,5 @@ module.exports = {
   outputDir: join(__dirname, 'dist'),
   licenseBanner: buildLicense,
   packageName: 'get-ui-ng', //packageName must equal with tsconfig、tsconfig-build、system-config properties of ['outDir', 'rootDirs', 'paths']
-  port: 4200
+  port: 4201
 };
