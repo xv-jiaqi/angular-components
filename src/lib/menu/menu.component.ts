@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       const url = this._router.url.replace(/\?.*/g, '');
       for (let i = 0; i < this.menus.length; i++) {
-        if (url.indexOf(this.menus[i].activeLink || '') > -1) {
+        if (this.menus[i].activeLink && url.indexOf(this.menus[i].activeLink || '') > -1) {
           this.menus[i].selected = true;
           if ((this.menus[i].items || []).length === 0) {
             return;

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { DialogOption } from './modal-dialog-options';
+import { GtDialogOption } from './modal-dialog-options';
 import { GtModalWrapComponent } from './modal-wrap.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { GtModalWrapComponent } from './modal-wrap.component';
 })
 
 export class GtModalDialogComponent {
-  options: DialogOption;
+  options: GtDialogOption;
 
   resolve: (params: boolean) => void;
 

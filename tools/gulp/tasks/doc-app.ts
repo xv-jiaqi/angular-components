@@ -78,7 +78,8 @@ task(':build:docapp:ng5-with-styles', sequenceTask(
 ));
 
 task('build:docapp', sequenceTask(
-  `base:build-no-bundles`,
+  `utils:build-no-bundles`,
+  'base:build-no-bundles',
   [':build:docapp:assets', ':build:docapp:less', ':build:docapp:ts', 'docs']
 ));
 

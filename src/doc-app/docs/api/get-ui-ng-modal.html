@@ -50,8 +50,7 @@
     <td class="docs-api-method-parameter-cell">
       <p class="docs-api-method-parameter-name">
         options</p>
-      <code class="docs-api-method-parameter-type">{
-    type</code>
+      <code class="docs-api-method-parameter-type">GtToastOption</code>
     </td>
     <td class="docs-api-method-parameter-description-cell">
       <p class="docs-api-method-parameter-description">
@@ -92,7 +91,7 @@
     <td class="docs-api-method-parameter-cell">
       <p class="docs-api-method-parameter-name">
         options</p>
-      <code class="docs-api-method-parameter-type">string | DialogOption</code>
+      <code class="docs-api-method-parameter-type">string | GtDialogOption</code>
     </td>
     <td class="docs-api-method-parameter-description-cell">
       <p class="docs-api-method-parameter-description">
@@ -134,7 +133,7 @@
     <td class="docs-api-method-parameter-cell">
       <p class="docs-api-method-parameter-name">
         options</p>
-      <code class="docs-api-method-parameter-type">string | DialogOption</code>
+      <code class="docs-api-method-parameter-type">string | GtDialogOption</code>
     </td>
     <td class="docs-api-method-parameter-description-cell">
       <p class="docs-api-method-parameter-description">
@@ -186,30 +185,11 @@
     
       <tr class="docs-api-properties-row">
   <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
-      <code>display: &#39;none&#39;</code>
-    </p>
-  </td>
-  <td class="docs-api-property-description"></td>
-</tr>
-
-
-    
-      <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
-      <code>gtIn: false</code>
-    </p>
-  </td>
-  <td class="docs-api-property-description"></td>
-</tr>
-
-
-    
-      <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
       <code>showAnimation: boolean</code>
     </p>
   </td>
-  <td class="docs-api-property-description"></td>
+  <td class="docs-api-property-description"><p>显示动画</p>
+</td>
 </tr>
 
 
@@ -219,7 +199,8 @@
       <code>showShadow: boolean</code>
     </p>
   </td>
-  <td class="docs-api-property-description"></td>
+  <td class="docs-api-property-description"><p>显示阴影</p>
+</td>
 </tr>
 
 
@@ -235,7 +216,12 @@
       <th colspan="2" class="docs-api-method-name-cell">closeModal
       </th>
     </tr>
-  </thead><thead>
+  </thead><tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">
+      <p>关闭模态框</p>
+
+    </td>
+  </tr><thead>
     <tr class="docs-api-method-returns-header-row">
       <th colspan="2" class="docs-api-method-returns-header-cell">Returns</th>
     </tr>
@@ -259,7 +245,12 @@
       <th colspan="2" class="docs-api-method-name-cell">openModal
       </th>
     </tr>
-  </thead></table>
+  </thead><tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">
+      <p>打开模态框</p>
+
+    </td>
+  </tr></table>
 
 
   
@@ -311,6 +302,62 @@
     <span class="docs-api-class-selector-name">gt-modal-footer</span>
   
 </p>
+
+
+
+
+
+
+    <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+      <span header-link="additional_interfaces"></span>
+      Additional interfaces
+    </h3>
+    
+      <h4 id="GtToastOption" class="docs-header-link docs-api-h4 docs-api-interface-name">
+  <span header-link="GtToastOption"></span>
+  <code>GtToastOption</code>
+</h4><p class="docs-api-interface-description"><p>Toast参数</p>
+</p><h5 class="docs-api-h5 docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>message: string</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>toast信息</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>timeout: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>自动关闭时间，默认3000ms</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>type: GtToastType</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>toast类型</p>
+</td>
+</tr>
+
+
+    
+  </table>
 
 
 

@@ -50,6 +50,7 @@ export class GtModalWrapComponent implements AfterViewInit, AfterViewChecked {
 
   private _timer: number | null = null;
 
+  /** 显示阴影 */
   @Input() set showShadow (value: boolean) {
     this._showShadow = value === null || value === undefined ? true : value;
   }
@@ -58,6 +59,7 @@ export class GtModalWrapComponent implements AfterViewInit, AfterViewChecked {
     return this._showShadow;
   }
 
+  /** 显示动画 */
   @Input() set showAnimation (value: boolean) {
     this._showAnimation = value === null || value === undefined ? true : value;
   }
@@ -66,8 +68,16 @@ export class GtModalWrapComponent implements AfterViewInit, AfterViewChecked {
     return this._showAnimation;
   }
 
+  /**
+   * @docs-private
+   * @type {string}
+   */
   display = 'none';
 
+  /**
+   * @docs-private
+   * @type {boolean}
+   */
   gtIn = false;
 
   constructor () {}
@@ -96,6 +106,7 @@ export class GtModalWrapComponent implements AfterViewInit, AfterViewChecked {
     }
   }
 
+  /** 打开模态框 */
   openModal () {
     let bodyClass = document.body.getAttribute('class');
     if (!bodyClass) {
@@ -107,6 +118,7 @@ export class GtModalWrapComponent implements AfterViewInit, AfterViewChecked {
     this._dialogOpen = true;
   }
 
+  /** 关闭模态框 */
   closeModal (): Promise<any> {
     const that = this as GtModalWrapComponent;
     return new Promise(resolve => {

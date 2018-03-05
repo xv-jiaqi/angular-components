@@ -1,0 +1,26 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { GtModalToastService, GtToastType } <span class="hljs-keyword">from</span> <span class="hljs-string">'get-ui-ng/base'</span>;
+
+<span class="hljs-comment">/**
+ * @title
+ * Modal-Toast
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  moduleId: <span class="hljs-built_in">module</span>.id,
+  templateUrl: <span class="hljs-string">'./modal-toast-overview-example.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./modal-toast-overview-example.component.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ModalToastOverviewExampleComponent {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> _toastService: GtModalToastService
+  </span>) {}
+
+  toast(<span class="hljs-keyword">type</span>: GtToastType): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">type</span>) {
+      <span class="hljs-keyword">case</span> GtToastType.INFO: <span class="hljs-keyword">this</span>._toastService.toast({<span class="hljs-keyword">type</span>: GtToastType.INFO, message: <span class="hljs-string">'产品要跑路了'</span>}); <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> GtToastType.SUCCESS: <span class="hljs-keyword">this</span>._toastService.toast({<span class="hljs-keyword">type</span>: GtToastType.SUCCESS, message: <span class="hljs-string">'产品跑路成功'</span>}); <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> GtToastType.WARNING: <span class="hljs-keyword">this</span>._toastService.toast({<span class="hljs-keyword">type</span>: GtToastType.WARNING, message: <span class="hljs-string">'警告，产品要跑路了！'</span>}); <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> GtToastType.ERROR: <span class="hljs-keyword">this</span>._toastService.toast({<span class="hljs-keyword">type</span>: GtToastType.ERROR, message: <span class="hljs-string">'产品跑错路了'</span>}); <span class="hljs-keyword">break</span>;
+    }
+  }
+}

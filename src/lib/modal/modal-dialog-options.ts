@@ -1,4 +1,4 @@
-export class ButtonOption {
+export class GtButtonOption {
   /** button lable **/
   label: string;
 
@@ -9,7 +9,7 @@ export class ButtonOption {
   'class': string | object | (string | object)[];
 }
 
-export class DialogOption {
+export class GtDialogOption {
   hideHeader? = true;
 
   hideFooter? = false;
@@ -20,5 +20,5 @@ export class DialogOption {
 
   body: string;
 
-  buttons: ButtonOption[];
+  buttons: GtButtonOption[];
 }
