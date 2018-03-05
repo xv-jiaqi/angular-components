@@ -1,7 +1,7 @@
 import { Component, ComponentFactoryResolver, Input, ViewChild } from '@angular/core';
 import { EXAMPLE_COMPONENTS, LiveExample } from '../../examples/example-module';
 import { ExampleHostDirective } from './example-host.directive';
-import { GtTabType } from 'get-ui-ng';
+import { GtTabType } from 'get-ui-ng/base';
 
 @Component({
   moduleId: module.id,

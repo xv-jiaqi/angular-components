@@ -5,9 +5,7 @@
     "rootDir": "..",
     "baseUrl": ".",
     "paths": {
-      "get-ui-ng/utils": ["../utils/public-api.js"],
-      "get-ui-ng/utils/*": ["../utils/*"],
-      "get-ui-ng/base/*": ["./*"]
+      "get-ui-ng/utils/*": ["./*"]
     }
   },
   "include": ["./**/*.ts"]

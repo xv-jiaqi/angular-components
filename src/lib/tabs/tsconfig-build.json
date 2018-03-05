@@ -8,7 +8,7 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "get-ui-ng/tabs",
+    "flatModuleId": "get-ui-ng/base/tabs",
     "skipTemplateCodegen": true,
     "fullTemplateTypeCheck": true
   }

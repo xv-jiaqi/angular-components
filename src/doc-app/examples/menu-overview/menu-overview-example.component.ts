@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GtMenus } from 'get-ui-ng';
+import { GtMenus } from 'get-ui-ng/base';
 
 /**
  * @title Menu

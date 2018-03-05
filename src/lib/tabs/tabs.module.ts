@@ -6,11 +6,12 @@ import { GtTabComponent } from './tab.component';
 import { GtTabHeaderComponent } from './tab-header.component';
 import { GtTabBodyComponent, GtTabBodyHost } from './tab-body.component';
 import { GtTabLabel } from './tab-label.directive';
-import { GtComponentPortalOutlet, GtTemplatePortalOutlet } from './portal-directive';
+import { GtPortalModule } from 'get-ui-ng/utils/portal';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    GtPortalModule
   ],
   declarations: [
     GtTabGroupComponent,
@@ -18,18 +19,14 @@ import { GtComponentPortalOutlet, GtTemplatePortalOutlet } from './portal-direct
     GtTabBodyComponent,
     GtTabComponent,
     GtTabBodyHost,
-    GtTabLabel,
-    GtTemplatePortalOutlet,
-    GtComponentPortalOutlet
+    GtTabLabel
   ],
   exports: [
     GtTabGroupComponent,
     GtTabHeaderComponent,
     GtTabBodyComponent,
     GtTabComponent,
-    GtTabLabel,
-    GtTemplatePortalOutlet,
-    GtComponentPortalOutlet
+    GtTabLabel
   ]
 })
 

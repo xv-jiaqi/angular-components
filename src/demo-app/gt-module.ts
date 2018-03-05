@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { GtTabsModule, GtMenuModule, GtModalModule } from 'get-ui-ng';
+import { GtTabsModule, GtMenuModule, GtModalModule } from 'get-ui-ng/base';
 
 @NgModule({
   exports: [

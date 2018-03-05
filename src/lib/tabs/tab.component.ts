@@ -1,8 +1,9 @@
 import { Component, ContentChild, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { GtTabLabel } from './tab-label.directive';
-import { GtTemplatePortal } from './portal-base';
+import { GtTemplatePortal } from 'get-ui-ng/utils/portal';
 
 @Component({
+  moduleId: module.id,
   selector: 'gt-tab',
   templateUrl: './tab.component.html'
 })

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { GtModalDialogService, GtModalToastService, GtModalWrapComponent, GtToastType } from 'get-ui-ng';
+import { GtModalDialogService, GtModalToastService, GtModalWrapComponent, GtToastType } from 'get-ui-ng/base';
 
 @Component({
   moduleId: module.id,

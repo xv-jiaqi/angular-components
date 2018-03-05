@@ -1,3 +1,3 @@
-export * from 'get-ui-ng/tabs';
-export * from 'get-ui-ng/menu';
-export * from 'get-ui-ng/modal';
+export * from 'get-ui-ng/base/tabs';
+export * from 'get-ui-ng/base/menu';
+export * from 'get-ui-ng/base/modal';

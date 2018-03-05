@@ -8,7 +8,7 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "get-ui-ng/modal",
+    "flatModuleId": "get-ui-ng/base/modal",
     "skipTemplateCodegen": true,
     "fullTemplateTypeCheck": true
   }

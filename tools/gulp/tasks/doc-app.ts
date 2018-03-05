@@ -5,7 +5,7 @@ import {
   buildConfig, copyFiles, buildLessTask, sequenceTask, watchFiles, remapSourcemap
 } from 'build-tools';
 import {
-  componentPackage
+  componentPackage, utilPackage
 } from '../packages';
 import { sync as glob } from 'glob';
 
@@ -46,8 +46,9 @@ task(':watch:docapp', () => {
 
   // Custom watchers for all packages that are used inside of the demo-app. This is necessary
   // because we only want to build the changed package (using the build-no-bundles task).
-  watchFiles(join(componentPackage.sourceDir, '**/!(*.less)'), [`${buildConfig.packageName}:build-no-bundles`]);
-  watchFiles(join(componentPackage.sourceDir, '**/*.less'), [`:build:docapp:${buildConfig.packageName}-with-styles`]);
+  watchFiles(join(utilPackage.sourceDir, '**/!(*.less)'), ['utils:build-no-bundles']);
+  watchFiles(join(componentPackage.sourceDir, '**/!(*.less)'), ['base:build-no-bundles']);
+  watchFiles(join(componentPackage.sourceDir, '**/*.less'), [':build:devapp:base-with-styles']);
   watchFiles(join(componentPackage.sourceDir, '**/*.md'), ['markdown-docs-component']);
   watchFiles(join(componentPackage.sourceDir, '**/*.ts'), ['api-docs']);
 });
@@ -77,7 +78,8 @@ task(':build:docapp:ng5-with-styles', sequenceTask(
 ));
 
 task('build:docapp', sequenceTask(
-  `${buildConfig.packageName}:build-no-bundles`,
+  `utils:build-no-bundles`,
+  'base:build-no-bundles',
   [':build:docapp:assets', ':build:docapp:less', ':build:docapp:ts', 'docs']
 ));
 
