@@ -37,14 +37,12 @@ System.config({
       'node:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
 
     // Component mappings
-    'get-ui-ng': 'dist/packages/get-ui-ng/public-api.js',
-    'get-ui-ng/bar': 'dist/packages/get-ui-ng/bar/index.js',
-    'get-ui-ng/datepicker': 'dist/packages/get-ui-ng/datepicker/index.js',
     'get-ui-ng/utils/portal': 'dist/packages/utils/portal/index.js',
     'get-ui-ng/utils': 'dist/packages/utils/public-api.js',
     'get-ui-ng/base/tabs': 'dist/packages/base/tabs/index.js',
     'get-ui-ng/base/menu': 'dist/packages/base/menu/index.js',
     'get-ui-ng/base/modal': 'dist/packages/base/modal/index.js',
+    'get-ui-ng/base/datepicker': 'dist/packages/base/datepicker/index.js',
     'get-ui-ng/base': 'dist/packages/base/public-api.js'
   },
   packages: {

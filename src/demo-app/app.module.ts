@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRouterModule } from './app-router.module';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
-import { BarDemoComponent } from './bar/bar-demo.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { GtModule } from './gt-module';
 import { ModalDemoComponent } from './modal/modal-demo.component';
@@ -17,8 +16,7 @@ import { ModalDemoComponent } from './modal/modal-demo.component';
   declarations: [
     AppComponent,
     TabsDemoComponent,
-    BarDemoComponent,
-    DatepickerComponent
+    DatepickerComponent,
     TabsDemoComponent,
     ModalDemoComponent
   ],

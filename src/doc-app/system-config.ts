@@ -38,10 +38,6 @@ System.config({
 
     // TODO(devversion): replace once the index.ts file for the Material package has been added.
     // Component mappings
-    'get-ui-ng': 'dist/packages/get-ui-ng/public-api.js',
-    'get-ui-ng/tabs': 'dist/packages/get-ui-ng/tabs/index.js',
-    'get-ui-ng/menu': 'dist/packages/get-ui-ng/menu/index.js',
-    'get-ui-ng/bar': 'dist/packages/get-ui-ng/bar/index.js',
     'get-ui-ng/utils/portal': 'dist/packages/utils/portal/index.js',
     'get-ui-ng/utils': 'dist/packages/utils/public-api.js',
 
