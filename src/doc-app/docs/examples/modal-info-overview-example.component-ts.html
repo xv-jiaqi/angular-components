@@ -1,0 +1,21 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { GtModalDialogService, GtModalToastService, GtToastType } <span class="hljs-keyword">from</span> <span class="hljs-string">'get-ui-ng/base'</span>;
+
+<span class="hljs-comment">/**
+ * @title Modal-Info
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  moduleId: <span class="hljs-built_in">module</span>.id,
+  templateUrl: <span class="hljs-string">'./modal-info-overview-example.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./modal-info-overview-example.component.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ModalInfoOverviewExampleComponent {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> _toastService: GtModalToastService,
+    <span class="hljs-keyword">private</span> _dialogService: GtModalDialogService
+  </span>) { }
+
+  info() {
+    <span class="hljs-keyword">this</span>._dialogService.info(<span class="hljs-string">'产品已经跑路'</span>);
+  }
+}

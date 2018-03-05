@@ -1,5 +1,5 @@
 import { ApplicationRef, ComponentFactoryResolver, EmbeddedViewRef, Injectable, Injector } from '@angular/core';
-import { DialogOption } from './modal-dialog-options';
+import { GtDialogOption } from './modal-dialog-options';
 import { deepClone, deepMerge } from '../utils/common';
 import { GtModalDialogComponent } from './modal-dialog.component';
 
@@ -14,7 +14,7 @@ export class GtModalDialogService {
     private _injector: Injector
   ) { }
 
-  private _openDialog (options: string | DialogOption, defaultOptions: DialogOption) {
+  private _openDialog (options: string | GtDialogOption, defaultOptions: GtDialogOption) {
     return new Promise(resolve => {
       /** define close modal callback function **/
       const closeCallback = (params: boolean): void => {
@@ -29,7 +29,7 @@ export class GtModalDialogService {
       if (typeof options === 'string') {
         myOption.body = options;
       } else {
-        myOption = <DialogOption>deepMerge(myOption, options);
+        myOption = <GtDialogOption>deepMerge(myOption, options);
       }
 
       /** create host container **/
@@ -57,8 +57,8 @@ export class GtModalDialogService {
     });
   }
 
-  info (options: string | DialogOption): Promise<any> {
-    const defaultOptions = new DialogOption();
+  info (options: string | GtDialogOption): Promise<any> {
+    const defaultOptions = new GtDialogOption();
     defaultOptions.buttons = [
       {
         label: '关闭',
@@ -69,8 +69,8 @@ export class GtModalDialogService {
     return this._openDialog(options, defaultOptions);
   }
 
-  confirm (options: string | DialogOption): Promise<any> {
-    const defaultOptions = new DialogOption();
+  confirm (options: string | GtDialogOption): Promise<any> {
+    const defaultOptions = new GtDialogOption();
     defaultOptions.buttons = [
       {
         label: '取消',
