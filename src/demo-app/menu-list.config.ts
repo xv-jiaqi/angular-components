@@ -16,6 +16,11 @@ export const menuList: GtMenus = [
         name: 'modal',
         link: '/modal',
         activeLink: '/modal'
+      }, {
+        label: 'Stepper',
+        name: 'stepper',
+        link: '/stepper',
+        activeLink: '/stepper'
       }
     ]
   }
