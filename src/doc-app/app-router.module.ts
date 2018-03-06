@@ -12,6 +12,9 @@ const routes: Routes = [
   }, {
     path: 'modal',
     component: ComponentViewComponent
+  }, {
+    path: 'stepper',
+    component: ComponentViewComponent
   }
 ];
 

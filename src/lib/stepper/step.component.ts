@@ -10,7 +10,7 @@ import { GtTemplatePortal } from 'get-ui-ng/utils/portal';
 export class GtStepComponent implements OnInit {
   private _contentPortal: GtTemplatePortal<any> | null;
 
-  /** Tab名称 */
+  /** step 名称 每一步的名称 */
   @Input('label') labelText: string;
 
   /** Symbol名称 圆圈内的文案 */

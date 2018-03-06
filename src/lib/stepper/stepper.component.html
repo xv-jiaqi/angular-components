@@ -13,7 +13,7 @@
     </div>
   </div>
   
-  <ng-container *ngFor="let step of steps;">
-    <gt-step-body [content]="step.content"></gt-step-body>
+  <ng-container *ngFor="let step of steps; let i = index">
+    <gt-step-body *ngIf="i == currentIndex" [content]="step.content"></gt-step-body>
   </ng-container>
 </div>
