@@ -24,7 +24,3 @@
 | 属性             | 说明            |参数           |
 |-----------------|-----------------|--------------|
 |`selectedIndexChange`|Tab切换事件   |index: number |
-
-### TODO
-
-gtTab提供gtTabLabel的插槽
