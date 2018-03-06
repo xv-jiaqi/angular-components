@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GtStepperComponent } from './stepper.component';
 import { GtStepComponent } from './step.component';
-import { GtStepBodyComponent } from './step-body.component';
+import { GtStepBodyComponent, GtStepBodyHost } from './step-body.component';
 
 @NgModule({
   imports: [
@@ -10,12 +10,15 @@ import { GtStepBodyComponent } from './step-body.component';
   ],
   declarations: [
     GtStepperComponent,
-    GtStepComponent
+    GtStepComponent,
+    GtStepBodyComponent,
+    GtStepBodyHost
   ],
   exports: [
     GtStepperComponent,
     GtStepComponent,
-    GtStepBodyComponent
+    GtStepBodyComponent,
+    GtStepBodyHost
   ]
 })
 export class GtStepperModule { }
