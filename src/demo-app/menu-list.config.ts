@@ -18,15 +18,22 @@ export const menuList: GtMenus = [
         link: '/datepicker',
         activeLink: '/datepicker'
       }, {
-        label: 'Modal',
-        name: 'modal',
-        link: '/modal',
-        activeLink: '/modal'
-      }, {
         label: 'Stepper',
         name: 'stepper',
         link: '/stepper',
         activeLink: '/stepper'
+      }
+    ]
+  }, {
+    label: 'Popup',
+    name: 'popup',
+    icon: 'icon-home',
+    items: [
+      {
+        label: 'Modal',
+        name: 'modal',
+        link: '/modal',
+        activeLink: '/modal'
       }
     ]
   }

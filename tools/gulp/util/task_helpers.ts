@@ -127,7 +127,7 @@ export function cleanTask(glob: string) {
  * Create a task that serves a given directory in the project.
  * The server rewrites all node_module/ or dist/ requests to the correct directory.
  */
-export function serverTask(packagePath: string, livereload = true) {
+export function serverTask(packagePath: string, livereload = true, type: 'doc' | 'demo') {
   // The http-rewrite-middlware only supports relative paths as rewrite destinations.
   const relativePath = path.relative(projectDir, packagePath);
 
@@ -135,7 +135,7 @@ export function serverTask(packagePath: string, livereload = true) {
     gulpConnect.server({
       root: projectDir,
       livereload: livereload,
-      port: buildConfig.port,
+      port: type === 'doc' ? buildConfig.docPort : buildConfig.demoPort,
       middleware: () => {
         return [httpRewrite.getMiddleware([
           // Rewrite the node_modules/ and dist/ folder to the real paths. This is a trick to
