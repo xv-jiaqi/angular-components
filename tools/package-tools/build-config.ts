@@ -13,10 +13,12 @@ export interface BuildConfig {
   outputDir: string;
   /** License banner that will be placed inside of every bundle. */
   licenseBanner: string;
-  /** Target package name for bundles **/
+  /** Target package name for bundles */
   packageName: string;
-  /** live server port **/
-  port: number;
+  /** live demo server port */
+  demoPort: number;
+  /** live doc server port */
+  docPort: number;
 }
 
 // Search for a build config by walking up the current working directory of the Node process.

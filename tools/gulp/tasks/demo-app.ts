@@ -67,7 +67,7 @@ task(':build:devapp:ts:sourcemap', () => {
 task(':build:devapp:less', buildLessTask(outDir, appDir));
 task(':build:devapp:assets', copyTask(assetsGlob, outDir));
 
-task(':serve:devapp', serverTask(outDir, true));
+task(':serve:devapp', serverTask(outDir, true, 'demo'));
 
 // The themes for the demo-app are built by using the SCSS mixins from Material.
 // Therefore when SCSS files have been changed, the custom theme needs to be rebuilt.

@@ -69,7 +69,7 @@ task(':build:docapp:ts:sourcemap', () => {
 task(':build:docapp:less', buildLessTask(outDir, appDir));
 task(':build:docapp:assets', copyTask(assetsGlob, outDir));
 
-task(':serve:docapp', serverTask(outDir, true));
+task(':serve:docapp', serverTask(outDir, true, 'doc'));
 
 // The themes for the demo-app are built by using the SCSS mixins from Material.
 // Therefore when SCSS files have been changed, the custom theme needs to be rebuilt.
