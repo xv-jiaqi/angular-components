@@ -1,0 +1,28 @@
+<div class="gt-page">
+	<ul class="gt-page__list">
+		<li class="gt-page__cell-pre" [ngClass]="{ 'gt--disabled': page === 1 }" (click)="go(page - 1)">
+			<i class="gt-icon icon-arrow-left"></i>
+		</li>
+		<li class="gt-page__cell-num" [ngClass]="{ 'gt--sel': page === 1 }" (click)="go(1)">1</li>
+		<li class="gt-page__cell-num" *ngIf="pageCount > 2" [ngClass]="{ 'gt--sel': page === 2 }" (click)="go(2)">2</li>
+		<li class="gt-page__cell-dot" *ngIf="showPrevMore">&bull;&bull;&bull;</li>
+		<li class="gt-page__cell-num" *ngFor="let _v of pages;" [ngClass]="{ 'gt--sel': _v === page }" (click)="go(_v)">{{_v}}</li>
+		<li class="gt-page__cell-dot" *ngIf="showNextMore">&bull;&bull;&bull;</li>
+		<li class="gt-page__cell-num" *ngIf="pageCount !== 1" [ngClass]="{ 'gt--sel': page === pageCount }" (click)="go(pageCount)">{{pageCount}}</li>
+		<li class="gt-page__cell-next" [ngClass]="{ 'gt--disabled': page === pageCount }" (click)="go(page + 1)">
+			<i class="gt-icon icon-arrow-right"></i>
+		</li>
+	</ul>
+	<div class="gt-page__total">
+		共
+		<span class="gt-page__total__num">{{pageCount}}</span>
+		页，
+	</div>
+	<div class="gt-page__search">
+		<span class="gt-page__search__txt">到第</span>
+		<input type="number" min="1" max="{{pageCount}}" class="gt-page__input gt-form-control"
+           [ngClass]="{'gt--error': pageError}" #pageInput (keyup)="checkLegal(pageInput.value)" (key.enter)="go(pageInput.value)"/>
+		<span class="gt-page__search__txt">页</span>
+		<button class="gt-page__btn" type="button" (click)="go(pageInput.value)">Go</button>
+	</div>
+</div>

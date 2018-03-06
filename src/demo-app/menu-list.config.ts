@@ -41,5 +41,17 @@ export const menuList: GtMenus = [
         activeLink: '/modal'
       }
     ]
+  }, {
+    label: 'Table',
+    name: 'table',
+    icon: 'icon-home',
+    items: [
+      {
+        label: 'Pagination',
+        name: 'pagination',
+        link: '/pagination',
+        activeLink: '/pagination'
+      }
+    ]
   }
 ];

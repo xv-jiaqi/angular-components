@@ -8,6 +8,7 @@ import { GtModule } from './gt-module';
 import { ModalDemoComponent } from './modal/modal-demo.component';
 import { StepperDemoComponent } from './stepper/stepper-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
+import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { SelectDemoComponent } from './select/select-demo.component';
     StepperDemoComponent,
     DatepickerComponent,
     ModalDemoComponent,
-    SelectDemoComponent
+    SelectDemoComponent,
+    PaginationDemoComponent
   ],
   bootstrap: [
     AppComponent

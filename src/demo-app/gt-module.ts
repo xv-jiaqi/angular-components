@@ -1,7 +1,12 @@
 import {NgModule} from '@angular/core';
 import {
-  GtTabsModule, GtMenuModule, GtModalModule,
-  GtStepperModule, GtDatepickerModule, GtSelectModule
+  GtTabsModule,
+  GtMenuModule,
+  GtModalModule,
+  GtStepperModule,
+  GtDatepickerModule,
+  GtSelectModule,
+  GtPaginationModule
 } from 'get-ui-ng/base';
 
 @NgModule({
@@ -12,7 +17,8 @@ import {
     GtStepperModule,
     GtDatepickerModule,
     GtModalModule,
-    GtSelectModule
+    GtSelectModule,
+    GtPaginationModule
   ]
 })
 
