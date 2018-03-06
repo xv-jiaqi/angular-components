@@ -11,8 +11,6 @@ export class GtTabComponent implements OnInit {
 
   private _contentPortal: GtTemplatePortal<any> | null;
 
-  @ViewChild(TemplateRef) _content: TemplateRef<any>;
-
   /**
    * @docs-private
    */
@@ -29,6 +27,6 @@ export class GtTabComponent implements OnInit {
   constructor(private _viewContainerRef: ViewContainerRef) { }
 
   ngOnInit(): void {
-    this._contentPortal = new GtTemplatePortal(this._content, this._viewContainerRef);
+    this._contentPortal = new GtTemplatePortal(this.content, this._viewContainerRef);
   }
 }

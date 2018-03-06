@@ -39,6 +39,7 @@ System.config({
     // Component mappings
     'get-ui-ng/utils/portal': 'dist/packages/utils/portal/index.js',
     'get-ui-ng/utils': 'dist/packages/utils/public-api.js',
+
     'get-ui-ng/base/tabs': 'dist/packages/base/tabs/index.js',
     'get-ui-ng/base/menu': 'dist/packages/base/menu/index.js',
     'get-ui-ng/base/modal': 'dist/packages/base/modal/index.js',

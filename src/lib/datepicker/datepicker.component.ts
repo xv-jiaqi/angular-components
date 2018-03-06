@@ -1,5 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 
+export interface Dates {
+  year: number,
+  month: number,
+  date: number,
+  datesArray: number[]
+}
+
 @Component({
   selector: 'gt-datepicker',
   templateUrl: './datepicker.component.html',
@@ -52,7 +59,6 @@ export class GtDatepickerComponent implements OnInit {
    * 返回指定年月的日历日期数组
    * @param {number} year
    * @param {number} month
-   * @returns {{year: number; nowDay: number; month: number; datesArray: Array<number>}}
    */
   getDatesOfMonth(year: number, month: number) {
     const datesArray: Array<number> = [];
