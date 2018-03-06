@@ -59,7 +59,7 @@ task(':test:protractor:setup', execNodeTask('protractor', 'webdriver-manager', [
 task(':test:protractor', execNodeTask('protractor', [PROTRACTOR_CONFIG_PATH]));
 
 /** Starts up the e2e app server. */
-task(':serve:e2eapp', serverTask(outDir, false));
+task(':serve:e2eapp', serverTask(outDir, false, 'doc'));
 
 /** Terminates the e2e app server */
 task(':serve:e2eapp:stop', gulpConnect.serverClose);
