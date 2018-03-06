@@ -1,0 +1,28 @@
+<span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title Stepper
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  moduleId: <span class="hljs-built_in">module</span>.id,
+  selector: <span class="hljs-string">'gt-stepper-overview-example'</span>,
+  templateUrl: <span class="hljs-string">'./stepper-overview-example.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./stepper-overview-example.component.css'</span>]
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> StepperOverviewExampleComponent <span class="hljs-keyword">implements</span> OnInit{
+  <span class="hljs-keyword">private</span> _currentIndex: <span class="hljs-built_in">number</span>;
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) { }
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>._currentIndex = <span class="hljs-number">2</span>;
+  }
+
+  prevStep() {
+    <span class="hljs-keyword">this</span>._currentIndex -= <span class="hljs-number">1</span>;
+  }
+
+  nextStep() {
+    <span class="hljs-keyword">this</span>._currentIndex += <span class="hljs-number">1</span>;
+  }
+}
