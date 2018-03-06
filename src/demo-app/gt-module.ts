@@ -1,14 +1,18 @@
-import { NgModule } from '@angular/core';
-import { GtTabsModule, GtMenuModule, GtModalModule, GtStepperModule, GtDatepickerModule } from 'get-ui-ng/base';
+import {NgModule} from '@angular/core';
+import {
+  GtTabsModule, GtMenuModule, GtModalModule,
+  GtStepperModule, GtDatepickerModule, GtSelectModule
+} from 'get-ui-ng/base';
 
 @NgModule({
   exports: [
     GtTabsModule,
     GtMenuModule,
-	GtDatepickerModule,
+    GtDatepickerModule,
     GtStepperModule,
     GtDatepickerModule,
-    GtModalModule
+    GtModalModule,
+    GtSelectModule
   ]
 })
 

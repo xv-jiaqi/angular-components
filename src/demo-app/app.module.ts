@@ -7,6 +7,7 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { GtModule } from './gt-module';
 import { ModalDemoComponent } from './modal/modal-demo.component';
 import { StepperDemoComponent } from './stepper/stepper-demo.component';
+import { SelectDemoComponent } from './select/select-demo.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { StepperDemoComponent } from './stepper/stepper-demo.component';
     TabsDemoComponent,
     StepperDemoComponent,
     DatepickerComponent,
-    ModalDemoComponent
+    ModalDemoComponent,
+    SelectDemoComponent
   ],
   bootstrap: [
     AppComponent

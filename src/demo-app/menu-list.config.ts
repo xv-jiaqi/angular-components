@@ -27,6 +27,11 @@ export const menuList: GtMenus = [
         name: 'stepper',
         link: '/stepper',
         activeLink: '/stepper'
+      }, {
+        label: 'Select',
+        name: 'select',
+        link: '/select',
+        activeLink: '/select'
       }
     ]
   }
