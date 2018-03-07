@@ -6,7 +6,8 @@ import {
   GtStepperModule,
   GtDatepickerModule,
   GtButtonModule,
-  GtPaginationModule
+  GtPaginationModule,
+  GtTableModule
 } from 'get-ui-ng/base';
 
 @NgModule({
@@ -18,7 +19,8 @@ import {
     GtDatepickerModule,
     GtModalModule,
     GtButtonModule,
-    GtPaginationModule
+    GtPaginationModule,
+    GtTableModule
   ]
 })
 

@@ -73,7 +73,7 @@ export class GtPaginationComponent implements OnInit {
     this.showNextMore = false;
 
     if (this.pageCount > this.showPageNum) {
-      if (this.page > this.showPageNum - 3) {
+      if (this.page > this.showPageNum - 2) {
         this.showPrevMore = true;
       }
       if (this.page < this.pageCount - 3) {

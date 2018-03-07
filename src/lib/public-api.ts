@@ -5,3 +5,4 @@ export * from 'get-ui-ng/base/stepper';
 export * from 'get-ui-ng/base/datepicker';
 export * from 'get-ui-ng/base/button';
 export * from 'get-ui-ng/base/pagination';
+export * from 'get-ui-ng/base/table';

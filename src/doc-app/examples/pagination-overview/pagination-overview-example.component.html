@@ -1,0 +1,4 @@
+<div>
+  <div class="index-msg"><span>CurrentIndex: {{currentIndex}}</span></div>
+  <gt-pagination (pageChange)="pageChange($event)" [page]="currentIndex" [size]="20" [total]="2000"></gt-pagination>
+</div>

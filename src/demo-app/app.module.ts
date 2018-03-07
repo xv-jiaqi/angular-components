@@ -9,6 +9,7 @@ import { ModalDemoComponent } from './modal/modal-demo.component';
 import { StepperDemoComponent } from './stepper/stepper-demo.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
+import { TableDemoComponent } from './table/table-demo.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { PaginationDemoComponent } from './pagination/pagination-demo.component'
     DatepickerComponent,
     ModalDemoComponent,
     ButtonDemoComponent,
-    PaginationDemoComponent
+    PaginationDemoComponent,
+    TableDemoComponent
   ],
   bootstrap: [
     AppComponent

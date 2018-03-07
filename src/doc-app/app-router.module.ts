@@ -15,6 +15,9 @@ const routes: Routes = [
   }, {
     path: 'stepper',
     component: ComponentViewComponent
+  }, {
+    path: 'pagination',
+    component: ComponentViewComponent
   }
 ];
 

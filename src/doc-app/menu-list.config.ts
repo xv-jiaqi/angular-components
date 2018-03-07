@@ -29,10 +29,22 @@ export const menuList: GtMenus = [
     icon: 'icon-home',
     items: [
       {
-        label: 'modal',
+        label: 'Modal',
         name: 'modal',
         link: '/modal',
         activeLink: '/modal'
+      }
+    ]
+  }, {
+    label: 'Table',
+    name: 'table',
+    icon: 'icon-home',
+    items: [
+      {
+        label: 'Pagination',
+        name: 'pagination',
+        link: '/pagination',
+        activeLink: '/pagination'
       }
     ]
   }
