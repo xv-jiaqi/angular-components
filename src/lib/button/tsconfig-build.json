@@ -8,7 +8,7 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "get-ui-ng/base/select",
+    "flatModuleId": "get-ui-ng/base/button",
     "skipTemplateCodegen": true,
     "fullTemplateTypeCheck": true
   }

@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectComponent } from './select.component';
-
+import { GtButtonComponent } from './button.component';
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    SelectComponent
+    GtButtonComponent
   ],
   exports: [
-    SelectComponent
+    GtButtonComponent
   ]
 })
-export class GtSelectModule { }
+export class GtButtonModule { }
