@@ -9,12 +9,15 @@ import { ModalDemoComponent } from './modal/modal-demo.component';
 import { StepperDemoComponent } from './stepper/stepper-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
+import { SliderDemoComponent } from './slider/slider-demo.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
     GtModule,
     AppRouterModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
@@ -23,7 +26,8 @@ import { PaginationDemoComponent } from './pagination/pagination-demo.component'
     DatepickerComponent,
     ModalDemoComponent,
     SelectDemoComponent,
-    PaginationDemoComponent
+    PaginationDemoComponent,
+    SliderDemoComponent
   ],
   bootstrap: [
     AppComponent

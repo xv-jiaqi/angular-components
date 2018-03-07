@@ -53,5 +53,17 @@ export const menuList: GtMenus = [
         activeLink: '/pagination'
       }
     ]
+  }, {
+    label: 'Form',
+    name: 'form',
+    icon: 'icon-home',
+    items: [
+      {
+        label: 'Slider',
+        name: 'slider',
+        link: '/slider',
+        activeLink: '/slider'
+      }
+    ]
   }
 ];
