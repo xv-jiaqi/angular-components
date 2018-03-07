@@ -21,7 +21,7 @@
 	<div class="gt-page__search">
 		<span class="gt-page__search__txt">到第</span>
 		<input type="number" min="1" max="{{pageCount}}" class="gt-page__input gt-form-control"
-           [ngClass]="{'gt--error': pageError}" #pageInput (keyup)="checkLegal(pageInput.value)" (key.enter)="go(pageInput.value)"/>
+           [ngClass]="{'gt--error': pageError}" #pageInput (keyup)="checkLegal(pageInput.value)" (keyup.enter)="go(pageInput.value)"/>
 		<span class="gt-page__search__txt">页</span>
 		<button class="gt-page__btn" type="button" (click)="go(pageInput.value)">Go</button>
 	</div>

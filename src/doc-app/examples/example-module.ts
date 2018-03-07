@@ -18,6 +18,7 @@ import { ModalConfirmOverviewExampleComponent } from './modal-confirm-overview/m
 import { ModalInfoOverviewExampleComponent } from './modal-info-overview/modal-info-overview-example.component';
 import { ModalToastOverviewExampleComponent } from './modal-toast-overview/modal-toast-overview-example.component';
 import { ModalWrapOverviewExampleComponent } from './modal-wrap-overview/modal-wrap-overview-example.component';
+import { PaginationOverviewComponent } from './pagination-overview/pagination-overview-example.component';
 import { StepperOverviewExampleComponent } from './stepper-overview/stepper-overview-example.component';
 import { TabsOverviewExampleComponent } from './tabs-overview/tabs-overview-example.component';
 
@@ -52,6 +53,12 @@ export const EXAMPLE_COMPONENTS: {[key: string]: LiveExample} = {
     additionalFiles: null,
     selectorName: null
   },
+  'pagination-overview-component': {
+    title: 'Pagination',
+    component: PaginationOverviewComponent,
+    additionalFiles: null,
+    selectorName: null
+  },
   'stepper-overview-component': {
     title: 'Stepper',
     component: StepperOverviewExampleComponent,
@@ -72,6 +79,7 @@ export const EXAMPLE_LIST = [
   ModalInfoOverviewExampleComponent,
   ModalToastOverviewExampleComponent,
   ModalWrapOverviewExampleComponent,
+  PaginationOverviewComponent,
   StepperOverviewExampleComponent,
   TabsOverviewExampleComponent,
 ];

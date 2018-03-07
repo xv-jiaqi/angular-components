@@ -4,16 +4,7 @@ import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
-    path: 'tabs',
-    component: ComponentViewComponent
-  }, {
-    path: 'menu',
-    component: ComponentViewComponent
-  }, {
-    path: 'modal',
-    component: ComponentViewComponent
-  }, {
-    path: 'stepper',
+    path: '**',
     component: ComponentViewComponent
   }
 ];

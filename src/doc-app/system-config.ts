@@ -47,6 +47,7 @@ System.config({
     'get-ui-ng/base/stepper': 'dist/packages/base/stepper/index.js',
     'get-ui-ng/base/datepicker': 'dist/packages/base/datepicker/index.js',
     'get-ui-ng/base/select': 'dist/packages/base/select/index.js',
+    'get-ui-ng/base/pagination': 'dist/packages/base/pagination/index.js',
     'get-ui-ng/base': 'dist/packages/base/public-api.js'
   },
   packages: {
