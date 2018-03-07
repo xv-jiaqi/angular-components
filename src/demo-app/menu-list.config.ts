@@ -51,6 +51,11 @@ export const menuList: GtMenus = [
         name: 'pagination',
         link: '/pagination',
         activeLink: '/pagination'
+      },  {
+        label: 'table',
+        name: 'table',
+        link: '/table',
+        activeLink: '/table'
       }
     ]
   }
