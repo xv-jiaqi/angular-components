@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectComponent } from './select.component';
+import { TableComponent } from './table.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    SelectComponent
+    TableComponent
   ],
   exports: [
-    SelectComponent
+    TableComponent
   ]
 })
-export class GtSelectModule { }
+
+export class GtTableModule { }

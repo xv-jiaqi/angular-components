@@ -118,7 +118,7 @@
     "directive-selector": [
       true,
       "attribute",
-      ["ng5", "app"],
+      ["ng5", "app", "gt"],
       "camelCase",
       "my"
     ],

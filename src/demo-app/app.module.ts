@@ -11,6 +11,8 @@ import { SelectDemoComponent } from './select/select-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 import { SliderDemoComponent } from './slider/slider-demo.component';
 import { FormsModule } from '@angular/forms';
+import { TableDemoComponent } from './table/table-demo.component';
+import { ButtonDemoComponent } from './button/button-demo.component';
 
 @NgModule({
   imports: [
@@ -25,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     StepperDemoComponent,
     DatepickerComponent,
     ModalDemoComponent,
+    ButtonDemoComponent,
     SelectDemoComponent,
     PaginationDemoComponent,
     SliderDemoComponent

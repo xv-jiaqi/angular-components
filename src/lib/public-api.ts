@@ -6,3 +6,5 @@ export * from 'get-ui-ng/base/datepicker';
 export * from 'get-ui-ng/base/select';
 export * from 'get-ui-ng/base/pagination';
 export * from 'get-ui-ng/base/slider';
+export * from 'get-ui-ng/base/button';
+export * from 'get-ui-ng/base/table';

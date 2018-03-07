@@ -7,7 +7,8 @@ import { StepperDemoComponent } from './stepper/stepper-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 import { SliderDemoComponent } from './slider/slider-demo.component';
-
+import { ButtonDemoComponent } from './button/button-demo.component';
+import { TableDemoComponent } from  './table/table-demo.component';
 
 const routes: Routes = [
   {
@@ -27,11 +28,17 @@ const routes: Routes = [
     path: 'select',
     component: SelectDemoComponent
   }, {
+    path: 'button',
+    component: ButtonDemoComponent
+  }, {
     path: 'pagination',
     component: PaginationDemoComponent
   }, {
     path: 'slider',
     component: SliderDemoComponent
+  }, {
+    path: 'table',
+    component: TableDemoComponent
   }
 ];
 
