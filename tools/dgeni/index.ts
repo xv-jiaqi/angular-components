@@ -39,7 +39,7 @@ const dgeniPackageDeps = [
 ];
 
 /** List of Material packages that need to be documented. */
-const materialPackages = globSync(path.join(sourceDir, 'lib', '*/'))
+const componentPackages = globSync(path.join(sourceDir, 'lib', '*/'))
   .map(packagePath => path.basename(packagePath));
 
 export const apiDocsPackage = new Package(`${buildConfig.packageName}-api-docs`, dgeniPackageDeps);
@@ -97,7 +97,7 @@ apiDocsPackage.config((readTypeScriptModules: ReadTypeScriptModules, tsParser: T
   // Entry points for docs generation. All publically exported symbols found through these
   // files will have docs generated.
   readTypeScriptModules.sourceFiles = [
-    ...materialPackages.map(packageName => `./lib/${packageName}/index.ts`)
+    ...componentPackages.map(packageName => `./lib/${packageName}/index.ts`)
   ];
 });
 
