@@ -15,7 +15,6 @@ export interface DatepickerOptions {
 @Component({
   selector: 'gt-datepicker',
   templateUrl: './datepicker.component.html',
-  styleUrls: ['./datepicker.component.css']
 })
 export class GtDatepickerComponent implements OnInit {
   innerValue: Date;
@@ -52,6 +51,7 @@ export class GtDatepickerComponent implements OnInit {
 
   constructor() {
     const date = new Date();
+    this.barTitle = '2018-3';
   }
 
   ngOnInit() {
