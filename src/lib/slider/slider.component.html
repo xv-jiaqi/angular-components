@@ -1,12 +1,12 @@
-<div class="gt-slide">
+<div class="gt-slide" [ngClass]="{'gt--disabled': disabled}">
   <div class="gt-slide__rail"></div>
-  <div class="gt-slide__track"></div>
+  <div class="gt-slide__track" [ngStyle]="{width: dotLeft + 'px'}"></div>
   <div class="gt-slide__handle" [ngClass]="{'gt--active': mouseDown}" [ngStyle]="{left: dotLeft + 'px'}" (mousedown)="handleSlider()"></div>
-  <div class="gt-slide__tooltip gt-tooltip gt-tooltip--top" [ngStyle]="{left: dotLeft - 23.5 + 'px'}" style="visibility: visible;">
+  <div class="gt-slide__tooltip gt-tooltip gt-tooltip--top" [ngStyle]="{left: dotLeft - 23.5 + 'px'}" style="visibility: visible;" *ngIf="!hiddenTip">
     <span class="gt-arrow-bottom"></span>
     <span class="gt-slide__tooltip__num">{{value}}</span>
   </div>
-  <div class="gt-slide__mark" style="width: 100%;">
+  <div class="gt-slide__mark" style="width: 100%;" *ngIf="!hiddenMarkText">
     <div class="gt-slide__mark-text" style="left: 0;">{{min}}</div>
     <div class="gt-slide__mark-text" style="right: 0;">{{max}}</div>
   </div>

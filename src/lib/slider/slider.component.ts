@@ -1,5 +1,10 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import {
+  AfterContentInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, Input,
+  Output
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import 'rxjs/add/operator/throttleTime';
 
 /**
  * Provider Expression that allows gt-slider to register as a ControlValueAccessor.
@@ -18,17 +23,22 @@ export const GT_SLIDER_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './slider.component.html',
   providers: [GT_SLIDER_CONTROL_VALUE_ACCESSOR]
 })
-export class GtSliderComponent implements ControlValueAccessor {
+export class GtSliderComponent implements ControlValueAccessor, AfterContentInit {
 
+  /** 最小值 */
   @Input() min: number = 0;
 
+  /** 最大值 */
   @Input() max: number = 0;
 
+  /** 保留的小数位数 */
   @Input() fixedLength: number = 0;
 
-  @Input() value: number;
+  @Input() hiddenMarkText: boolean = false;
 
-  @Output() input: EventEmitter<number> = new EventEmitter<number>();
+  @Input() hiddenTip: boolean = false;
+
+  value: number;
 
   disabled: boolean = false;
 
@@ -36,126 +46,55 @@ export class GtSliderComponent implements ControlValueAccessor {
 
   mouseDown = false;
 
+  viewChecked = false;
+
   private _controlValueAccessorChangeFn: (value: any) => void = () => { };
 
   private _onTouched: () => any = () => { };
 
   constructor(
-    public elementRef: ElementRef,
-    private _changeDetectorRef: ChangeDetectorRef,
+    public elementRef: ElementRef
   ) { }
 
-  /**
-   * Writes a new value to the element.
-   *
-   * This method will be called by the forms API to write to the view when programmatic
-   * (model -> view) changes are requested.
-   *
-   * Example implementation of `writeValue`:
-   *
-   * ```ts
-   * writeValue(value: any): void {
-     *   this._renderer.setProperty(this._elementRef.nativeElement, 'value', value);
-     * }
-   * ```
-   */
+  private _initPosition(): void {
+    const ele = this.elementRef.nativeElement.firstChild;
+    const slideWidth = ele.clientWidth;
+    this.dotLeft = ((this.value || this.min) - this.min) / (this.max - this.min) * slideWidth;
+  }
+
+  ngAfterContentInit(): void {
+    this._initPosition();
+    this.viewChecked = true;
+  }
+
   writeValue(obj: any): void {
     this.value = obj;
+    if (!this.viewChecked) return;
+    this._initPosition();
   };
 
-  /**
-   * Registers a callback function that should be called when the control's value
-   * changes in the UI.
-   *
-   * This is called by the forms API on initialization so it can update the form
-   * model when values propagate from the view (view -> model).
-   *
-   * If you are implementing `registerOnChange` in your own value accessor, you
-   * will typically want to save the given function so your class can call it
-   * at the appropriate time.
-   *
-   * ```ts
-   * registerOnChange(fn: (_: any) => void): void {
-     *   this._onChange = fn;
-     * }
-   * ```
-   *
-   * When the value changes in the UI, your class should call the registered
-   * function to allow the forms API to update itself:
-   *
-   * ```ts
-   * host: {
-     *    (change): '_onChange($event.target.value)'
-     * }
-   * ```
-   *
-   */
   registerOnChange(fn: any): void {
     this._controlValueAccessorChangeFn = fn;
   };
 
-  /**
-   * Registers a callback function that should be called when the control receives
-   * a blur event.
-   *
-   * This is called by the forms API on initialization so it can update the form model
-   * on blur.
-   *
-   * If you are implementing `registerOnTouched` in your own value accessor, you
-   * will typically want to save the given function so your class can call it
-   * when the control should be considered blurred (a.k.a. "touched").
-   *
-   * ```ts
-   * registerOnTouched(fn: any): void {
-     *   this._onTouched = fn;
-     * }
-   * ```
-   *
-   * On blur (or equivalent), your class should call the registered function to allow
-   * the forms API to update itself:
-   *
-   * ```ts
-   * host: {
-     *    '(blur)': '_onTouched()'
-     * }
-   * ```
-   */
   registerOnTouched(fn: any): void {
     this._onTouched = fn;
   };
 
-  /**
-   * This function is called by the forms API when the control status changes to
-   * or from "DISABLED". Depending on the value, it should enable or disable the
-   * appropriate DOM element.
-   *
-   * Example implementation of `setDisabledState`:
-   *
-   * ```ts
-   * setDisabledState(isDisabled: boolean): void {
-     *   this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
-     * }
-   * ```
-   *
-   * @param isDisabled
-   */
-  setDisabledState?(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   };
 
   handleSlider() {
-    this.mouseDown = true;
-    const ele = this.elementRef.nativeElement.firstChild;
-
-    // 初始位置
-    const slideWidth = ele.clientWidth;
-
-    this.dotLeft = (this.value / (this.max - this.min) - this.min) * slideWidth;
-    const slideOffset = ele.getBoundingClientRect().left;
-
     if(this.disabled) {
       return;
     }
+
+    this.mouseDown = true;
+    const ele = this.elementRef.nativeElement.firstChild;
+    // 初始位置
+    const slideWidth = ele.clientWidth;
+    const slideOffset = ele.getBoundingClientRect().left;
 
     const that = this;
     function mouseMoveHandle($event) {
@@ -168,19 +107,20 @@ export class GtSliderComponent implements ControlValueAccessor {
       offset = offset > slideWidth ? slideWidth : offset;
       that.dotLeft = offset;
 
-      that.value = that.min + +((that.max - that.min) * offset / slideWidth).toFixed(that.fixedLength); // handle的标注精确数值
-      that.input.emit(that.value);
+      that.value = +((that.max - that.min) * offset / slideWidth + that.min).toFixed(that.fixedLength); // handle的标注精确数值
       that._controlValueAccessorChangeFn(that.value);
     }
 
+    const mouseMoveStream = fromEvent(document, 'mousemove');
+    const eventStream = mouseMoveStream.throttleTime(10);
+    const listener = eventStream.subscribe(mouseMoveHandle);
+
     function mouseUpHandle() {
       that.mouseDown = false;
-      document.removeEventListener('mousemove', mouseMoveHandle);
+      listener.unsubscribe();
       document.removeEventListener('mouseup', mouseUpHandle);
     }
 
     document.addEventListener("mouseup", mouseUpHandle);
-
-    document.addEventListener('mousemove', mouseMoveHandle);
   }
 }
