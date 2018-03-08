@@ -1,4 +1,4 @@
-<gt-checkbox [label]="123" [returnBoolean]="true" [(ngModel)]="key1"></gt-checkbox>
+<gt-checkbox [label]="123" [returnBoolean]="true" [(ngModel)]="key1" (onChange)="getChange($event)"></gt-checkbox>
 <h4>返回Boolean: {{key1}}</h4>
 <hr>
 <gt-checkbox label="key2" [value]="1" [(ngModel)]="key2"></gt-checkbox>
