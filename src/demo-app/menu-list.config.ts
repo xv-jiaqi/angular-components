@@ -27,6 +27,11 @@ export const menuList: GtMenus = [
         name: 'button',
         link: '/button',
         activeLink: '/button'
+      }, {
+        label: 'Checkbox',
+        name: 'checkbox',
+        link: '/checkbox',
+        activeLink: '/checkbox'
       }
     ]
   }, {

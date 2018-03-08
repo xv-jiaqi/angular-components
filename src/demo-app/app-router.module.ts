@@ -1,13 +1,14 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { TabsDemoComponent } from './tabs/tabs-demo.component';
-import { DatepickerComponent } from './datepicker/datepicker.component';
-import { ModalDemoComponent } from './modal/modal-demo.component';
-import { StepperDemoComponent } from './stepper/stepper-demo.component';
-import { PaginationDemoComponent } from './pagination/pagination-demo.component';
-import { SliderDemoComponent } from './slider/slider-demo.component';
-import { ButtonDemoComponent } from './button/button-demo.component';
-import { TableDemoComponent } from  './table/table-demo.component';
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {TabsDemoComponent} from './tabs/tabs-demo.component';
+import {DatepickerComponent} from './datepicker/datepicker.component';
+import {ModalDemoComponent} from './modal/modal-demo.component';
+import {StepperDemoComponent} from './stepper/stepper-demo.component';
+import {PaginationDemoComponent} from './pagination/pagination-demo.component';
+import {SliderDemoComponent} from './slider/slider-demo.component';
+import {ButtonDemoComponent} from './button/button-demo.component';
+import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
+import {TableDemoComponent} from './table/table-demo.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
   }, {
     path: 'button',
     component: ButtonDemoComponent
+  }, {
+    path: 'checkbox',
+    component: CheckboxDemoComponent
   }, {
     path: 'pagination',
     component: PaginationDemoComponent
@@ -46,4 +50,5 @@ const routes: Routes = [
   ]
 })
 
-export class AppRouterModule { }
+export class AppRouterModule {
+}

@@ -8,6 +8,7 @@ import {
   GtPaginationModule,
   GtSliderModule,
   GtButtonModule,
+  GtCheckboxModule,
   GtTableModule
 } from 'get-ui-ng/base';
 
@@ -19,6 +20,8 @@ import {
     GtStepperModule,
     GtDatepickerModule,
     GtModalModule,
+    GtButtonModule,
+    GtCheckboxModule,
     GtPaginationModule,
     GtSliderModule,
     GtButtonModule,

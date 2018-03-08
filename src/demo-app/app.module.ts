@@ -12,6 +12,7 @@ import { SliderDemoComponent } from './slider/slider-demo.component';
 import { FormsModule } from '@angular/forms';
 import { TableDemoComponent } from './table/table-demo.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
+import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { ButtonDemoComponent } from './button/button-demo.component';
     DatepickerComponent,
     ModalDemoComponent,
     ButtonDemoComponent,
+    CheckboxDemoComponent,
     TableDemoComponent,
     PaginationDemoComponent,
     SliderDemoComponent
