@@ -5,5 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './slider-demo.component.html'
 })
 export class SliderDemoComponent {
-  currentValue = 20;
+  currentValue = 46;
+
+  disabled = false;
+
+  hiddenMarkText = false;
+
+  hiddenTip = false;
 }
