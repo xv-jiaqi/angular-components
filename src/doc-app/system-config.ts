@@ -50,6 +50,7 @@ System.config({
     'get-ui-ng/base/slider': 'dist/packages/base/slider/index.js',
     'get-ui-ng/base/button': 'dist/packages/base/button/index.js',
     'get-ui-ng/base/table': 'dist/packages/base/table/index.js',
+    'get-ui-ng/base/checkbox': 'dist/packages/base/checkbox/index.js',
     'get-ui-ng/base': 'dist/packages/base/public-api.js'
   },
   packages: {

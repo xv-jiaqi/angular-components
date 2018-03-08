@@ -2,7 +2,7 @@
   <div class="gt-slide__rail"></div>
   <div class="gt-slide__track" [ngStyle]="{width: dotLeft + 'px'}"></div>
   <div class="gt-slide__handle" [ngClass]="{'gt--active': mouseDown}" [ngStyle]="{left: dotLeft + 'px'}" (mousedown)="handleSlider()"></div>
-  <div class="gt-slide__tooltip gt-tooltip gt-tooltip--top" [ngStyle]="{left: dotLeft - 23.5 + 'px'}" style="visibility: visible;" *ngIf="!hiddenTip">
+  <div class="gt-slide__tooltip gt-tooltip gt-tooltip--top" [ngStyle]="{left: dotLeft - 23.5 + 'px'}" style="visibility: visible;" *ngIf="!hiddenTip && mouseDown">
     <span class="gt-arrow-bottom"></span>
     <span class="gt-slide__tooltip__num">{{value}}</span>
   </div>

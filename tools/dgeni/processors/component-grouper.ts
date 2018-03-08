@@ -124,6 +124,6 @@ function getDocumentPackageInfo(doc: Document) {
   return {
     name: groupName,
     packageName: 'get-ui-ng',
-    entryPointName: pathSegments[1],
+    entryPointName: 'base',
   };
 }
