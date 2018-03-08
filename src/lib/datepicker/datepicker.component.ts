@@ -1,10 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {
+  startOfMonth, endOfMonth, addMonths, subMonths,
+  setYear, eachDay,
+  getDate, getMonth, getYear,
+  isToday, isSameDay, isSameMonth, isSameYear,
+  getDay, subDays, addDays, setDay, format} from 'date-fns';
 
-export interface Dates {
-  year: number,
-  month: number,
-  date: number,
-  datesArray: number[]
+export interface DatepickerOptions {
+  minYear?: number;
+  maxYear?: number;
+  firstCalendarDay?: number;  // 0 日 1 一
 }
 
 @Component({
@@ -13,78 +18,160 @@ export interface Dates {
   styleUrls: ['./datepicker.component.css']
 })
 export class GtDatepickerComponent implements OnInit {
-  year: number;   // 年
-  month: number;  // 月
-  day: number;    // 日
-  hour: number;   // 时
-  minute: number; // 分
-  second: number; // 秒
-  dateObject;     // 数据挂载对象
+  innerValue: Date;
+  barTitle: string;
+  minYear: number;
+  maxYear: number;
+  firstCalendarDay: number;
+  date: Date;
+  dayNames: string[];
+  displayValue: string;
+
+  @Input() options: DatepickerOptions;
+
+  @Input() isOpened = false;
+
+  days: {
+    date: Date;
+    day: number;
+    month: number;
+    year: number;
+    inThisMonth: boolean;
+    isToday: boolean;
+    isSelected: boolean;
+    isSelectable: boolean;
+  }[][];
+
+  get value(): Date {
+    return this.innerValue;
+  }
+
+  set value(date: Date) {
+    this.innerValue = date;
+  }
 
   constructor() {
     const date = new Date();
-    this.year = date.getFullYear();
-    this.month = date.getMonth() + 1;
   }
 
   ngOnInit() {
-    this.dateObject = this.getDatesOfMonth(this.year, this.month);
+    this.date = new Date();
+    this.setOptions();
+    this.initDayNames();
+    this.init();
   }
 
-  /**
-   * 上个月份数据
-   */
-  goPrev() {
-    this.month--;
-    if (this.month === 0) {
-      this.month = 12;
-      this.year--;
-    }
-    this.dateObject = this.getDatesOfMonth(this.year, this.month);
+  toggle(): void {
+    this.isOpened = !this.isOpened;
   }
 
-  /**
-   * 下个月份数据
-   */
-  goNext() {
-    this.month++;
-    if (this.month === 13) {
-      this.month = 1;
-      this.year++;
-    }
-    this.dateObject = this.getDatesOfMonth(this.year, this.month);
+  close(): void {
+    this.isOpened = false;
   }
 
-  /**
-   * 返回指定年月的日历日期数组
-   * @param {number} year
-   * @param {number} month
-   */
-  getDatesOfMonth(year: number, month: number) {
-    const datesArray: Array<number> = [];
-    const date = new Date(year, month - 1);
-    const nowDay = new Date().getDate();
-    const day = date.getDay();
-    const lastDayOfLastMonth = new Date(year, month - 1, 0).getDate();
-    // 加入上个月的日期
-    for (let i = lastDayOfLastMonth; i > lastDayOfLastMonth - day; i--) {
-      datesArray.unshift(i);
-    }
-    // 加入当月日期
-    const lastDayOfNowMonth = new Date(year, month, 0).getDate();
-    for (let index = 1; index <= lastDayOfNowMonth; index++) {
-      datesArray.push(index);
-    }
-    // 加入下个月日期
-    const countOfNextMonth = 42 - lastDayOfNowMonth - day;
-    for (let index = 1; index <= countOfNextMonth; index++) {
-      datesArray.push(index);
-    }
+  setOptions(): void {
+    const today = new Date();
+    this.minYear = getYear(today) - 30;
+    this.maxYear = getYear(today) + 30;
+    this.firstCalendarDay = 0;
+  }
+
+  initDayNames(): void {
+    this.dayNames = [
+      '周日', '周一', '周二', '周三', '周四', '周五', '周六',
+    ];
+  }
+
+  private fmtDate(date: Date, isThisMonth: boolean): {
+    date: Date;
+    day: number;
+    month: number;
+    year: number;
+    inThisMonth: boolean;
+    isToday: boolean;
+    isSelected: boolean;
+    isSelectable: boolean;
+  } {
     return {
-      year,
-      nowDay,
-      month,
-      datesArray
+      date: date,
+      day: getDate(date),
+      month: getMonth(date),
+      year: getYear(date),
+      inThisMonth: isThisMonth,
+      isToday: isToday(date),
+      isSelected: isSameDay(date, this.innerValue) && isSameMonth(date, this.innerValue) && isSameYear(date, this.innerValue),
+      isSelectable: this.isDateSelectable(date),
     };
+  }
+
+  private isDateSelectable(date: Date): boolean {
+    if (!date) {
+      console.log(date);
+    }
+    return true;
+  }
+
+  init(): void {
+    this.days = [[]];
+
+    const start = startOfMonth(this.date);
+    const end = endOfMonth(this.date);
+
+    const tmp = getDay(start) - this.firstCalendarDay;
+    const prevDays = tmp < 0 ? 7 - this.firstCalendarDay : tmp;
+
+    for (let i = 1; i <= prevDays; i++) {
+      const day = this.fmtDate(subDays(start, i), false);
+
+      this.days[0].unshift(day);
+    }
+
+    const firstWeekLen = this.days[0].length;
+
+    eachDay(start, end).forEach((date, index) => {
+      const day = this.fmtDate(date, true);
+
+      if ((index + firstWeekLen) % 7 ) {
+        this.days[this.days.length - 1].push(day);
+      } else {
+        this.days.push([day]);
+      }
+    });
+
+    const weeksLen = this.days.length;
+    const lastWeekLen = this.days[weeksLen - 1].length;
+
+    for (let len = lastWeekLen, i = 1; len % 7; len++, i++) {
+      const day = this.fmtDate(addDays(end, i), false);
+
+      this.days[weeksLen - 1].push(day);
+    }
+
+    console.log(this.days);
+  }
+
+  prevMonth() {
+    this.date = subMonths(this.date, 1);
+    this.init();
+  }
+
+  nextMonth() {
+    this.date = addMonths(this.date, 1);
+    this.init();
+  }
+
+  goToday() {
+    this.date = new Date();
+    this.init();
+  }
+
+  setDate(date: Date): void {
+    this.date = date;
+    this.value = this.date;
+    this.displayValue = date.toDateString();
+    this.init();
+    this.close();
+
+    console.log(date);
   }
 }
