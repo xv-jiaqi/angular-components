@@ -18,6 +18,9 @@ const routes: Routes = [
   }, {
     path: 'pagination',
     component: ComponentViewComponent
+  }, {
+    path: 'slider',
+    component: ComponentViewComponent
   }
 ];
 

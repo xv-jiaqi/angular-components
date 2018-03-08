@@ -1,6 +1,5 @@
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, Input,
-  Output
+  AfterContentInit, Component, ElementRef, forwardRef, Input
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { fromEvent } from 'rxjs/observable/fromEvent';
@@ -29,35 +28,52 @@ export class GtSliderComponent implements ControlValueAccessor, AfterContentInit
   @Input() min: number = 0;
 
   /** 最大值 */
-  @Input() max: number = 0;
+  @Input() max: number = 100;
 
   /** 保留的小数位数 */
   @Input() fixedLength: number = 0;
 
+  /** 隐藏底部数值标记 */
   @Input() hiddenMarkText: boolean = false;
 
+  /** 隐藏头部当前数值的tooltip */
   @Input() hiddenTip: boolean = false;
 
+  /**
+   * @docs-private
+   */
   value: number;
 
+  /**
+   * @docs-private
+   */
   disabled: boolean = false;
 
+  /**
+   * @docs-private
+   */
   dotLeft = 0;
 
-  mouseDown = false;
-
+  /**
+   * @docs-private
+   */
   viewChecked = false;
+
+  /**
+   * @docs-private
+   */
+  mouseDown = false;
 
   private _controlValueAccessorChangeFn: (value: any) => void = () => { };
 
   private _onTouched: () => any = () => { };
 
   constructor(
-    public elementRef: ElementRef
+    private _elementRef: ElementRef
   ) { }
 
   private _initPosition(): void {
-    const ele = this.elementRef.nativeElement.firstChild;
+    const ele = this._elementRef.nativeElement.firstChild;
     const slideWidth = ele.clientWidth;
     this.dotLeft = ((this.value || this.min) - this.min) / (this.max - this.min) * slideWidth;
   }
@@ -67,31 +83,47 @@ export class GtSliderComponent implements ControlValueAccessor, AfterContentInit
     this.viewChecked = true;
   }
 
+  /**
+   * @docs-private
+   */
   writeValue(obj: any): void {
+    if (obj === undefined || obj === null) return;
     this.value = obj;
     if (!this.viewChecked) return;
     this._initPosition();
   };
 
+  /**
+   * @docs-private
+   */
   registerOnChange(fn: any): void {
     this._controlValueAccessorChangeFn = fn;
   };
 
+  /**
+   * @docs-private
+   */
   registerOnTouched(fn: any): void {
     this._onTouched = fn;
   };
 
+  /**
+   * @docs-private
+   */
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   };
 
+  /**
+   * @docs-private
+   */
   handleSlider() {
     if(this.disabled) {
       return;
     }
 
     this.mouseDown = true;
-    const ele = this.elementRef.nativeElement.firstChild;
+    const ele = this._elementRef.nativeElement.firstChild;
     // 初始位置
     const slideWidth = ele.clientWidth;
     const slideOffset = ele.getBoundingClientRect().left;

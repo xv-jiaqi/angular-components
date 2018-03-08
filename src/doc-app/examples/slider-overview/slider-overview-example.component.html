@@ -1,0 +1,14 @@
+<div>
+  <gt-slider
+    [min]="25"
+    [max]="125"
+    [(ngModel)]="currentValue"
+    [disabled]="disabled"
+    [hiddenMarkText]="hiddenMarkText"
+    [hiddenTip]="hiddenTip"
+  ></gt-slider>
+</div>
+<p>currentValue: {{currentValue}}</p>
+<p><button class="gt-btn-solid" (click)="disabled = !disabled">Toggle Disabled</button></p>
+<p><button class="gt-btn-solid" (click)="hiddenMarkText = !hiddenMarkText">Toggle HiddenMarkText</button></p>
+<p><button class="gt-btn-solid" (click)="hiddenTip = !hiddenTip">Toggle HiddenTip</button></p>
