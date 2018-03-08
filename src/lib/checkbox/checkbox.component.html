@@ -1,0 +1,7 @@
+<label [ngClass]="'gt-checkbox'" [class]="styleClass"
+       [class.gt--disabled]="disabled" #container>
+  <input type="checkbox" value="{{value}}" [disabled]="disabled"
+         [checked]="checked" name="{{name}}" (change)="onCheckboxChange($event)">
+  <span class="gt-checkbox__style"></span>
+  <span class="gt-checkbox__txt">{{ label }}</span>
+</label>
