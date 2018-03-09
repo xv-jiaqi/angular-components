@@ -20,7 +20,7 @@ System.config({
     'tslib': 'node:tslib/tslib.js',
     'moment': 'node:moment/min/moment-with-locales.min.js',
     'date-fns': 'node:date-fns/index.js',
-    'zh_cn': 'node:date-fns/locale/zh_cn/index.js',
+    'zh_cn': 'node:date-fns/locale/zh_cn',
 
     // Angular specific mappings.
     '@angular/core': 'node:@angular/core/bundles/core.umd.js',
