@@ -18,6 +18,17 @@ export interface DatepickerOptions {
   maxDate?: Date;
 }
 
+export interface IDayTypes {
+  date: Date;
+  day: number;
+  month: number;
+  year: number;
+  inThisMonth: boolean;
+  isToday: boolean;
+  isSelected: boolean;
+  isSelectable: boolean;
+}
+
 const isNil = (value: Date | any) => {
   return (typeof value === 'undefined') || (value === null);
 };
@@ -45,18 +56,10 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   maxYear: number;
   firstCalendarDay: number;
   dayNames: string[];
+  dayNamesFormat: string;
   years: {year: number; isThisYear: boolean}[];
 
-  days: {
-    date: Date;
-    day: number;
-    month: number;
-    year: number;
-    inThisMonth: boolean;
-    isToday: boolean;
-    isSelected: boolean;
-    isSelectable: boolean;
-  }[][];
+  days: IDayTypes[][];
 
   private _locale: object;
   private _locale_cn: object;
@@ -65,16 +68,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
 
   private onChangeCallback: (_: any) => void = () => { };
 
-  private fmtDate(date: Date, isThisMonth: boolean): {
-    date: Date;
-    day: number;
-    month: number;
-    year: number;
-    inThisMonth: boolean;
-    isToday: boolean;
-    isSelected: boolean;
-    isSelectable: boolean;
-  } {
+  private fmtDate(date: Date, isThisMonth: boolean): IDayTypes {
     return {
       date: date,
       day: getDate(date),
