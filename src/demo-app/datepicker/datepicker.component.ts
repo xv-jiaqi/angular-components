@@ -9,13 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class DatepickerComponent implements OnInit {
   date: Date;
   options: object;
-  // options: any = {
-  //   locale: enLocale
-  // };
 
   constructor() {
-    this.date = new Date();
-    this.options = {};
+    this.date = new Date('2018-3-9');
+    this.options = {
+    // locale: enLocale
+    minYear: 2014,
+    maxYear: 2020,
+    minDate: new Date ('2014-10-11'),
+    maxDate: new Date ('2019-2-2'),
+    displayFormat: 'YYYY-MM-DD',
+    barTitleFormat: 'YYYY MM',
+    dayNamesFormat: 'd', // default 'ddd'
+    firstCalendarDay: 1
+  };
   }
 
   ngOnInit() {}

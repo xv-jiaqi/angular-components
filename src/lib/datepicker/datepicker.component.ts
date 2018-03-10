@@ -10,6 +10,9 @@ import {
 export interface DatepickerOptions {
   minYear?: number;
   maxYear?: number;
+  displayFormat?: string; // default: 'MMM D[,] YYYY'
+  barTitleFormat?: string; // default: 'MMMM YYYY'
+  dayNamesFormat?: string; // default 'ddd'
   firstCalendarDay?: number;  // 0 日 1 一
   minDate?: Date;
   maxDate?: Date;
@@ -22,6 +25,7 @@ const isNil = (value: Date | any) => {
 @Component({
   selector: 'gt-datepicker',
   templateUrl: './datepicker.component.html',
+  styleUrls: ['./datepicker.component.css'],
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => GtDatepickerComponent), multi: true }
   ]
@@ -31,14 +35,16 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
 
   @Input() isOpened = false;
 
+  date: Date;
   innerValue: Date;
+  displayValue: string;
+  displayFormat: string;
   barTitle: string;
+  barTitleFormat: string;
   minYear: number;
   maxYear: number;
   firstCalendarDay: number;
-  date: Date;
   dayNames: string[];
-  displayValue: string;
   years: {year: number; isThisYear: boolean}[];
 
   days: {
@@ -51,6 +57,9 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     isSelected: boolean;
     isSelectable: boolean;
   }[][];
+
+  private _locale: object;
+  private _locale_cn: object;
 
   private onTouchedCallback: () => void = () => { };
 
@@ -88,8 +97,19 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   constructor() {
-    const date = new Date();
-    this.barTitle = '2018-3';
+    this._locale = {
+      dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      monthNames: ['January', 'February', 'March', 'April', 'May',
+        'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    };
+    this._locale_cn = {
+      dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+      dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+      monthNamesShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+    };
   }
 
   ngOnInit() {
@@ -97,7 +117,8 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     this.setOptions();
     this.initDayNames();
     this.initYears();
-    this.options = this.options ? this.options : {};
+    console.log(this.options, 'options');
+    // this.options = this.options ? this.options : {};
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -109,35 +130,6 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     }
   }
 
-  toggle(): void {
-    this.isOpened = !this.isOpened;
-  }
-
-  close(): void {
-    this.isOpened = false;
-  }
-
-  // 父组件的值变更时，更新model的值
-  writeValue(val: Date) {
-    if (val) {
-      this.date = val;
-      this.innerValue = val;
-      this.init();
-      // this.displayValue = format(this.innerValue, this.displayFormat, this.locale);
-      // this.barTitle = format(startOfMonth(val), this.barTitleFormat, this.locale);
-    }
-  }
-
-  // 表单ControlValueAccessor接口
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-
-  // 表单ControlValueAccessor接口
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
-
   setOptions(): void {
     const today = new Date();
     this.minYear = this.options.minYear || getYear(today) - 30;
@@ -146,9 +138,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   initDayNames(): void {
-    this.dayNames = [
-      '周日', '周一', '周二', '周三', '周四', '周五', '周六',
-    ];
+    this.dayNames = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
   }
 
   private isDateSelectable(date: Date): boolean {
@@ -196,7 +186,8 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
       this.days[weeksLen - 1].push(day);
     }
 
-    this.barTitle = `${getYear(this.innerValue)}年${getMonth(this.innerValue)}月`;
+    this.barTitle = `${getYear(start)}年${getMonth(start) + 1}月`;
+    console.log(this);
   }
 
   initYears(): void {
@@ -207,17 +198,18 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     });
   }
 
-  prevMonth() {
+  prevMonth(): void {
     this.date = subMonths(this.date, 1);
     this.init();
   }
 
-  nextMonth() {
+  nextMonth(): void {
     this.date = addMonths(this.date, 1);
     this.init();
   }
 
   goToday() {
+    this.value = new Date();
     this.date = new Date();
     this.init();
   }
@@ -225,8 +217,37 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   setDate(date: Date): void {
     this.date = date;
     this.value = this.date;
-    this.displayValue = date.toDateString();
+    this.displayValue = `${getYear(date)}-${getMonth(date) + 1}-${getDate(date)}`;
     this.init();
     this.close();
+  }
+
+  toggle(): void {
+    this.isOpened = !this.isOpened;
+  }
+
+  close(): void {
+    this.isOpened = false;
+  }
+
+  // 父组件的值变更时，更新model的值
+  writeValue(val: Date) {
+    if (val) {
+      this.date = val;
+      this.innerValue = val;
+      this.init();
+      // this.displayValue = format(this.innerValue, this.displayFormat, this.locale);
+      // this.barTitle = format(startOfMonth(val), this.barTitleFormat, this.locale);
+    }
+  }
+
+  // 表单ControlValueAccessor接口
+  registerOnChange(fn: any) {
+    this.onChangeCallback = fn;
+  }
+
+  // 表单ControlValueAccessor接口
+  registerOnTouched(fn: any) {
+    this.onTouchedCallback = fn;
   }
 }
