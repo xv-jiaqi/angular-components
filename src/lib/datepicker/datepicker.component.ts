@@ -12,10 +12,11 @@ export interface DatepickerOptions {
   maxYear?: number;
   displayFormat?: string; // default: 'MMM D[,] YYYY'
   barTitleFormat?: string; // default: 'MMMM YYYY'
-  dayNamesFormat?: string; // default 'ddd'
+  weekdayNamesFormat?: string; // default 'ddd'
   firstCalendarDay?: number;  // 0 日 1 一
   minDate?: Date;
   maxDate?: Date;
+  lang?: string;
 }
 
 export interface IDayTypes {
@@ -27,6 +28,47 @@ export interface IDayTypes {
   isToday: boolean;
   isSelected: boolean;
   isSelectable: boolean;
+}
+
+const enum EVal {
+
+}
+
+export enum EFirstCalendarDay {
+  SUN,
+  MON
+}
+
+export class Local {
+
+  en: object;
+  cn: object;
+
+  constructor() {
+    this.en = {};
+    this.cn = {
+      weekdaysFull: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+      weekdaysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+      weekdaysMin: ['日', '一', '二', '三', '四', '五', '六'],
+      monthsFull: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+      monthsShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+    };
+
+    const baseLocal = {
+      weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      weekdaysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      monthsFull: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+        'November', 'December'],
+      monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    };
+
+    const keys = Object.keys(this);
+
+    for (let len = keys.length; len--;) {
+      this[keys[len]] = Object.assign({}, baseLocal, this[keys[len]]);
+    }
+  }
 }
 
 const isNil = (value: Date | any) => {
@@ -55,30 +97,39 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   minYear: number;
   maxYear: number;
   firstCalendarDay: number;
-  dayNames: string[];
-  dayNamesFormat: string;
+  weekdayNames: string[];
+  weekdayNamesFormat: string;
+  lang: string;
   years: {year: number; isThisYear: boolean}[];
 
   days: IDayTypes[][];
 
-  private _locale: object;
-  private _locale_cn: object;
+  private local: Local;
 
   private onTouchedCallback: () => void = () => { };
 
   private onChangeCallback: (_: any) => void = () => { };
 
-  private fmtDate(date: Date, isThisMonth: boolean): IDayTypes {
+  private fmtDate(date: Date): IDayTypes {
     return {
       date: date,
       day: getDate(date),
       month: getMonth(date),
       year: getYear(date),
-      inThisMonth: isThisMonth,
+      inThisMonth: isSameMonth(date, this.date),
       isToday: isToday(date),
       isSelected: isSameDay(date, this.innerValue) && isSameMonth(date, this.innerValue) && isSameYear(date, this.innerValue),
       isSelectable: this.isDateSelectable(date),
     };
+  }
+
+  private isDateSelectable(date: Date): boolean {
+    const minDate = !isNil(this.options.minDate) && this.options && this.options.minDate;
+    const maxDate = !isNil(this.options.maxDate) && this.options && this.options.maxDate;
+
+    return !minDate ||
+      !maxDate ||
+      minDate < date && date < maxDate;
   }
 
   get value(): Date {
@@ -91,19 +142,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   constructor() {
-    this._locale = {
-      dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-      monthNames: ['January', 'February', 'March', 'April', 'May',
-        'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    };
-    this._locale_cn = {
-      dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
-      dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
-      monthNamesShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-    };
+    this.local = new Local();
   }
 
   ngOnInit() {
@@ -111,8 +150,9 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     this.setOptions();
     this.initDayNames();
     this.initYears();
-    console.log(this.options, 'options');
     // this.options = this.options ? this.options : {};
+    // this.local = this.local[this.lang];
+    console.log(this.options, this, 'options');
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -128,20 +168,21 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     const today = new Date();
     this.minYear = this.options.minYear || getYear(today) - 30;
     this.maxYear = this.options.maxYear || getYear(today) + 30;
+    this.displayFormat = this.options.displayFormat || 'YYYY-MM-DD';
+    this.barTitleFormat = this.options.barTitleFormat || 'YYYY-MM';
+    this.weekdayNamesFormat = this.options.weekdayNamesFormat || 'ddd';
     this.firstCalendarDay = this.options.firstCalendarDay || 0;
+    this.lang = this.options.lang || 'en';
   }
 
   initDayNames(): void {
-    this.dayNames = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-  }
+    const weekdayNames = Array.from([...this.local[this.lang].weekdaysShort]);
 
-  private isDateSelectable(date: Date): boolean {
-    const minDate = !isNil(this.options.minDate) && this.options && this.options.minDate;
-    const maxDate = !isNil(this.options.maxDate) && this.options && this.options.maxDate;
+    if (this.firstCalendarDay === 1) {
+      weekdayNames.push(weekdayNames.shift());
+    }
 
-    return !minDate ||
-      !maxDate ||
-      minDate < date && date < maxDate;
+    this.weekdayNames = weekdayNames;
   }
 
   init(): void {
@@ -154,7 +195,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     const prevDays = tmp < 0 ? 7 - this.firstCalendarDay : tmp;
 
     for (let i = 1; i <= prevDays; i++) {
-      const day = this.fmtDate(subDays(start, i), false);
+      const day = this.fmtDate(subDays(start, i));
 
       this.days[0].unshift(day);
     }
@@ -162,7 +203,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     const firstWeekLen = this.days[0].length;
 
     eachDay(start, end).forEach((date, index) => {
-      const day = this.fmtDate(date, true);
+      const day = this.fmtDate(date);
 
       if ((index + firstWeekLen) % 7 ) {
         this.days[this.days.length - 1].push(day);
@@ -175,7 +216,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     const lastWeekLen = this.days[weeksLen - 1].length;
 
     for (let len = lastWeekLen, i = 1; len % 7; len++, i++) {
-      const day = this.fmtDate(addDays(end, i), false);
+      const day = this.fmtDate(addDays(end, i));
 
       this.days[weeksLen - 1].push(day);
     }

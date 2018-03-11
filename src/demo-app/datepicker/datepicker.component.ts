@@ -13,16 +13,16 @@ export class DatepickerComponent implements OnInit {
   constructor() {
     this.date = new Date('2018-3-9');
     this.options = {
-    // locale: enLocale
-    minYear: 2014,
-    maxYear: 2020,
-    minDate: new Date ('2014-10-11'),
-    maxDate: new Date ('2019-2-2'),
-    displayFormat: 'YYYY-MM-DD',
-    barTitleFormat: 'YYYY MM',
-    dayNamesFormat: 'd', // default 'ddd'
-    firstCalendarDay: 1
-  };
+      minYear: 2014,
+      maxYear: 2020,
+      minDate: new Date ('2014-10-11'),
+      maxDate: new Date ('2018-7-9'),
+      displayFormat: 'YYYY-MM-DD',
+      barTitleFormat: 'YYYY MM',
+      dayNamesFormat: 'd',
+      firstCalendarDay: 0,
+      lang: 'cn'
+    };
   }
 
   ngOnInit() {}

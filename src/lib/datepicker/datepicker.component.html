@@ -12,14 +12,14 @@
       <table class="gt-date__table">
         <thead>
         <tr>
-          <td *ngFor="let dayName of dayNames">{{dayName}}</td>
+          <td *ngFor="let weekdayName of weekdayNames">{{weekdayName}}</td>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let rowDays of days">
           <td *ngFor="let day of rowDays">
             <span class="gt-date__date"
-                  [ngClass]="{'gt-date--today': day.isToday, 'gt-date--no-cur': !day.inThisMonth, 'gt--sel': day.isSelected}"
+                  [ngClass]="{'gt-date--today': day.isToday, 'gt-date--no-cur': !day.inThisMonth, 'gt--sel': day.isSelected, 'gt-date__not-allowed': !day.isSelectable}"
                   (click)="day.isSelectable && setDate(day.date)">{{day.day}}</span>
           </td>
         </tr>
