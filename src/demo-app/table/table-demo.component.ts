@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class TableDemoComponent implements OnInit {
-  columns = [];
-  data = [];
+  columns: any[];
+  data: any[];
   constructor() {
     this.columns = [
       {
