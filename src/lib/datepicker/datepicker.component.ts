@@ -152,7 +152,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     this.initYears();
     // this.options = this.options ? this.options : {};
     // this.local = this.local[this.lang];
-    console.log(this.options, this, 'options');
+    // console.log(this.options, this, 'options');
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -176,7 +176,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   initDayNames(): void {
-    const weekdayNames = Array.from([...this.local[this.lang].weekdaysShort]);
+    const weekdayNames = [...this.local[this.lang].weekdaysShort];
 
     if (this.firstCalendarDay === 1) {
       weekdayNames.push(weekdayNames.shift());

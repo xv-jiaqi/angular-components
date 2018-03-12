@@ -16,7 +16,7 @@ export class DatepickerComponent implements OnInit {
       minYear: 2014,
       maxYear: 2020,
       minDate: new Date ('2014-10-11'),
-      maxDate: new Date ('2018-7-9'),
+      maxDate: new Date ('2018-5-9'),
       displayFormat: 'YYYY-MM-DD',
       barTitleFormat: 'YYYY MM',
       dayNamesFormat: 'd',

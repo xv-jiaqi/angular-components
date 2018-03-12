@@ -1,4 +1,13 @@
-# 安装使用
+# get-ui-ng4
+
+---
+
+[TOC]
+
+
+---
+
+## 安装使用
 
 ```bash
 npm set registry=http://192.168.10.223:7001/
@@ -11,49 +20,47 @@ yarn config set registry http://192.168.10.223:7001/
 yarn add get-ui-ng
 ```
 
-# 本地build
+## 本地build
 ```bash
 npm run build
 ```
 
-# 运行Demo服务
+## 运行Demo服务
 
 ```bash
 npm run demo-app
 ```
 
-# 运行文档服务
+## 运行文档服务
 ```bash
 npm run doc-app
 ```
 
-# TODO
+## TODO
 
 基础模块拆分
 
 业务组件独立
 
+## 开发进度
 
-gantt
-dateFormat  YYYY-MM-DD
-title 蜂鸟“加密狗”开发&测试计划排期
+﻿组件完整划分点击[这里](http://192.168.10.149:8888/pages/viewpage.action?pageId=45791506)。
 
-section  项目前期
-需求评审          : done,  p1, 2018-02-26, 3d
-技术调研          : done,  p2, after p1, 6d
-技术方案评审   : done,  p3, after p2, 1d
-
-section  前端开发
-加密狗运行环境配置、调试    : active,p4,2018-03-07, 2d
-功能开发: p5, 3d
-联调、提测:  p5, 2d
-
-section  后端开发
-搭建Java相关环境: active, p6, 2d
-开发            : active, p7,  2018-03-07, 2d
-联调、提测 :  p8, 2d
-
-section 测试上线
-环境部署、冒烟测试: 2018-03-22, 1d
-功能测试: 2d
-整体回归: 1d
+|组件|负责人|进度|
+|:----|--------|:-----:|
+|Menu|舒荣贵|Done|
+|Tabs|舒荣贵|Done|
+|Stepper|陆文丽|Done|
+|DateTime<br>&emsp;&emsp;Datepicker<br>&emsp;&emsp;Timepicker<br>&emsp;&emsp;Datetimepicker<br>&emsp;&emsp;Datetimeranger|徐家琪|<br>Done<br>TODO<br>TODO<br>TODO|
+|Checkbox<br>Radio button|谢黎明|Done<br>TODO|
+|Selector|谢黎明|ing|
+|Slider|舒荣贵|Done|
+|Fileupload|舒荣贵|ing|
+|Table|尹惠梁|ing|
+|Paginator|舒荣贵|Done|
+|Popups|张继|ing|
+|Modals<br>&emsp;&emsp;Dialog<br>&emsp;&emsp;Info\confirm<br>&emsp;&emsp;Toast<br>&emsp;&emsp;Progress spinner|舒荣贵|<br>Done<br>Done<br>Done<br>TODO
+|Area selector & LBS|尹惠梁|TODO|
+|Password strength|陆文丽|TODO|
+|Zoom|徐家琪|TODO|
+|City select|谢黎明|TODO|
