@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+const GT_CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => GtCheckboxComponent),
   multi: true
@@ -13,20 +13,12 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   moduleId: module.id,
   selector: 'gt-checkbox',
-  template: `
-    <label [ngClass]="'gt-checkbox'" [class]="styleClass"
-           [class.gt--disabled]="disabled" #container>
-      <input type="checkbox" value="{{value}}" [disabled]="disabled"
-             [checked]="checked" name="{{name}}" (change)="onCheckboxChange($event, label)">
-      <span class="gt-checkbox__style"></span>
-      <span class="gt-checkbox__txt">{{ label }}</span>
-    </label>
-  `,
+  templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.css'],
-  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+  providers: [GT_CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class GtCheckboxComponent implements ControlValueAccessor {
-  checkedValue: any;
+  _checkedValue: any;
   _checked: boolean;
 
   @Input() name: string;
@@ -34,7 +26,6 @@ export class GtCheckboxComponent implements ControlValueAccessor {
 
   @Input()
   set checked(value: boolean) {
-    console.log('checked', value);
     this._checked = value;
     if (!this.returnBoolean) {
       if (value) {
@@ -53,68 +44,57 @@ export class GtCheckboxComponent implements ControlValueAccessor {
   @Input() value: any;
   @Input() styleClass: string;
   @Input() returnBoolean: boolean;
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() onChange = new EventEmitter();
   @ViewChild('container') container: ElementRef;
 
   onModelChange: Function = () => {};
   onTouchedChange: Function = () => {};
 
-  constructor(public renderer2: Renderer2) {
-    this.checkedValue = [];
+  constructor(public renderer: Renderer2) {
+    this._checkedValue = [];
   }
 
   writeValue(value: any) {
-    console.log('writeValue', value);
     if (value) {
-      this.checkedValue = value;
-      if (!this.returnBoolean && !Array.isArray(this.checkedValue)) {
-        this.checkedValue = [value];
+      this._checkedValue = value;
+      if (!this.returnBoolean && !Array.isArray(this._checkedValue)) {
+        this._checkedValue = [value];
       }
       this.checked = this.isChecked();
     }
   }
 
   isChecked() {
-    console.log('isChecked', this.returnBoolean,this.checkedValue);
     if (this.returnBoolean) {
-      return this.checkedValue;
+      return this._checkedValue;
     }
-    return this.checkedValue.indexOf(this.value) !== -1;
+    return this._checkedValue.indexOf(this.value) !== -1;
   }
 
   removeValue() {
-    console.log('removeValue', this.returnBoolean);
     if (this.returnBoolean) {
-      this.checkedValue = this.checked;
+      this._checkedValue = this.checked;
       return;
     }
-    this.checkedValue = this.checkedValue.filter(val => val !== this.value);
+    this._checkedValue = this._checkedValue.filter(val => val !== this.value);
   }
 
   addValue() {
-    console.log('addValue', this.checkedValue);
     if (this.isChecked()) {
       return;
     }
-    if (this.checkedValue) {
-      this.checkedValue = [...this.checkedValue, this.value];
-    } else {
-      this.checkedValue = [this.value];
-    }
+    this._checkedValue = this._checkedValue ? [...this._checkedValue, this.value] : [this.value];
   }
 
   registerOnChange(fn: Function) {
-    console.log('registerOnChange', fn);
     this.onModelChange = fn;
   }
 
   registerOnTouched(fn: Function) {
-    console.log('registerOnTouched', fn);
     this.onTouchedChange = fn;
   }
 
-  onCheckboxChange(e: any, label: string) {
-    console.log('onCheckboxChange', e, label);
+  onCheckboxChange(e: any) {
     if (!this.disabled) {
       this.checked = e.target.checked;
       if (!this.returnBoolean) {
@@ -123,7 +103,7 @@ export class GtCheckboxComponent implements ControlValueAccessor {
         } else {
           this.removeValue();
         }
-        this.onModelChange(this.checkedValue);
+        this.onModelChange(this._checkedValue);
       } else {
         this.onModelChange(this.checked);
       }

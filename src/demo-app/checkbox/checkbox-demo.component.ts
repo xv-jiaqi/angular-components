@@ -17,4 +17,8 @@ export class CheckboxDemoComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  getChange(e: boolean) {
+    console.log(e);
+  }
 }

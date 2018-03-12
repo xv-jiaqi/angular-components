@@ -22,16 +22,6 @@ export const menuList: GtMenus = [
         name: 'stepper',
         link: '/stepper',
         activeLink: '/stepper'
-      }, {
-        label: 'Button',
-        name: 'button',
-        link: '/button',
-        activeLink: '/button'
-      }, {
-        label: 'Checkbox',
-        name: 'checkbox',
-        link: '/checkbox',
-        activeLink: '/checkbox'
       }
     ]
   }, {
@@ -73,6 +63,16 @@ export const menuList: GtMenus = [
         name: 'slider',
         link: '/slider',
         activeLink: '/slider'
+      }, {
+        label: 'Button',
+        name: 'button',
+        link: '/button',
+        activeLink: '/button'
+      }, {
+        label: 'Checkbox',
+        name: 'checkbox',
+        link: '/checkbox',
+        activeLink: '/checkbox'
       }, {
         label: 'FileUpload',
         name: 'fileupload',

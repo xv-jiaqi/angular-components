@@ -1,71 +1,15 @@
-.date-wrap {
-  margin: 60px auto;
-  width: 400px;
-  height: 400px;
+.gt-date__date {
   display: flex;
-  border: 1px solid #eee;
-  flex-direction: column;
-  box-shadow: 2px 2px 4px #ccc;
+  justify-content: center;
+  align-items: center;
 }
 
-.date-wrap .date-head {
-  height: 70px;
-  flex-basis: 13%;
-  line-height: 70px;
-  font-family: serif;
-  font-size: 25px;
-  color: lightslategrey;
-  text-align: center;
-  border-bottom: 1px solid #aaa;
+.gt-date__table .gt-date__date.gt-date--no-cur {
+  color: rgba(44,62,80,.4);
 }
 
-.date-head a {
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-  color: deepskyblue;
-}
-
-a.left-btn {
-  float: left;
-  margin-left: 30px;
-}
-
-a.right-btn {
-  float: right;
-  margin-right: 30px;
-}
-
-.date-day {
-  flex-basis: 14%;
-  align-self: center;
-  text-align: center;
-  font-size: 17px;
-  color: #666;
-  font-family: '黑体';
-}
-
-.date-body {
-  flex-basis: 87%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.date-body .date-item {
-  flex-basis: 14%;
-  align-self: center;
-  text-align: center;
-  cursor: pointer;
-  color: lightslategray
-}
-
-.date-body .date-item:hover {
-  color: indianred;
-}
-
-.active {
-  background: deepskyblue;
-  color: white!important;
-  border-radius: 20px;
+.gt-date__not-allowed.gt-date__not-allowed.gt-date__not-allowed {
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0);
+  color: rgba(44,62,80,.4);
 }

@@ -17,7 +17,6 @@ import {
   exports: [
     GtTabsModule,
     GtMenuModule,
-    GtDatepickerModule,
     GtStepperModule,
     GtDatepickerModule,
     GtModalModule,

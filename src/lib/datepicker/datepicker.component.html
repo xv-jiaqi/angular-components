@@ -1,17 +1,31 @@
-<div class="date-wrap">
-  <div class="date-head">
-    <a (click)="goPrev()" class="left-btn">&lt;</a>
-    {{dateObject.year}}年-{{dateObject.month}}月
-    <a (click)="goNext()" class="right-btn">&gt;</a>
-  </div>
-  <div class="date-body">
-    <div class="date-day">日</div>
-    <div class="date-day">一</div>
-    <div class="date-day">二</div>
-    <div class="date-day">三</div>
-    <div class="date-day">四</div>
-    <div class="date-day">五</div>
-    <div class="date-day">六</div>
-    <div *ngFor="let item of dateObject.datesArray" class="date-item" [class.active]="item === dateObject.nowDay">{{item}}</div>
+<div class="gt-date gt-dropdown-wrap--open" [class.gt-dropdown-wrap--open]="isOpened">
+  <input type="text" class="gt-form-control" readonly placeholder="选择日期" [(ngModel)]="displayValue"
+         [class.gt--focus]="isOpened" (click)="toggle()"/>
+  <div class="gt-date__container">
+    <div class="gt-date__hd">
+      <a class="gt-date__btn-left" (click)="prevMonth()"><i class="gt-icon icon-arrow-left"></i></a>
+      <span class="gt-date__hd-center">{{barTitle}}</span>
+      <a class="gt-date__hd-short" (click)="goToday()">今天</a>
+      <a class="gt-date__btn-right" (click)="nextMonth()"><i class="gt-icon icon-arrow-right"></i></a>
+    </div>
+    <div class="gt-date__bd">
+      <table class="gt-date__table">
+        <thead>
+        <tr>
+          <td *ngFor="let weekdayName of weekdayNames">{{weekdayName}}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let rowDays of days">
+          <td *ngFor="let day of rowDays">
+            <span class="gt-date__date"
+                  [ngClass]="{'gt-date--today': day.isToday, 'gt-date--no-cur': !day.inThisMonth, 'gt--sel': day.isSelected, 'gt-date__not-allowed': !day.isSelectable}"
+                  (click)="day.isSelectable && setDate(day.date)">{{day.day}}</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+
