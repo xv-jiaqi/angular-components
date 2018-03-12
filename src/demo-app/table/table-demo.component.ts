@@ -8,6 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class TableDemoComponent implements OnInit {
+  columns = [
+    {
+      id: 'firstName',
+      field: 'firstName',
+      label: '姓',
+      width: 100
+    },
+    {
+      id: 'lastName',
+      field: 'lastName',
+      label: '名'
+    }
+  ];
+  data = [
+    {
+      'firstName': '产',
+      'lastName': '品'
+    },
+    {
+      'firstName': '开',
+      'lastName': '发'
+    }
+  ];
   constructor() {}
 
   ngOnInit() {
