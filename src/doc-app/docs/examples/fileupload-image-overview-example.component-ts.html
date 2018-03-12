@@ -1,0 +1,20 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { GtFileUploadType } <span class="hljs-keyword">from</span> <span class="hljs-string">'get-ui-ng/base'</span>;
+
+<span class="hljs-comment">/**
+ * @title FileUpload-Image
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  moduleId: <span class="hljs-built_in">module</span>.id,
+  templateUrl: <span class="hljs-string">'./fileupload-image-overview-example.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./fileupload-image-overview-example.component.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FileuploadImageOverviewExampleComponent {
+  url = <span class="hljs-string">'/api/fileupload'</span>;
+
+  <span class="hljs-keyword">type</span> = GtFileUploadType.IMAGE;
+
+  hintMsg = <span class="hljs-string">'上传说明（格式，大小，......）'</span>;
+
+  allowedFileType = [<span class="hljs-string">'png'</span>];
+}

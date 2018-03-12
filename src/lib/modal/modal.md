@@ -1,10 +1,18 @@
 ### Examples
 
+#### Confirm
+
 <!-- example(modal-confirm-overview) -->
+
+#### Info
 
 <!-- example(modal-info-overview) -->
 
+#### Toast
+
 <!-- example(modal-toast-overview) -->
+
+#### Common Wrap
 
 <!-- example(modal-wrap-overview) -->
 

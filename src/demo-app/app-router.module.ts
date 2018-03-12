@@ -9,6 +9,7 @@ import {SliderDemoComponent} from './slider/slider-demo.component';
 import {ButtonDemoComponent} from './button/button-demo.component';
 import {CheckboxDemoComponent} from './checkbox/checkbox-demo.component';
 import {TableDemoComponent} from './table/table-demo.component';
+import { FileUploadDemoComponent } from './fileupload/fileupload-demo.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,9 @@ const routes: Routes = [
   }, {
     path: 'table',
     component: TableDemoComponent
+  }, {
+    path: 'fileupload',
+    component: FileUploadDemoComponent
   }
 ];
 

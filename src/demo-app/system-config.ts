@@ -20,6 +20,8 @@ System.config({
     'tslib': 'node:tslib/tslib.js',
     'moment': 'node:moment/min/moment-with-locales.min.js',
 
+    'ng2-file-upload': 'node:ng2-file-upload/bundles/ng2-file-upload.umd.js',
+
     // Angular specific mappings.
     '@angular/core': 'node:@angular/core/bundles/core.umd.js',
     '@angular/common': 'node:@angular/common/bundles/common.umd.js',
@@ -51,6 +53,7 @@ System.config({
     'get-ui-ng/base/pagination': 'dist/packages/base/pagination/index.js',
     'get-ui-ng/base/slider': 'dist/packages/base/slider/index.js',
     'get-ui-ng/base/table': 'dist/packages/base/table/index.js',
+    'get-ui-ng/base/fileupload': 'dist/packages/base/fileupload/index.js',
     'get-ui-ng/base': 'dist/packages/base/public-api.js'
   },
   packages: {

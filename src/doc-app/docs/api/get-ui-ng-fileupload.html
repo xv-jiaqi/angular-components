@@ -1,0 +1,448 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <h2>
+    API reference for get-ui-ng fileupload
+  </h2>
+
+  <p class="docs-api-module-import">
+    <code>
+      import {GtFileUploadModule} from 'get-ui-ng/base';
+    </code>
+  </p><h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      <h4 id="GtFileUploadComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="GtFileUploadComponent"></span>
+  <code>GtFileUploadComponent</code>
+  
+</h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+  
+    <span class="docs-api-class-selector-name">gt-file-upload</span>
+  
+</p><h5 class="docs-api-h5 docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>allowedFileType: string[]</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>允许上传的文件类型</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>autoUpload: boolean</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>是否自动上传</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>disableMultipart: true</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>是否允许多文件上传</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>getErrorMsg: (response: string, status: number, headers: GtParsedResponseHeaders) =&gt; string</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>传入的方法，根据响应、状态、请求头获取错误信息</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>getInvalidMsg: (type: GtFileUploadInvalidType) =&gt; string</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>传入的方法，根据校验的错误类型获取校验错误信息</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>hintMsg: string</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>上传提示信息</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>isSuccess: (response: string, status: number, headers: GtParsedResponseHeaders) =&gt; boolean</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>传入的方法，判断是否成功</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>maxFileSize: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>允许上传的文件大小</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>maxHeight: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>最大的图片的上传高度</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>maxWidth: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>允许上传的图片最大宽度</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>method: &#39;POST&#39;</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>请求方式</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>minHeight: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>最小的图片上传高度</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>minWidth: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>允许上传的图片最小宽度</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>previewHeight: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>预览的图片高度</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>previewWidth: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>预览的图片宽度</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>type: GtFileUploadType</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>上传类型</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          @Input()</div><p class="docs-api-property-name">
+      <code>url: string</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>文件上传</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          @Output()</div><p class="docs-api-property-name">
+      <code>complete: EventEmitter&lt;GtFileUploadCompleteEvent&gt;</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>请求完成事件</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          @Output()</div><p class="docs-api-property-name">
+      <code>fail: EventEmitter&lt;GtFileUploadFailEvent&gt;</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>上传失败事件</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          @Output()</div><p class="docs-api-property-name">
+      <code>success: EventEmitter&lt;GtFileUploadSuccessEvent&gt;</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>上传成功事件</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+      <span header-link="additional_interfaces"></span>
+      Additional interfaces
+    </h3>
+    
+      <h4 id="GtFileUploadSuccessEvent" class="docs-header-link docs-api-h4 docs-api-interface-name">
+  <span header-link="GtFileUploadSuccessEvent"></span>
+  <code>GtFileUploadSuccessEvent</code>
+</h4><h5 class="docs-api-h5 docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>headers: GtParsedResponseHeaders</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>响应头信息</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>response: string</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>请求响应内容</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>status: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>响应状态码</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      <h4 id="GtFileUploadFailEvent" class="docs-header-link docs-api-h4 docs-api-interface-name">
+  <span header-link="GtFileUploadFailEvent"></span>
+  <code>GtFileUploadFailEvent</code>
+</h4><h5 class="docs-api-h5 docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>headers: GtParsedResponseHeaders</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>响应头信息</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>response: string</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>请求响应内容</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>status: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>响应状态码</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      <h4 id="GtFileUploadCompleteEvent" class="docs-header-link docs-api-h4 docs-api-interface-name">
+  <span header-link="GtFileUploadCompleteEvent"></span>
+  <code>GtFileUploadCompleteEvent</code>
+</h4><h5 class="docs-api-h5 docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>headers: GtParsedResponseHeaders</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>响应头信息</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>response: string</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>请求响应内容</p>
+</td>
+</tr>
+
+
+    
+      <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>status: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>响应状态码</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    </div>

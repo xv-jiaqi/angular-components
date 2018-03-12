@@ -5,7 +5,8 @@ import {
   GtModalModule,
   GtStepperModule,
   GtPaginationModule,
-  GtSliderModule
+  GtSliderModule,
+  GtFileUploadModule
 } from 'get-ui-ng/base';
 
 @NgModule({
@@ -15,7 +16,8 @@ import {
     GtModalModule,
     GtStepperModule,
     GtPaginationModule,
-    GtSliderModule
+    GtSliderModule,
+    GtFileUploadModule
   ]
 })
 

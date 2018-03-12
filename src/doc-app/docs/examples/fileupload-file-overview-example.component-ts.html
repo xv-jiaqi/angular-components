@@ -1,0 +1,15 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title FileUpload-File
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  moduleId: <span class="hljs-built_in">module</span>.id,
+  templateUrl: <span class="hljs-string">'./fileupload-file-overview-example.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./fileupload-file-overview-example.component.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FileuploadFileOverviewExampleComponent {
+  url = <span class="hljs-string">'/api/fileupload'</span>;
+
+  hintMsg = <span class="hljs-string">'上传说明（格式，大小，......）'</span>;
+}

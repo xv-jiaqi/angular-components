@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { TableDemoComponent } from './table/table-demo.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
+import { FileUploadDemoComponent } from './fileupload/fileupload-demo.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
     CheckboxDemoComponent,
     TableDemoComponent,
     PaginationDemoComponent,
-    SliderDemoComponent
+    SliderDemoComponent,
+    FileUploadDemoComponent
   ],
   bootstrap: [
     AppComponent

@@ -1,0 +1,46 @@
+<div class="gt-upload">
+  <input type="file" class="gt-upload__file" ng2FileSelect [uploader]="uploader" (change)="fileChange($event)"/>
+  <a class="gt-upload__style gt-upload__style--btn" (click)="selectFile()" *ngIf="type === 'OTHER'">点击上传</a>
+  <ng-container *ngIf="type === 'IMAGE'">
+    <div class="gt-upload__style gt-upload-img__cell" (click)="selectFile()" [ngStyle]="{width: previewWidth + 'px', height: previewHeight + 'px'}">
+      <img class="gt-upload-img" *ngIf="imgBase64Data" [ngStyle]="{width: previewWidth + 'px', height: previewHeight + 'px'}" [attr.src]="imgBase64Data"/>
+      <div class="gt-upload__load-wrap">
+        <div class="gt-upload__load"></div>
+      </div>
+    </div>
+    <div class="gt-upload__style gt-upload__style--img" [ngStyle]="{width: previewWidth + 'px', height: previewHeight + 'px'}">
+      <div class="gt-upload__style--img-wrap">
+        <i class="gt-icon icon-add"></i>
+        <p class="gt-upload__img-text">上传图片</p>
+      </div>
+    </div>
+  </ng-container>
+  <a class="gt-upload-btn-start" [ngClass]="{'gt--disabled': !fileSelected || status == 'TYPE_ERROR'}" (click)="uploadFile()" *ngIf="!autoUpload">开始上传</a>
+  <div class="gt-form__tip-block">{{hintMsg}}</div>
+  <ng-container [ngSwitch]="status">
+    <div class="gt-upload-result__cell gt--success" *ngSwitchCase="'SUCCESS'">
+      <span class="gt-upload-result__file">{{filename}}</span>
+      <span class="gt-upload-result__tip">上传成功</span>
+    </div>
+    <div class="gt-upload-result__cell gt--error" *ngSwitchCase="'FAIL'">
+      <span class="gt-upload-result__file">{{filename}}</span>
+      <span class="gt-upload-result__tip">上传失败<ng-container *ngIf="errorMsg">:{{errorMsg}}</ng-container></span>
+    </div>
+    <div class="gt-upload-result__cell gt-upload__cell--loading" *ngSwitchCase="'PROGRESSING'">
+      <span class="gt-upload-result__file">{{filename}}</span>
+      <span class="gt-upload-result__tip">上传中...</span>
+      <div class="gt-upload__load-wrap">
+        <div class="gt-upload__load" [ngStyle]="{width: progress + '%'}"></div>
+      </div>
+    </div>
+    <div class="gt-upload-result__cell gt--error" *ngSwitchCase="'TYPE_ERROR'">
+      <span class="gt-upload-result__file">{{filename}}</span>
+      <span class="gt-upload-result__tip">{{errorMsg}}</span>
+    </div>
+    <ng-container *ngSwitchDefault>
+      <div class="gt-upload-result__cell" *ngIf="filename">
+        <span class="gt-upload-result__file">{{filename}}</span>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

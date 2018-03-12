@@ -21,6 +21,9 @@ const routes: Routes = [
   }, {
     path: 'slider',
     component: ComponentViewComponent
+  },  {
+    path: 'fileupload',
+    component: ComponentViewComponent
   }
 ];
 

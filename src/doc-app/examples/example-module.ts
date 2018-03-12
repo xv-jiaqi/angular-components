@@ -13,6 +13,8 @@ export interface LiveExample {
   selectorName?: string | null;
 }
 
+import { FileuploadFileOverviewExampleComponent } from './fileuplaod-file-overview/fileupload-file-overview-example.component';
+import { FileuploadImageOverviewExampleComponent } from './fileupload-image-overview/fileupload-image-overview-example.component';
 import { MenuOverviewExampleComponent } from './menu-overview/menu-overview-example.component';
 import { ModalConfirmOverviewExampleComponent } from './modal-confirm-overview/modal-confirm-overview-example.component';
 import { ModalInfoOverviewExampleComponent } from './modal-info-overview/modal-info-overview-example.component';
@@ -24,6 +26,18 @@ import { StepperOverviewExampleComponent } from './stepper-overview/stepper-over
 import { TabsOverviewExampleComponent } from './tabs-overview/tabs-overview-example.component';
 
 export const EXAMPLE_COMPONENTS: {[key: string]: LiveExample} = {
+  'fileupload-file-overview-component': {
+    title: 'FileUpload-File',
+    component: FileuploadFileOverviewExampleComponent,
+    additionalFiles: null,
+    selectorName: null
+  },
+  'fileupload-image-overview-component': {
+    title: 'FileUpload-Image',
+    component: FileuploadImageOverviewExampleComponent,
+    additionalFiles: null,
+    selectorName: null
+  },
   'menu-overview-component': {
     title: 'Menu',
     component: MenuOverviewExampleComponent,
@@ -81,6 +95,8 @@ export const EXAMPLE_COMPONENTS: {[key: string]: LiveExample} = {
 };
 
 export const EXAMPLE_LIST = [
+  FileuploadFileOverviewExampleComponent,
+  FileuploadImageOverviewExampleComponent,
   MenuOverviewExampleComponent,
   ModalConfirmOverviewExampleComponent,
   ModalInfoOverviewExampleComponent,

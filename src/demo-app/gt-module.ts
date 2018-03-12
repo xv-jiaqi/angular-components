@@ -9,7 +9,8 @@ import {
   GtSliderModule,
   GtButtonModule,
   GtCheckboxModule,
-  GtTableModule
+  GtTableModule,
+  GtFileUploadModule
 } from 'get-ui-ng/base';
 
 @NgModule({
@@ -25,7 +26,8 @@ import {
     GtPaginationModule,
     GtSliderModule,
     GtButtonModule,
-    GtTableModule
+    GtTableModule,
+    GtFileUploadModule
   ]
 })
 

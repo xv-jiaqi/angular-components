@@ -29,6 +29,8 @@ export const rollupGlobals = {
   'tslib': 'tslib',
   'moment': 'moment',
 
+  'ng2-file-upload': 'ng2FileUpload',
+
   '@angular/animations': 'ng.animations',
   '@angular/core': 'ng.core',
   '@angular/common': 'ng.common',

@@ -13,6 +13,8 @@
   selectorName?: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>;
 }
 
+<span class="hljs-keyword">import</span> { FileuploadFileOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./fileuplaod-file-overview/fileupload-file-overview-example.component'</span>;
+<span class="hljs-keyword">import</span> { FileuploadImageOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./fileupload-image-overview/fileupload-image-overview-example.component'</span>;
 <span class="hljs-keyword">import</span> { MenuOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./menu-overview/menu-overview-example.component'</span>;
 <span class="hljs-keyword">import</span> { ModalConfirmOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./modal-confirm-overview/modal-confirm-overview-example.component'</span>;
 <span class="hljs-keyword">import</span> { ModalInfoOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./modal-info-overview/modal-info-overview-example.component'</span>;
@@ -24,6 +26,18 @@
 <span class="hljs-keyword">import</span> { TabsOverviewExampleComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./tabs-overview/tabs-overview-example.component'</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_COMPONENTS: {[key: <span class="hljs-built_in">string</span>]: LiveExample} = {
+  <span class="hljs-string">'fileupload-file-overview-component'</span>: {
+    title: <span class="hljs-string">'FileUpload-File'</span>,
+    component: FileuploadFileOverviewExampleComponent,
+    additionalFiles: <span class="hljs-literal">null</span>,
+    selectorName: <span class="hljs-literal">null</span>
+  },
+  <span class="hljs-string">'fileupload-image-overview-component'</span>: {
+    title: <span class="hljs-string">'FileUpload-Image'</span>,
+    component: FileuploadImageOverviewExampleComponent,
+    additionalFiles: <span class="hljs-literal">null</span>,
+    selectorName: <span class="hljs-literal">null</span>
+  },
   <span class="hljs-string">'menu-overview-component'</span>: {
     title: <span class="hljs-string">'Menu'</span>,
     component: MenuOverviewExampleComponent,
@@ -81,6 +95,8 @@
 };
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> EXAMPLE_LIST = [
+  FileuploadFileOverviewExampleComponent,
+  FileuploadImageOverviewExampleComponent,
   MenuOverviewExampleComponent,
   ModalConfirmOverviewExampleComponent,
   ModalInfoOverviewExampleComponent,
