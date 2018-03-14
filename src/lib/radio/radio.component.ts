@@ -36,9 +36,9 @@ export class GtRadioComponent implements ControlValueAccessor {
 
   /** 是否禁用，默认为false，可选 */
   @Input() disabled: boolean;
-  
-  /** 点击事件 输出属性 */
-  @Output() onClick: EventEmitter<any> = new EventEmitter();
+
+  /** 单选框点击事件 */
+  @Output() onClick = new EventEmitter();
 
   /**
    * @docs-private
@@ -56,7 +56,7 @@ export class GtRadioComponent implements ControlValueAccessor {
   onTouchChange: Function = () => { };
 
   constructor(private cd: ChangeDetectorRef) { }
-  
+
   /**
    * @docs-private
    */
@@ -69,7 +69,7 @@ export class GtRadioComponent implements ControlValueAccessor {
       this.cd.markForCheck();
     }
   }
-  
+
   /**
    * @docs-private
    */

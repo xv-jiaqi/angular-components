@@ -57,6 +57,21 @@ export const menuList: GtMenus = [
         name: 'slider',
         link: '/slider',
         activeLink: '/slider'
+      },  {
+        label: 'Button',
+        name: 'button',
+        link: '/button',
+        activeLink: '/button'
+      },  {
+        label: 'Checkbox',
+        name: 'checkbox',
+        link: '/checkbox',
+        activeLink: '/checkbox'
+      }, {
+        label: 'Radio',
+        name: 'radio',
+        link: '/radio',
+        activeLink: '/radio'
       }, {
         label: 'FileUpload',
         name: 'fileupload',

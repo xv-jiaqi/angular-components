@@ -34,7 +34,7 @@ export class GtCheckboxComponent implements ControlValueAccessor {
   /** 自定义文本，可选 */
   @Input() label: string;
 
-  /** 是否选中 */
+  /** 是否选中，可选 */
   @Input()
   set checked(value: boolean) {
     this._checked = value;
@@ -51,19 +51,19 @@ export class GtCheckboxComponent implements ControlValueAccessor {
     return this._checked;
   }
 
-  /** 是否禁用 */
+  /** 是否禁用，可选 */
   @Input() disabled: boolean;
 
   /** 设置多选框value值，可选 */
   @Input() value: any;
 
-  /** 显示样式 */
+  /** 自定义样式，可选 */
   @Input() styleClass: string;
 
-  /** 是否 返回布尔值 */
+  /** 是否返回布尔值，可选 */
   @Input() returnBoolean: boolean;
 
-  /** 值更改事件 输出属性 */
+  /** 多选框值更改事件 */
   @Output() onChange = new EventEmitter();
 
   /**

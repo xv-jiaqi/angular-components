@@ -21,7 +21,16 @@ const routes: Routes = [
   }, {
     path: 'slider',
     component: ComponentViewComponent
-  },  {
+  }, {
+    path: 'button',
+    component: ComponentViewComponent
+  }, {
+    path: 'radio',
+    component: ComponentViewComponent
+  }, {
+    path: 'checkbox',
+    component: ComponentViewComponent
+  }, {
     path: 'fileupload',
     component: ComponentViewComponent
   }

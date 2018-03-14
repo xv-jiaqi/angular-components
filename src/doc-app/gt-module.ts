@@ -6,6 +6,9 @@ import {
   GtStepperModule,
   GtPaginationModule,
   GtSliderModule,
+  GtButtonModule,
+  GtCheckboxModule,
+  GtRadioModule,
   GtFileUploadModule
 } from 'get-ui-ng/base';
 
@@ -17,6 +20,9 @@ import {
     GtStepperModule,
     GtPaginationModule,
     GtSliderModule,
+    GtButtonModule,
+    GtCheckboxModule,
+    GtRadioModule,
     GtFileUploadModule
   ]
 })

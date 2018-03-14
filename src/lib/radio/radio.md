@@ -8,10 +8,16 @@
 
 | 属性             | 说明            |类型           |默认值          |
 |-----------------|-----------------|--------------|---------------|
-|`value`          |     指定值       |   `any`       | `null` |
-|`label`          |     左侧文案      |    `string`  |       -        |
-|`name`           |     复选框名称    |   `string`   |   -     |
-|`checked`        |  初始化选择状态    |  `boolean`   |  `false`  |
-|`disabled`       |  是否禁用         |  `boolean`   |  `false`  |
-|`returnBoolean`  |  返回布尔值       |  `boolean`   |  `false`  |
-|`styleClass`     |  添加样式类       |  `string`    |  -  |
+|`value`          |     设置单选框value值，可选       |   `string`       | - |
+|`label`          |     自定义文本，可选      |    `string`  |       -        |
+|`name`           |     设置单选框的名称，可选    |   `string`   |   -     |
+|`disabled`       |     是否禁用      |  `boolean`   |  `false`  |
+
+### Events
+
+#### gtRadiobox
+
+| 属性             | 说明            |参数           |
+|-----------------|-----------------|--------------|
+|`onClick`     | 单选框点击事件    | - |
+
