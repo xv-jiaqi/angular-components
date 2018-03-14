@@ -7,5 +7,6 @@ export * from 'get-ui-ng/base/pagination';
 export * from 'get-ui-ng/base/slider';
 export * from 'get-ui-ng/base/button';
 export * from 'get-ui-ng/base/checkbox';
+export * from 'get-ui-ng/base/radio';
 export * from 'get-ui-ng/base/table';
 export * from 'get-ui-ng/base/fileupload';

@@ -1,0 +1,9 @@
+<gt-radio label="value1" value="1" name="heihei" [(ngModel)]="key" (onClick)="getChange($event)"></gt-radio>
+<gt-radio label="value2" value="2" name="heihei" [(ngModel)]="key" (onClick)="getChange($event)"></gt-radio>
+<h4>返回 value: {{ key }}</h4>
+<h4>onClick 返回 对象: {{ returnObj | json }}</h4>
+<hr>
+
+<gt-radio [disabled]="true" value="1" [(ngModel)]="key"></gt-radio>
+<h4>禁用</h4>
+

@@ -47,6 +47,7 @@ System.config({
     'get-ui-ng/base/tabs': 'dist/packages/base/tabs/index.js',
     'get-ui-ng/base/button': 'dist/packages/base/button/index.js',
     'get-ui-ng/base/checkbox': 'dist/packages/base/checkbox/index.js',
+    'get-ui-ng/base/radio': 'dist/packages/base/radio/index.js',
     'get-ui-ng/base/select': 'dist/packages/base/select/index.js',
     'get-ui-ng/base/menu': 'dist/packages/base/menu/index.js',
     'get-ui-ng/base/modal': 'dist/packages/base/modal/index.js',

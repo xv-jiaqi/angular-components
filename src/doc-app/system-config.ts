@@ -53,6 +53,7 @@ System.config({
     'get-ui-ng/base/button': 'dist/packages/base/button/index.js',
     'get-ui-ng/base/table': 'dist/packages/base/table/index.js',
     'get-ui-ng/base/checkbox': 'dist/packages/base/checkbox/index.js',
+    'get-ui-ng/base/radio': 'dist/packages/base/radio/index.js',
     'get-ui-ng/base/fileupload': 'dist/packages/base/fileupload/index.js',
     'get-ui-ng/base': 'dist/packages/base/public-api.js'
   },

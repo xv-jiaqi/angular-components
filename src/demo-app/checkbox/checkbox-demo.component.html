@@ -1,12 +1,13 @@
-<gt-checkbox [label]="123" [returnBoolean]="true" [(ngModel)]="key1" (onChange)="getChange($event)"></gt-checkbox>
+<gt-checkbox [label]="123" 
+             [returnBoolean]="true" 
+             [(ngModel)]="key1" 
+             (onChange)="getChange($event)"></gt-checkbox>
 <h4>返回Boolean: {{key1}}</h4>
 <hr>
 <gt-checkbox label="key2" [value]="1" [(ngModel)]="key2"></gt-checkbox>
 <gt-checkbox label="key2" [value]="2" [(ngModel)]="key2"></gt-checkbox>
-<h4>返回value数组: {{ key2 | json}}</h4>
+<h4>返回value数组: {{ key2 | json }}</h4>
 <hr>
 <gt-checkbox [disabled]="true"></gt-checkbox>
 <gt-checkbox [disabled]="true" [checked]="true"></gt-checkbox>
 <h4>禁用</h4>
-
-

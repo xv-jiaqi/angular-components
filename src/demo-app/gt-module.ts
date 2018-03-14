@@ -9,6 +9,7 @@ import {
   GtSliderModule,
   GtButtonModule,
   GtCheckboxModule,
+  GtRadioModule,
   GtTableModule,
   GtFileUploadModule
 } from 'get-ui-ng/base';
@@ -22,6 +23,7 @@ import {
     GtModalModule,
     GtButtonModule,
     GtCheckboxModule,
+    GtRadioModule,
     GtPaginationModule,
     GtSliderModule,
     GtButtonModule,

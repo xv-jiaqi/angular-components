@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { TableDemoComponent } from './table/table-demo.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
+import { RadioDemoComponent } from './radio/radio-demo.component';
 import { FileUploadDemoComponent } from './fileupload/fileupload-demo.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FileUploadDemoComponent } from './fileupload/fileupload-demo.component'
     ModalDemoComponent,
     ButtonDemoComponent,
     CheckboxDemoComponent,
+    RadioDemoComponent,
     TableDemoComponent,
     PaginationDemoComponent,
     SliderDemoComponent,

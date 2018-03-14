@@ -1,0 +1,7 @@
+<label [ngClass]="'gt-radio'" 
+       [class.gt--disabled]="disabled">
+  <input type="radio" [attr.name]="name" [attr.value]="value" (change)="select()"
+         [disabled]="disabled" [checked]="checked" #rb>
+         <span class="gt-radio__style"></span>
+         <span class="gt-radio__txt">{{ label }}</span>
+</label>
