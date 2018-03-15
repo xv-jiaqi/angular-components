@@ -8,7 +8,7 @@
     "annotateForClosureCompiler": false,
     "strictMetadataEmit": true,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "get-ui-ng/base/modal",
+    "flatModuleId": "get-ui-ng/base/fileupload",
     "skipTemplateCodegen": true,
     "fullTemplateTypeCheck": true
   }
