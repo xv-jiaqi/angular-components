@@ -1,9 +1,9 @@
 import { ComponentRef, Injector, TemplateRef, ViewContainerRef } from '@angular/core';
 
 export abstract class GtPortal<T> {
-  private _portalOutlet: GtPortalOutlet | null;
+  private _portalOutlet: GtBasePortalOutlet | null;
 
-  attach(host: GtPortalOutlet): T {
+  attach(host: GtBasePortalOutlet): T {
     if (!host) {
       throw new Error('Portal host can not be null or undefined');
     }
@@ -31,12 +31,12 @@ export abstract class GtPortal<T> {
     return this._portalOutlet !== null;
   }
 
-  setPortalHost(host: GtPortalOutlet | null) {
+  setPortalHost(host: GtBasePortalOutlet | null) {
     this._portalOutlet = host;
   }
 }
 
-export class GtPortalOutlet {
+export class GtBasePortalOutlet {
   private _isDisposed: boolean = false;
 
   private _disposeFn: (() => void) | null;
@@ -105,7 +105,7 @@ export class GtTemplatePortal<T> extends GtPortal<T> {
     this.context = context;
   }
 
-  attach(host: GtPortalOutlet, context: T | undefined = this.context): T {
+  attach(host: GtBasePortalOutlet, context: T | undefined = this.context): T {
     this.context = context;
     return super.attach(host);
   }

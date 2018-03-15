@@ -6,7 +6,7 @@
        (click)="setSelectedIndex(i)">
       <span *ngIf="!tab.templateLabel" class="gt-tab__label">{{tab.textLabel}}</span>
       <ng-template [ngIf]="tab.templateLabel">
-        <ng-template [gtTemplatePortalOutlet]="tab.templateLabel"></ng-template>
+        <ng-template [gtPortalOutlet]="tab.templateLabel"></ng-template>
       </ng-template>
     </a>
   </gt-tab-header>
