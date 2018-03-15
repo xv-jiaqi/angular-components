@@ -19,6 +19,7 @@ System.config({
     'main': 'main.js',
     'tslib': 'node:tslib/tslib.js',
     'moment': 'node:moment/min/moment-with-locales.min.js',
+    'date-fns': 'node:date-fns/index.js',
 
     'ng2-file-upload': 'node:ng2-file-upload/bundles/ng2-file-upload.umd.js',
 

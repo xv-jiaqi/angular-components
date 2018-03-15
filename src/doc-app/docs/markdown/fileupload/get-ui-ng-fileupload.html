@@ -15,4 +15,155 @@
           图片上传
         </h4>
       <div gt-example-view="fileupload-image-overview-component"></div>
+
+        <h3 id="inputs" class="docs-header-link docs-markdown-h3">
+          <span header-link="inputs"></span>
+          Inputs
+        </h3>
+      <table class="docs-markdown-table">
+<thead>
+<tr class="docs-markdown-tr">
+<th class="docs-markdown-th">属性</th>
+<th class="docs-markdown-th">说明</th>
+<th class="docs-markdown-th">类型</th>
+<th class="docs-markdown-th">默认值</th>
+</tr>
+</thead>
+<tbody class="docs-markdown-tbody">
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">url</code></td>
+<td class="docs-markdown-td">上传文件的url</td>
+<td class="docs-markdown-td">string</td>
+<td class="docs-markdown-td"></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">hintMsg</code></td>
+<td class="docs-markdown-td">上传提示信息</td>
+<td class="docs-markdown-td">string</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">''</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">type</code></td>
+<td class="docs-markdown-td">上传类型</td>
+<td class="docs-markdown-td">GtFileUploadType</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">GtFileUploadType.OTHER</code></td>
+<td class="docs-markdown-td"></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">autoUpload</code></td>
+<td class="docs-markdown-td">是否自动上传</td>
+<td class="docs-markdown-td">boolean</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">true</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">allowedFileType</code></td>
+<td class="docs-markdown-td">允许上传的文件类型</td>
+<td class="docs-markdown-td">string[]</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">[]</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">method</code></td>
+<td class="docs-markdown-td">请求方式</td>
+<td class="docs-markdown-td">string</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">POST</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">disableMultipart</code></td>
+<td class="docs-markdown-td">是否允许多文件上传</td>
+<td class="docs-markdown-td">boolean</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">false</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">maxFileSize</code></td>
+<td class="docs-markdown-td">最大允许上传的文件大小</td>
+<td class="docs-markdown-td">number</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">1024 * 1024 * 1024</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">getErrorMsg</code></td>
+<td class="docs-markdown-td">传入的方法，根据响应、状态、请求头获取错误信息</td>
+<td class="docs-markdown-td">(response: string, status: number, headers: GtParsedResponseHeaders) =&gt; string</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">() =&gt; ''</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">isSuccess</code></td>
+<td class="docs-markdown-td">传入的方法，判断是否成功</td>
+<td class="docs-markdown-td">(response: string, status: number, headers: GtParsedResponseHeaders) =&gt; boolean</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">() =&gt; true</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">getInvalidMsg</code></td>
+<td class="docs-markdown-td">传入的方法，根据校验的错误类型获取校验错误信息</td>
+<td class="docs-markdown-td">(type: GtFileUploadInvalidType) =&gt; string</td>
+<td class="docs-markdown-td"></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">previewWidth</code></td>
+<td class="docs-markdown-td">预览的图片宽度</td>
+<td class="docs-markdown-td">number</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">120</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">previewHeight</code></td>
+<td class="docs-markdown-td">预览的图片宽度</td>
+<td class="docs-markdown-td">number</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">120</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">minWidth</code></td>
+<td class="docs-markdown-td">允许上传的图片最小宽度</td>
+<td class="docs-markdown-td">number</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">0</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">maxWidth</code></td>
+<td class="docs-markdown-td">允许上传的图片最大宽度</td>
+<td class="docs-markdown-td">number</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">1024 * 1024</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">minHeight</code></td>
+<td class="docs-markdown-td">允许上传的图片最小高度</td>
+<td class="docs-markdown-td">number</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">0</code></td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">maxHeight</code></td>
+<td class="docs-markdown-td">允许上传的图片最大高度</td>
+<td class="docs-markdown-td">number</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">1024 * 1024</code></td>
+</tr>
+</tbody>
+</table>
+
+        <h3 id="events" class="docs-header-link docs-markdown-h3">
+          <span header-link="events"></span>
+          Events
+        </h3>
+      <table class="docs-markdown-table">
+<thead>
+<tr class="docs-markdown-tr">
+<th class="docs-markdown-th">属性</th>
+<th class="docs-markdown-th">说明</th>
+<th class="docs-markdown-th">参数</th>
+</tr>
+</thead>
+<tbody class="docs-markdown-tbody">
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">success</code></td>
+<td class="docs-markdown-td">上传成功事件</td>
+<td class="docs-markdown-td">GtFileUploadSuccessEvent</td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">fail</code></td>
+<td class="docs-markdown-td">上传失败事件</td>
+<td class="docs-markdown-td">GtFileUploadFailEvent</td>
+</tr>
+<tr class="docs-markdown-tr">
+<td class="docs-markdown-td"><code class="docs-markdown-code">complete</code></td>
+<td class="docs-markdown-td">上传完成事件</td>
+<td class="docs-markdown-td">GtFileUploadCompleteEvent</td>
+</tr>
+</tbody>
+</table>
 </div></body></html>
