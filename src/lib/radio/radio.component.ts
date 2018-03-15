@@ -4,6 +4,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { GtRadioSelectType } from './radio.model';
+
 const GT_CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => GtRadioComponent),
@@ -38,7 +40,7 @@ export class GtRadioComponent implements ControlValueAccessor {
   @Input() disabled: boolean;
 
   /** 单选框点击事件 */
-  @Output() onClick = new EventEmitter();
+  @Output() onClick: EventEmitter<GtRadioSelectType> = new EventEmitter();
 
   /**
    * @docs-private
@@ -61,13 +63,14 @@ export class GtRadioComponent implements ControlValueAccessor {
    * @docs-private
    */
   writeValue(value: any): void {
-    if (value) {
-      this.checked = (value === this.value);
-      if (this.inputViewChild.nativeElement) {
-        this.inputViewChild.nativeElement.checked = this.checked;
-      }
-      this.cd.markForCheck();
-    }
+    if (value !== 0 && !value) { return; }
+
+    this.checked = (value === this.value);
+
+    if (this.inputViewChild.nativeElement) { this.inputViewChild.nativeElement.checked = this.checked; }
+
+    this.cd.markForCheck();
+
   }
 
   /**
@@ -88,20 +91,21 @@ export class GtRadioComponent implements ControlValueAccessor {
   * @docs-private
   */
   select() {
+    if (this.disabled) { return; }
+
     const eleInput = this.inputViewChild.nativeElement;
-    if (!this.disabled) {
-      eleInput.checked = !eleInput.checked;
-      this.checked = !this.checked;
-      if (this.checked) {
-        this.onModelChange(this.value);
-      } else {
-        this.onModelChange(null);
-      }
-      this.onClick.emit({
-        name: eleInput.name,
-        value: eleInput.value,
-        checked: this.checked
-      });
-    }
+
+    eleInput.checked = !eleInput.checked;
+
+    this.checked = !this.checked;
+
+    this.checked ? this.onModelChange(this.value) : this.onModelChange(null);
+
+    this.onClick.emit({
+      name: eleInput.name,
+      value: eleInput.value,
+      checked: this.checked
+    });
+
   }
 }

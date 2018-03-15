@@ -1,5 +1,5 @@
 import {
-  Component, Input, Output, Renderer2,
+  Component, Input, Output,
   EventEmitter, ElementRef, ViewChild, forwardRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -38,13 +38,11 @@ export class GtCheckboxComponent implements ControlValueAccessor {
   @Input()
   set checked(value: boolean) {
     this._checked = value;
-    if (!this.returnBoolean) {
-      if (value) {
-        this._addValue();
-      } else {
-        this._removeValue();
-      }
-    }
+
+    if (this.returnBoolean) { return; }
+
+    value ? this._addValue() : this._removeValue();
+
   }
 
   get checked() {
@@ -64,7 +62,7 @@ export class GtCheckboxComponent implements ControlValueAccessor {
   @Input() returnBoolean: boolean;
 
   /** 多选框值更改事件 */
-  @Output() onChange = new EventEmitter();
+  @Output() onChange: EventEmitter<boolean> = new EventEmitter();
 
   /**
    * @docs-private
@@ -76,47 +74,37 @@ export class GtCheckboxComponent implements ControlValueAccessor {
    */
   onTouchedChange: Function = () => { };
 
-  constructor(public renderer: Renderer2) {
-    this._checkedValue = [];
-  }
+  constructor() { this._checkedValue = []; }
 
   /**
    * @docs-private
    */
   writeValue(value: any): void {
-    if (value) {
-      this._checkedValue = value;
-      if (!this.returnBoolean && !Array.isArray(this._checkedValue)) {
-        this._checkedValue = [value];
-      }
-      this.checked = this._isChecked();
-    }
+    if (value !== 0 && !value) { return; }
+
+    this._checkedValue = value;
+
+    if (!this.returnBoolean && !Array.isArray(this._checkedValue)) { this._checkedValue = [value]; }
+
+    this.checked = this._isChecked();
+
   }
 
-  /**
-   * @docs-private
-   */
-  _isChecked(): any {
-    if (this.returnBoolean) {
-      return this._checkedValue;
-    }
+  private _isChecked(): any {
+    if (this.returnBoolean) { return this._checkedValue; }
+
     return this._checkedValue.indexOf(this.value) !== -1;
   }
 
-  /**
-   * @docs-private
-   */
   private _removeValue(): void {
     if (this.returnBoolean) {
       this._checkedValue = this.checked;
       return;
     }
+
     this._checkedValue = this._checkedValue.filter(val => val !== this.value);
   }
 
-  /**
-   * @docs-private
-   */
   private _addValue(): void {
     if (this._isChecked()) {
       return;
@@ -142,19 +130,12 @@ export class GtCheckboxComponent implements ControlValueAccessor {
    * @docs-private
    */
   onCheckboxChange(e: any): void {
-    if (!this.disabled) {
-      this.checked = e.target.checked;
-      if (!this.returnBoolean) {
-        if (this.checked) {
-          this._addValue();
-        } else {
-          this._removeValue();
-        }
-        this.onModelChange(this._checkedValue);
-      } else {
-        this.onModelChange(this.checked);
-      }
-      this.onChange.emit(this.checked);
-    }
+    if (this.disabled) { return; }
+
+    this.checked = e.target.checked;
+
+    this.returnBoolean ? this.onModelChange(this.checked) : (this.checked ? this._addValue() : (this._removeValue(), this.onModelChange(this._checkedValue)));
+
+    this.onChange.emit(this.checked);
   }
 }

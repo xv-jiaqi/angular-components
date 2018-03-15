@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { GtRadioSelectType } from 'get-ui-ng/base';
 @Component({
   moduleId: module.id,
   selector: 'gt-radio-demo',
@@ -17,7 +17,7 @@ export class RadioDemoComponent implements OnInit {
 
   }
 
-  getChange(e: any) {
+  getChange(e: GtRadioSelectType) {
     this.returnObj = e;
   }
 }
