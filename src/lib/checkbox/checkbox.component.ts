@@ -134,7 +134,7 @@ export class GtCheckboxComponent implements ControlValueAccessor {
 
     this.checked = e.target.checked;
 
-    this.returnBoolean ? this.onModelChange(this.checked) : (this.checked ? this._addValue() : (this._removeValue(), this.onModelChange(this._checkedValue)));
+    this.returnBoolean ? this.onModelChange(this.checked) : (this.checked ? this._addValue() : this._removeValue(), this.onModelChange(this._checkedValue));
 
     this.onChange.emit(this.checked);
   }
