@@ -13,7 +13,7 @@ export interface LiveExample {
   selectorName?: string | null;
 }
 
-import { FileuploadFileOverviewExampleComponent } from './fileuplaod-file-overview/fileupload-file-overview-example.component';
+import { FileuploadFileOverviewExampleComponent } from './fileupload-file-overview/fileupload-file-overview-example.component';
 import { FileuploadImageOverviewExampleComponent } from './fileupload-image-overview/fileupload-image-overview-example.component';
 import { MenuOverviewExampleComponent } from './menu-overview/menu-overview-example.component';
 import { ModalConfirmOverviewExampleComponent } from './modal-confirm-overview/modal-confirm-overview-example.component';

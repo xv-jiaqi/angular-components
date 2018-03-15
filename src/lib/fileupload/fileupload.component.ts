@@ -243,6 +243,12 @@ export class GtFileUploadComponent implements OnInit {
     };
   }
 
+  /**
+   * 校验文件类型是否符合要求
+   * @param {File} file
+   * @returns {boolean}
+   * @private
+   */
   private _checkFileType(file: File): boolean {
     if (!this.allowedFileType || this.allowedFileType.length === 0) {
       return true;
