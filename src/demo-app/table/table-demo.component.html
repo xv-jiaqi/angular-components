@@ -1,1 +1,2 @@
-<gt-table [columns]="columns" [data]="data"></gt-table>
+<button (click)="changeData()">gaibian</button>
+<gt-table [columns]="columns" [data]="data" [actions]="actions" [expand]="expand" (onCheckedRow)="onCheckedRow($event)" (onExpandRow)="onExpandRow($event)"></gt-table>
