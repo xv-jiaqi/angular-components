@@ -1,12 +1,15 @@
 import {
   ApplicationRef,
-  ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EmbeddedViewRef, Inject, Injector, Input, NgModule,
-  OnDestroy,
+  ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EmbeddedViewRef, EventEmitter, Inject, Injector, Input,
+  NgModule,
+  OnDestroy, Output,
   ViewContainerRef
 } from '@angular/core';
 import { GtComponentPortal, GtBasePortalOutlet, GtTemplatePortal, GtDomPortalOutlet } from './portal-base';
 import { GtPortal } from 'get-ui-ng/utils/portal/portal-base';
 import { DOCUMENT } from '@angular/common';
+
+export type GtPortalOutletAttachedRef = EmbeddedViewRef<any> | ComponentRef<any>;
 
 @Directive({
   selector: '[gtPortalOutlet]'
@@ -15,6 +18,8 @@ export class GtPortalOutlet<T> extends GtBasePortalOutlet implements OnDestroy {
   @Input() set gtPortalOutlet(value: GtTemplatePortal<any> | GtComponentPortal<any>) {
     this.attach(value);
   }
+
+  @Output() attached: EventEmitter<GtPortalOutletAttachedRef> = new EventEmitter();
 
   constructor(private _componentFactoryResolver: ComponentFactoryResolver,
               private _viewContainerRef: ViewContainerRef) {
@@ -29,6 +34,8 @@ export class GtPortalOutlet<T> extends GtBasePortalOutlet implements OnDestroy {
     const viewRef = this._viewContainerRef.createEmbeddedView(portal.templateRef, portal.context);
     super.setDisposeFn(() => this._viewContainerRef.clear());
     this._attachedPortal = portal;
+
+    this.attached.emit(viewRef);
     return viewRef;
   }
 
@@ -40,6 +47,8 @@ export class GtPortalOutlet<T> extends GtBasePortalOutlet implements OnDestroy {
       portal.injector || viewContainerRef.parentInjector);
 
     super.setDisposeFn(() => ref.destroy());
+
+    this.attached.emit(ref);
     return ref as any as ComponentRef<T>;
   }
 }
