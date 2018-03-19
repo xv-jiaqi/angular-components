@@ -1,12 +1,46 @@
 <table class="gt-table">
   <thead>
     <tr>
-      <th *ngFor="let _column of columns" [ngClass]="[_column.align?_column.align: 'tc']">{{ _column.label }}</th>
+      <th *ngIf="type.indexOf('select') === 0">
+        <input type="checkbox" [checked]="isCheckedAll" (click)="toggleAll($event)" [disabled]="isDisableCheckedAll">
+      </th>
+      <th *ngIf="ordinal">序号</th>
+      <ng-container *ngFor="let _column of columns">
+        <th *ngIf="!_column.hidden" [ngClass]="[_column.align?_column.align: 'tc']" [style.width]="_column.width?_column.width: 'auto'">{{ _column.label }}</th>
+      </ng-container>
+      <th *ngIf="actions">操作</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let _v of data">
-      <td *ngFor="let _column of columns" [ngClass]="[_column.align?_column.align: 'tc']">{{ _v[_column.field] }}</td>
+    <tr *ngIf="!data || data.length <= 0">
+      <td [attr.colspan]="colspanVal" class="table-no-data gt-no-data">
+        <div class="gt-no-data__bd">
+          <i class="gt-icon icon-sad"></i>
+          <p class="gt-no-data__text">暂无数据</p>
+        </div>
+      </td>
     </tr>
+    <ng-container *ngFor="let row of data;  let i=index;" >
+
+      <tr [ngClass]="{'gt-table__tr--point': expand}" (click)="clickRow(row, i)">
+        <td  *ngIf="type.indexOf('select') === 0">
+          <input type="checkbox" [checked]="row.isChecked" (click)="toggleRow(row, $event)">
+        </td>
+
+        <td *ngIf="ordinal">{{ i+1 }}</td>
+
+        <ng-container *ngFor="let _column of columns">
+          <td table-cell *ngIf="!_column.hidden" [row]="row" [column]="_column" [ngStyle]="getColumnStyle(row, row[_column.field], _column)" [ngClass]="[getColumnClass(row, row[_column.field], _column),_column.align?_column.align: 'tc']"></td>
+        </ng-container>
+
+        <td *ngIf="actions">
+          <table-actions [actions]="actions" [row]="row" [columns]="columns"></table-actions>
+        </td>
+      </tr>
+
+      <tr *ngIf="expand && row.expand_">
+        <td [attr.colspan]="colspanVal" table-expand-row [expand]="expand" [row]="row" [rowIndex]="i"></td>
+      </tr>
+    </ng-container>
   </tbody>
 </table>
