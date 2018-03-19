@@ -1,4 +1,8 @@
-import { ComponentRef, Injector, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  ApplicationRef,
+  ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injector, TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 
 export abstract class GtPortal<T> {
   private _portalOutlet: GtBasePortalOutlet | null;
@@ -36,7 +40,7 @@ export abstract class GtPortal<T> {
   }
 }
 
-export class GtBasePortalOutlet {
+export abstract class GtBasePortalOutlet {
   private _isDisposed: boolean = false;
 
   private _disposeFn: (() => void) | null;
@@ -49,6 +53,10 @@ export class GtBasePortalOutlet {
       this._disposeFn = null;
     }
   }
+
+  protected abstract _attachTemplatePortal<T>(portal: GtTemplatePortal<T>): EmbeddedViewRef<T>;
+
+  protected abstract _attachComponentPortal<T>(portal: GtComponentPortal<T>): ComponentRef<T>;
 
   attach(portal: GtPortal<any>): any {
     if (!portal) {
@@ -64,6 +72,15 @@ export class GtBasePortalOutlet {
     }
 
     this._attachedPortal = portal;
+
+    portal.setPortalHost(this);
+
+    if (portal instanceof GtTemplatePortal) {
+      return this._attachTemplatePortal(portal);
+    }
+    if (portal instanceof GtComponentPortal) {
+      return this._attachComponentPortal(portal);
+    }
   }
 
   detach(): void {
@@ -83,11 +100,65 @@ export class GtBasePortalOutlet {
   }
 
   get hasAttached(): boolean {
-    return this._attachedPortal !== null;
+    return this._attachedPortal !== null && this._attachedPortal !== undefined;
   }
 
   setDisposeFn(fn: () => void) {
     this._disposeFn = fn;
+  }
+}
+
+export class GtDomPortalOutlet extends GtBasePortalOutlet {
+  constructor(
+    public outletElement: Element,
+    private _componentFactoryResolver: ComponentFactoryResolver,
+    private _appRef: ApplicationRef,
+    private _defaultInjector: Injector
+  ) {
+    super();
+  }
+
+  private _getComponentRootNode(componentRef: ComponentRef<any>): HTMLElement {
+    return (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+  }
+
+  protected _attachTemplatePortal<T>(portal: GtTemplatePortal<T>): EmbeddedViewRef<T> {
+    let viewContainer = portal.viewContainerRef;
+    let viewRef = viewContainer.createEmbeddedView(portal.templateRef, portal.context);
+    viewRef.detectChanges();
+    viewRef.rootNodes.forEach(rootNode => this.outletElement.appendChild(rootNode));
+
+    this.setDisposeFn((() => {
+      let index = viewContainer.indexOf(viewRef);
+      if (index !== -1) {
+        viewContainer.remove(index);
+      }
+    }));
+
+    return viewRef;
+  }
+
+  protected _attachComponentPortal<T>(portal: GtComponentPortal<T>): ComponentRef<T> {
+    const componentFactory = this._componentFactoryResolver.resolveComponentFactory(portal.component);
+
+    let ref: ComponentRef<T>;
+    if (portal.viewContainerRef) {
+      ref = portal.viewContainerRef.createComponent(componentFactory,
+        portal.viewContainerRef.length,
+        portal.injector || portal.viewContainerRef.parentInjector);
+
+      this.setDisposeFn(() => ref.destroy());
+    } else {
+      ref = componentFactory.create(portal.injector || this._defaultInjector);
+      this._appRef.attachView(ref.hostView);
+      this.setDisposeFn(() => {
+        this._appRef.detachView(ref.hostView);
+        ref.destroy();
+      });
+    }
+
+    this.outletElement.appendChild(this._getComponentRootNode(ref));
+    return ref;
   }
 }
 
