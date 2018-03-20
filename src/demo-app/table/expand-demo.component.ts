@@ -2,7 +2,7 @@ import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'expand-demo',
-  template: `{{row[column.field]}}`
+  template: `{{row.id}}`
 })
 export class ExpandDemoComponent implements OnInit {
   @Input() row: any;

@@ -1,39 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 
-//import { SliderDemoComponent } from '../slider/slider-demo.component';
-import { ExpandDemoComponent } from './expand-demo.component';
 @Component({
-  moduleId: module.id,
-  selector: 'gt-table-demo',
-  templateUrl: './table-demo.component.html',
-  styleUrls: ['./table-demo.component.css']
+    moduleId: module.id,
+    styleUrls: ['./table-overview-example.component.css'],
+    templateUrl: './table-overview-example.component.html'
 })
-
-export class TableDemoComponent implements OnInit {
+export class TableOverviewExampleComponent implements OnInit {
   columns = [
-    {
-      id: 'firstName',
-      field: 'firstName',
-      label: '姓',
-      width: '400px',
-      sort: true,
-      sortOrder: 'asc',
-      sortKey: 'first_name',
-      component: ExpandDemoComponent,
-      style: () => {
-        return {'color': 'red'};
+      {
+        id: 'firstName',
+        field: 'firstName',
+        label: '姓',
+        width: '400px',
+        sort: true,
+        sortOrder: 'asc',
+        sortKey: 'first_name',
+        style: () => {
+          return {'color': 'red'};
+        },
+        hidden: false
       },
-      hidden: false
-    },
-    {
-      id: 'lastName',
-      field: 'lastName',
-      label: '名',
-      sort: true,
-      style: {
-        'color': 'red'
+      {
+        id: 'lastName',
+        field: 'lastName',
+        label: '名',
+        sort: true,
+        style: {
+          'color': 'red'
+        }
       }
-    }
   ];
   data =  [
     {
@@ -68,7 +63,6 @@ export class TableDemoComponent implements OnInit {
       }//点击后的回调
     }
   ];
-  expand = ExpandDemoComponent;
   sortStatus = {};
   constructor() {
 
