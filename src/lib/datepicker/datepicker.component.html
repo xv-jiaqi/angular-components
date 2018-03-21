@@ -1,14 +1,14 @@
-<div class="gt-date gt-dropdown-wrap--open" [class.gt-dropdown-wrap--open]="isOpened">
+<section class="gt-date gt-dropdown-wrap--open" [class.gt-dropdown-wrap--open]="isOpened">
   <input type="text" class="gt-form-control" readonly placeholder="选择日期" [(ngModel)]="displayValue"
          [class.gt--focus]="isOpened" (click)="toggle()"/>
   <div class="gt-date__container">
-    <div class="gt-date__hd">
+    <section class="gt-date__hd">
       <a class="gt-date__btn-left" (click)="prevMonth()"><i class="gt-icon icon-arrow-left"></i></a>
-      <span class="gt-date__hd-center">{{barTitle}}</span>
+      <span class="gt-date__hd-center" (click)="toggleView()">{{barTitle}}</span>
       <a class="gt-date__hd-short" (click)="goToday()">今天</a>
       <a class="gt-date__btn-right" (click)="nextMonth()"><i class="gt-icon icon-arrow-right"></i></a>
-    </div>
-    <div class="gt-date__bd">
+    </section>
+    <section class="gt-date__bd" *ngIf="view === 'days'">
       <table class="gt-date__table">
         <thead>
         <tr>
@@ -25,7 +25,17 @@
         </tr>
         </tbody>
       </table>
-    </div>
+    </section>
+    <section class="gt-date__bd" *ngIf="view === 'years'">
+      <div class="gt-date_years">
+        <p class="year" *ngFor="let year of years; let i = index" [class.gt-date--thisYear]="year.isThisYear" (click)="setYear(year.year)">{{year.year}}</p>
+      </div>
+    </section>
+    <section class="gt-date__bd" *ngIf="view === 'months'">
+      <div class="gt-date_years">
+        <p class="year" *ngFor="let month of months; let i = index" [class.gt-date--thisMonth]="month.isThisMonth" (click)="setMonth(month.month)">{{month.month + 1}}</p>
+      </div>
+    </section>
   </div>
-</div>
+</section>
 
