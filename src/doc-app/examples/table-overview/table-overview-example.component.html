@@ -1,0 +1,10 @@
+<div>
+<gt-table specialClass="gt-table--bordered gt-table--hover"
+          [columns]="columns"
+          [data]="data"
+          [actions]="actions"
+          (onCheckedRow)="onCheckedRow($event)"
+          (onExpandRow)="onExpandRow($event)"
+          (onSortStateChange)="onSortStateChange($event)"></gt-table>
+  <h4 class="mt-xl">排除信息:  {{ sortStatus | json }}</h4>
+</div>

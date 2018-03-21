@@ -1,11 +1,17 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  GtActionOtion
+} from './table';
 
 @Component({
   selector: 'table-actions',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
       <ng-container *ngFor="let action of actions" >
-        <a href="#" class="gt-table__opera-link" *ngIf="!action.hidden" [innerHTML]="action.label" (click)="onCustom(action, $event)"></a>
+        <ng-container  *ngIf="!isHidden(action)">
+          <a href="#" class="gt-table__opera-link" *ngIf="!isDisabled(action)" [innerHTML]="action.label" (click)="onCustom(action, $event)"></a>
+          <span class="disabled no-wrap" *ngIf="isDisabled(action)" [innerHTML]="action.label"></span>
+        </ng-container>
       </ng-container>
     `
 })
@@ -14,7 +20,7 @@ export class TableActionsComponent {
   /** 这一行的值 */
   @Input() row: any;
   /** 按钮配置 */
-  @Input() actions: any;
+  @Input() actions: GtActionOtion[];
   /** 列的配置 */
   @Input() columns: any;
   /** 按钮点击事件 */
@@ -22,21 +28,42 @@ export class TableActionsComponent {
 
   /**
    * @docs-private
-   * @param action
-   * @param event
    */
-  onCustom(action: any, event: any) {
+  onCustom(action: GtActionOtion, event: any): void{
     event.preventDefault();
     event.stopPropagation();
-
     if (action.click) {
       action.click(this.row);
     }
-    if (action.needPop) {
-      this.custom.emit({
-        action: action.name,
-        data: this.row
-      })
+  }
+
+  /**
+   * @docs-private
+   */
+  isHidden(action: GtActionOtion): boolean {
+    if (action.hidden) {
+      if (this._isFunction(action.hidden)) {
+        return action.hidden(this.row);
+      }
+      return action.hidden;
     }
+    return false;
+  }
+
+  /**
+   * @docs-private
+   */
+  isDisabled(action: GtActionOtion): boolean {
+    if (action.disabled) {
+      if (this._isFunction(action.disabled)) {
+        return action.disabled(this.row);
+      }
+      return action.disabled;
+    }
+    return false;
+  }
+
+  private _isFunction(val: any): boolean {
+    return val && Object.prototype.toString.call(val) === '[object Function]';
   }
 }

@@ -1,2 +1,4 @@
-<button (click)="changeData()">gaibian</button>
-<gt-table [columns]="columns" [data]="data" [actions]="actions" [expand]="expand" (onCheckedRow)="onCheckedRow($event)" (onExpandRow)="onExpandRow($event)"></gt-table>
+<div>
+<gt-table specialClass="gt-table--bordered gt-table--hover" [columns]="columns" [data]="data" [actions]="actions" [expand]="expand" (onCheckedRow)="onCheckedRow($event)" (onExpandRow)="onExpandRow($event)" (onSortStateChange)="onSortStateChange($event)"></gt-table>
+  <h2>排除信息:  {{ sortStatus | json }}</h2>
+</div>

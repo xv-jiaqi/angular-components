@@ -9,8 +9,9 @@ import {
   GtButtonModule,
   GtCheckboxModule,
   GtRadioModule,
+  GtPopoverModule,
   GtFileUploadModule,
-  GtPopoverModule
+  GtTableModule
 } from 'get-ui-ng/base';
 
 @NgModule({
@@ -25,7 +26,8 @@ import {
     GtCheckboxModule,
     GtRadioModule,
     GtFileUploadModule,
-    GtPopoverModule
+    GtPopoverModule,
+    GtTableModule
   ]
 })
 

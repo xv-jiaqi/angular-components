@@ -2,10 +2,11 @@ import {Component, OnInit, Input, OnChanges, SimpleChanges, forwardRef} from '@a
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import {
   startOfMonth, endOfMonth, addMonths, subMonths,
-  setYear, eachDay,
+  setYear, eachDay, setMonth,
   getDate, getMonth, getYear,
   isToday, isSameDay, isSameMonth, isSameYear,
   getDay, subDays, addDays, setDay, format} from 'date-fns';
+import {months} from 'moment';
 
 export interface DatepickerOptions {
   minYear?: number;
@@ -17,6 +18,7 @@ export interface DatepickerOptions {
   minDate?: Date;
   maxDate?: Date;
   lang?: string;
+  viewTypes?: string[];
 }
 
 export interface IDayTypes {
@@ -99,7 +101,10 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   firstCalendarDay: number;
   weekdayNames: string[];
   weekdayNamesFormat: string;
+  months: {month: number, isThisMonth: boolean}[];
   lang: string;
+  view: string;
+  viewTypes: string[];
   years: {year: number; isThisYear: boolean}[];
 
   days: IDayTypes[][];
@@ -146,10 +151,12 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   ngOnInit() {
+    this.view = 'days';
     this.date = new Date();
     this.setOptions();
     this.initDayNames();
     this.initYears();
+    this.initMonths();
     // this.options = this.options ? this.options : {};
     // this.local = this.local[this.lang];
     // console.log(this.options, this, 'options');
@@ -161,11 +168,14 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
       this.initDayNames();
       this.init();
       this.initYears();
+      this.initMonths();
     }
   }
 
   setOptions(): void {
     const today = new Date();
+    this.viewTypes = this.options.viewTypes || ['days', 'months', 'years'];
+    this.view = this.viewTypes[0];
     this.minYear = this.options.minYear || getYear(today) - 30;
     this.maxYear = this.options.maxYear || getYear(today) + 30;
     this.displayFormat = this.options.displayFormat || 'YYYY-MM-DD';
@@ -229,7 +239,20 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     const range = this.maxYear - this.minYear;
 
     this.years = Array.from(new Array(range).fill(this.minYear), (minYear, index) => {
-      return {year: minYear + index, isThisYear: minYear + index === getYear(this.date)};
+      return {
+        year: minYear + index,
+        isThisYear: minYear + index === getYear(this.date)
+      };
+    });
+  }
+
+  initMonths(): void {
+    // TODO 这里逻辑需要重构
+    this.months = Array.from(new Array(12), (month, index) => {
+      return {
+        month: month || index,
+        isThisMonth: index === getMonth(this.date)
+      };
     });
   }
 
@@ -241,6 +264,17 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   nextMonth(): void {
     this.date = addMonths(this.date, 1);
     this.init();
+  }
+
+  toggleView(target?: string): void {
+    if (target && this.viewTypes.includes(target)) {
+      this.view = target;
+      return;
+    }
+
+    const index = this.viewTypes.findIndex(view => view === this.view);
+
+    this.view = index + 1 < this.viewTypes.length ? this.viewTypes[index + 1] : this.viewTypes[0];
   }
 
   goToday() {
@@ -255,6 +289,20 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     this.displayValue = `${getYear(date)}-${getMonth(date) + 1}-${getDate(date)}`;
     this.init();
     this.close();
+  }
+
+  setMonth(month: number): void {
+    this.date = setMonth(this.date, month);
+    this.init();
+    this.initYears();
+    this.toggleView('days');
+  }
+
+  setYear(year: number): void {
+    this.date = setYear(this.date, year);
+    this.init();
+    this.initMonths();
+    this.toggleView('months');
   }
 
   toggle(): void {

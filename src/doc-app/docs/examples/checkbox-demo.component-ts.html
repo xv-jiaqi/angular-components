@@ -1,0 +1,24 @@
+<span class="hljs-keyword">import</span> {Component, OnInit} <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-meta">@Component</span>({
+  moduleId: <span class="hljs-built_in">module</span>.id,
+  selector: <span class="hljs-string">'gt-checkbox-demo'</span>,
+  templateUrl: <span class="hljs-string">'./checkbox-demo.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./checkbox-demo.component.css'</span>]
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CheckboxDemoComponent <span class="hljs-keyword">implements</span> OnInit {
+  key1 = <span class="hljs-literal">true</span>;
+  key2 = [<span class="hljs-number">1</span>];
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+  }
+
+  ngOnInit() {
+
+  }
+
+  getChange(e: <span class="hljs-built_in">boolean</span>) {
+    <span class="hljs-built_in">console</span>.log(e);
+  }
+}

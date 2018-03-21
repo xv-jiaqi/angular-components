@@ -59,7 +59,6 @@ export class TableCellComponent implements AfterViewInit, OnDestroy {
       instance['column'] = this.column;
       instance['field'] = this.column.field;
       instance['value'] = this.getValue();
-      console.log(instance);
       this._componentRef.changeDetectorRef.detectChanges();
     }
   }

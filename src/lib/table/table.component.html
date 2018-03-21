@@ -1,4 +1,4 @@
-<table class="gt-table">
+<table [ngClass]="['gt-table',specialClass]">
   <thead>
     <tr>
       <th *ngIf="type.indexOf('select') === 0">
@@ -6,7 +6,13 @@
       </th>
       <th *ngIf="ordinal">序号</th>
       <ng-container *ngFor="let _column of columns">
-        <th *ngIf="!_column.hidden" [ngClass]="[_column.align?_column.align: 'tc']" [style.width]="_column.width?_column.width: 'auto'">{{ _column.label }}</th>
+        <th *ngIf="!_column.hidden"
+            (click)="columnHeaderClick($event, _column)"
+            [ngClass]="[_column.align?_column.align: 'tc', _column.sort?'gt-table__sort': '', _column.sortOrder === 'desc'?'gt-table__sort--desc': '', _column.sortOrder === 'asc'?'gt-table__sort--asc': '']"
+            [style.width]="_column.width?_column.width: 'auto'">
+          {{ _column.label }}
+          <span *ngIf="_column.sort" class="gt-table__sort__indicator"></span>
+        </th>
       </ng-container>
       <th *ngIf="actions">操作</th>
     </tr>

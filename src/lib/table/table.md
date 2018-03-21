@@ -1,1 +1,3 @@
-table
+### Examples
+
+<!-- example(table-overview) -->

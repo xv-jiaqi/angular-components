@@ -14,7 +14,7 @@ import {
 @Component({
   selector: '[table-expand-row]',
   template: `
-      <ng-template #expandContainer></ng-template><button (click)="ceishi()">2223666</button>
+      <ng-template #expandContainer></ng-template>
     `
 })
 export class TableExpandRowComponent implements AfterViewInit, OnInit, OnDestroy {
@@ -55,10 +55,5 @@ export class TableExpandRowComponent implements AfterViewInit, OnInit, OnDestroy
     instance['rowIndex'] = this.rowIndex;
     console.log(instance);
     this._componentRef.changeDetectorRef.detectChanges();
-  }
-  ceishi() {
-    console.log(this.row)
-    console.log(this.rowIndex)
-    this.row.expand_ = !this.row.expand_;
   }
 }

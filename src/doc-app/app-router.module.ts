@@ -36,6 +36,9 @@ const routes: Routes = [
   }, {
     path: 'popover',
     component: ComponentViewComponent
+  }, {
+    path: 'table',
+    component: ComponentViewComponent
   }
 ];
 
