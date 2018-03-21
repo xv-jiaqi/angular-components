@@ -30,6 +30,7 @@ export const rollupGlobals = {
   'moment': 'moment',
 
   'ng2-file-upload': 'ng2FileUpload',
+  'date-fns': 'dateFns',
 
   '@angular/animations': 'ng.animations',
   '@angular/core': 'ng.core',
@@ -85,4 +86,5 @@ export const rollupGlobals = {
   'rxjs/operators/share': 'Rx.operators',
   'rxjs/operators/delay': 'Rx.operators',
   'rxjs/operators/combineLatest': 'Rx.operators',
+  'rxjs/operators/throttleTime': 'Rx.operators',
 };

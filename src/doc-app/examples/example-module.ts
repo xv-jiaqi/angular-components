@@ -21,6 +21,7 @@ import { ModalInfoOverviewExampleComponent } from './modal-info-overview/modal-i
 import { ModalToastOverviewExampleComponent } from './modal-toast-overview/modal-toast-overview-example.component';
 import { ModalWrapOverviewExampleComponent } from './modal-wrap-overview/modal-wrap-overview-example.component';
 import { PaginationOverviewComponent } from './pagination-overview/pagination-overview-example.component';
+import { PopoverOverviewExampleComponent } from './popover-overview/popover-overview-example.component';
 import { SliderOverviewExampleComponent } from './slider-overview/slider-overview-example.component';
 import { StepperOverviewExampleComponent } from './stepper-overview/stepper-overview-example.component';
 import { TabsOverviewExampleComponent } from './tabs-overview/tabs-overview-example.component';
@@ -74,6 +75,12 @@ export const EXAMPLE_COMPONENTS: {[key: string]: LiveExample} = {
     additionalFiles: null,
     selectorName: null
   },
+  'popover-overview-component': {
+    title: 'Popover',
+    component: PopoverOverviewExampleComponent,
+    additionalFiles: null,
+    selectorName: null
+  },
   'slider-overview-component': {
     title: 'Slider',
     component: SliderOverviewExampleComponent,
@@ -103,6 +110,7 @@ export const EXAMPLE_LIST = [
   ModalToastOverviewExampleComponent,
   ModalWrapOverviewExampleComponent,
   PaginationOverviewComponent,
+  PopoverOverviewExampleComponent,
   SliderOverviewExampleComponent,
   StepperOverviewExampleComponent,
   TabsOverviewExampleComponent,

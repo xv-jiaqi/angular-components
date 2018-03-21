@@ -33,6 +33,9 @@ const routes: Routes = [
   }, {
     path: 'fileupload',
     component: ComponentViewComponent
+  }, {
+    path: 'popover',
+    component: ComponentViewComponent
   }
 ];
 

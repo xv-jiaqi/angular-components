@@ -1,0 +1,8 @@
+.wrap {
+  overflow: hidden;
+}
+
+.content {
+  float: left;
+  margin: 20px;
+}

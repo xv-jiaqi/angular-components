@@ -57,6 +57,7 @@ System.config({
     'get-ui-ng/base/slider': 'dist/packages/base/slider/index.js',
     'get-ui-ng/base/table': 'dist/packages/base/table/index.js',
     'get-ui-ng/base/fileupload': 'dist/packages/base/fileupload/index.js',
+    'get-ui-ng/base/popover': 'dist/packages/base/popover/index.js',
     'get-ui-ng/base': 'dist/packages/base/public-api.js'
   },
   packages: {

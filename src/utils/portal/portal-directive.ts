@@ -61,9 +61,11 @@ export class GtRootPortalOutlet extends GtBasePortalOutlet {
     this.attach(value);
   }
 
+  @Output() attached: EventEmitter<GtPortalOutletAttachedRef> = new EventEmitter();
+
   private _domPortalOutlet: GtDomPortalOutlet;
 
-  public element: HTMLElement;
+  private _element: HTMLElement;
 
   constructor(
     private _componentFactoryResolver: ComponentFactoryResolver,
@@ -75,28 +77,32 @@ export class GtRootPortalOutlet extends GtBasePortalOutlet {
   }
 
   private _createAndAppendElement() {
-    this.element = this._document.createElement('div');
+    this._element = this._document.createElement('div');
   }
 
   protected _attachTemplatePortal<T>(portal: GtTemplatePortal<T>): EmbeddedViewRef<T> {
-    return this._domPortalOutlet.attach(portal);
+    const viewRef = this._domPortalOutlet.attach(portal);
+    this.attached.emit(viewRef);
+    return viewRef;
   };
 
   protected _attachComponentPortal<T>(portal: GtComponentPortal<T>): ComponentRef<T> {
-    return this._domPortalOutlet.attach(portal);
+    const componentRef = this._domPortalOutlet.attach(portal);
+    this.attached.emit(componentRef);
+    return componentRef;
   };
 
   attach(portal: GtPortal<any>) {
-    if (!this.element) {
+    if (!this._element) {
       this._createAndAppendElement();
     }
-    this.element.innerText = '';
-    this._domPortalOutlet = new GtDomPortalOutlet(this.element, this._componentFactoryResolver, this._appRef, this._injector);
+    this._element.innerText = '';
+    this._domPortalOutlet = new GtDomPortalOutlet(this._element, this._componentFactoryResolver, this._appRef, this._injector);
     super.attach(portal);
-    this._document.body.append(this.element);
+    this._document.body.append(this._element);
 
     this.setDisposeFn(() => {
-      this._document.removeChild(this.element);
+      this._document.body.removeChild(this._element);
       this._domPortalOutlet.dispose();
     })
   }

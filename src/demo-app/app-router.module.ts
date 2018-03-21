@@ -11,6 +11,7 @@ import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { RadioDemoComponent } from './radio/radio-demo.component';
 import {TableDemoComponent} from './table/table-demo.component';
 import { FileUploadDemoComponent } from './fileupload/fileupload-demo.component';
+import { PopoverDemoComponent } from './popover/popover-demo.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,9 @@ const routes: Routes = [
   }, {
     path: 'fileupload',
     component: FileUploadDemoComponent
+  }, {
+    path: 'popover',
+    component: PopoverDemoComponent
   }
 ];
 

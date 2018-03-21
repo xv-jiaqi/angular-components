@@ -1,0 +1,21 @@
+<ng-content></ng-content>
+<ng-template gtPopoverRoot>
+  <div class="gt-tooltip" [ngClass]="{
+    'gt-tooltip--top': align === 'TOP',
+    'gt-tooltip--left': align === 'LEFT',
+    'gt-tooltip--right': align === 'RIGHT'
+  }" style="position: absolute; display: block;" [ngStyle]="{
+    left: left + 'px',
+    top: top + 'px',
+    visibility: display ? null : 'hidden'
+  }">
+    <span [ngClass]="{
+      'gt-arrow-bottom': align === 'TOP',
+      'gt-arrow-left': align === 'RIGHT',
+      'gt-arrow-top': align === 'BOTTOM',
+      'gt-arrow-right': align === 'LEFT'
+    }"></span>
+    <ng-template [gtPortalOutlet]="content"></ng-template>
+  </div>
+</ng-template>
+<ng-template [gtRootPortalOutlet]="root" (attached)="doAttached($event)"></ng-template>

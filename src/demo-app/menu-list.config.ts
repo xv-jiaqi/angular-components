@@ -34,6 +34,11 @@ export const menuList: GtMenus = [
         name: 'modal',
         link: '/modal',
         activeLink: '/modal'
+      }, {
+        label: 'Popover',
+        name: 'popover',
+        link: '/popover',
+        activeLink: 'popover'
       }
     ]
   }, {

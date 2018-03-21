@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { fromEvent } from 'rxjs/observable/fromEvent';
-import 'rxjs/add/operator/throttleTime';
+import { throttleTime } from 'rxjs/operators/throttleTime';
 
 /**
  * Provider Expression that allows gt-slider to register as a ControlValueAccessor.
@@ -144,7 +144,7 @@ export class GtSliderComponent implements ControlValueAccessor, AfterContentInit
     }
 
     const mouseMoveStream = fromEvent(document, 'mousemove');
-    const eventStream = mouseMoveStream.throttleTime(10);
+    const eventStream = mouseMoveStream.pipe(throttleTime(10));
     const listener = eventStream.subscribe(mouseMoveHandle);
 
     function mouseUpHandle() {
