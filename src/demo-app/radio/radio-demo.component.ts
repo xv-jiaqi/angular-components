@@ -10,6 +10,7 @@ import { GtRadioSelectType } from 'get-ui-ng/base';
 export class RadioDemoComponent implements OnInit {
   key = '1';
   returnObj: any;
+
   constructor() {
   }
 
