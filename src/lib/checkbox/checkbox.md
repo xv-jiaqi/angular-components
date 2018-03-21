@@ -1,6 +1,6 @@
 ### Examples
 
-<!-- example(menu-overview) -->
+<!-- example(checkbox-overview) -->
 
 ### Inputs
 

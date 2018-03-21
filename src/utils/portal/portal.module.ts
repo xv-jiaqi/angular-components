@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GtPortalOutlet } from './portal-directive';
+import { GtPortalOutlet, GtRootPortalOutlet } from './portal-directive';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    GtPortalOutlet
+    GtPortalOutlet,
+    GtRootPortalOutlet
   ],
   exports: [
-    GtPortalOutlet
+    GtPortalOutlet,
+    GtRootPortalOutlet
   ]
 })
 export class GtPortalModule { }

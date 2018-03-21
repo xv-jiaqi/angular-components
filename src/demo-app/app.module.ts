@@ -15,7 +15,7 @@ import { ButtonDemoComponent } from './button/button-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { RadioDemoComponent } from './radio/radio-demo.component';
 import { FileUploadDemoComponent } from './fileupload/fileupload-demo.component';
-
+import { ExpandDemoComponent } from './table/expand-demo.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -35,7 +35,11 @@ import { FileUploadDemoComponent } from './fileupload/fileupload-demo.component'
     TableDemoComponent,
     PaginationDemoComponent,
     SliderDemoComponent,
-    FileUploadDemoComponent
+    FileUploadDemoComponent,
+    ExpandDemoComponent
+  ],
+  entryComponents: [
+    ExpandDemoComponent
   ],
   bootstrap: [
     AppComponent

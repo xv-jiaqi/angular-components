@@ -3,16 +3,16 @@
           <span header-link="examples"></span>
           Examples
         </h3>
-      <div gt-example-view="checkbox-overview-component"></div>
+      <div gt-example-view="menu-overview-component"></div>
 
         <h3 id="inputs" class="docs-header-link docs-markdown-h3">
           <span header-link="inputs"></span>
           Inputs
         </h3>
       
-        <h4 id="gtcheckbox" class="docs-header-link docs-markdown-h4">
-          <span header-link="gtcheckbox"></span>
-          gtCheckbox
+        <h4 id="gtradiobox" class="docs-header-link docs-markdown-h4">
+          <span header-link="gtradiobox"></span>
+          gtRadiobox
         </h4>
       <table class="docs-markdown-table">
 <thead>
@@ -26,9 +26,9 @@
 <tbody class="docs-markdown-tbody">
 <tr class="docs-markdown-tr">
 <td class="docs-markdown-td"><code class="docs-markdown-code">value</code></td>
-<td class="docs-markdown-td">设置多选框value值，可选</td>
-<td class="docs-markdown-td"><code class="docs-markdown-code">any</code></td>
-<td class="docs-markdown-td"><code class="docs-markdown-code">null</code></td>
+<td class="docs-markdown-td">设置单选框value值，可选</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">string</code></td>
+<td class="docs-markdown-td">-</td>
 </tr>
 <tr class="docs-markdown-tr">
 <td class="docs-markdown-td"><code class="docs-markdown-code">label</code></td>
@@ -38,39 +38,15 @@
 </tr>
 <tr class="docs-markdown-tr">
 <td class="docs-markdown-td"><code class="docs-markdown-code">name</code></td>
-<td class="docs-markdown-td">设置多选框的名称，可选</td>
+<td class="docs-markdown-td">设置单选框的名称，可选</td>
 <td class="docs-markdown-td"><code class="docs-markdown-code">string</code></td>
 <td class="docs-markdown-td">-</td>
-</tr>
-<tr class="docs-markdown-tr">
-<td class="docs-markdown-td"><code class="docs-markdown-code">checked</code></td>
-<td class="docs-markdown-td">是否选中，可选</td>
-<td class="docs-markdown-td"><code class="docs-markdown-code">boolean</code></td>
-<td class="docs-markdown-td"><code class="docs-markdown-code">false</code></td>
 </tr>
 <tr class="docs-markdown-tr">
 <td class="docs-markdown-td"><code class="docs-markdown-code">disabled</code></td>
-<td class="docs-markdown-td">是否禁用，可选</td>
+<td class="docs-markdown-td">是否禁用</td>
 <td class="docs-markdown-td"><code class="docs-markdown-code">boolean</code></td>
 <td class="docs-markdown-td"><code class="docs-markdown-code">false</code></td>
-</tr>
-<tr class="docs-markdown-tr">
-<td class="docs-markdown-td"><code class="docs-markdown-code">returnBoolean</code></td>
-<td class="docs-markdown-td">是否返回布尔值，可选</td>
-<td class="docs-markdown-td"><code class="docs-markdown-code">boolean</code></td>
-<td class="docs-markdown-td"><code class="docs-markdown-code">false</code></td>
-</tr>
-<tr class="docs-markdown-tr">
-<td class="docs-markdown-td"><code class="docs-markdown-code">styleClass</code></td>
-<td class="docs-markdown-td">自定义样式，可选</td>
-<td class="docs-markdown-td"><code class="docs-markdown-code">string</code></td>
-<td class="docs-markdown-td">-</td>
-</tr>
-<tr class="docs-markdown-tr">
-<td class="docs-markdown-td"><code class="docs-markdown-code">onChange</code></td>
-<td class="docs-markdown-td">监听值更改事件</td>
-<td class="docs-markdown-td"><code class="docs-markdown-code">function</code></td>
-<td class="docs-markdown-td">-</td>
 </tr>
 </tbody>
 </table>
@@ -80,9 +56,9 @@
           Events
         </h3>
       
-        <h4 id="gtcheckbox" class="docs-header-link docs-markdown-h4">
-          <span header-link="gtcheckbox"></span>
-          gtCheckbox
+        <h4 id="gtradiobox" class="docs-header-link docs-markdown-h4">
+          <span header-link="gtradiobox"></span>
+          gtRadiobox
         </h4>
       <table class="docs-markdown-table">
 <thead>
@@ -94,8 +70,8 @@
 </thead>
 <tbody class="docs-markdown-tbody">
 <tr class="docs-markdown-tr">
-<td class="docs-markdown-td"><code class="docs-markdown-code">onChange</code></td>
-<td class="docs-markdown-td">多选框值更改事件</td>
+<td class="docs-markdown-td"><code class="docs-markdown-code">onClick</code></td>
+<td class="docs-markdown-td">单选框点击事件</td>
 <td class="docs-markdown-td">-</td>
 </tr>
 </tbody>
