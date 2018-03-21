@@ -25,7 +25,7 @@ import { PopoverOverviewExampleComponent } from './popover-overview/popover-over
 import { SliderOverviewExampleComponent } from './slider-overview/slider-overview-example.component';
 import { StepperOverviewExampleComponent } from './stepper-overview/stepper-overview-example.component';
 import { TabsOverviewExampleComponent } from './tabs-overview/tabs-overview-example.component';
-import { TableOverviewExampleComponent } from './table-overview/table-overview-example.component';
+
 export const EXAMPLE_COMPONENTS: {[key: string]: LiveExample} = {
   'fileupload-file-overview-component': {
     title: 'FileUpload-File',
@@ -99,12 +99,6 @@ export const EXAMPLE_COMPONENTS: {[key: string]: LiveExample} = {
     additionalFiles: null,
     selectorName: null
   },
-  'table-overview-component': {
-    title: 'Tabs',
-    component: TableOverviewExampleComponent,
-    additionalFiles: null,
-    selectorName: null
-  },
 };
 
 export const EXAMPLE_LIST = [
@@ -120,7 +114,6 @@ export const EXAMPLE_LIST = [
   SliderOverviewExampleComponent,
   StepperOverviewExampleComponent,
   TabsOverviewExampleComponent,
-  TableOverviewExampleComponent
 ];
 
 @NgModule({

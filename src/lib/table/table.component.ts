@@ -14,6 +14,8 @@ import {
   GtActionOtion,
   GtSortOption,
   GtColumnOption,
+  GtTableClassFunc,
+  GtTableStyleFunc,
   GT_SORT_ORDER
 } from './table';
 
@@ -219,17 +221,15 @@ export class TableComponent implements OnInit, OnChanges{
   /**
    * @docs-private
    * @param row
-   * @param val
+   * @param cell
    * @param column
-   * @returns {any}
+   * @returns {string}
    */
-  getColumnClass(row: any, val: any, column: GtColumnOption): string {
-    if (column.class) {
-      if (this._isFunction(column.class)) {
-        return column.class(row, val);
-      } else {
-        return column.class;
-      }
+  getColumnClass(row: any, cell: any, column: GtColumnOption): string {
+    if (typeof column.class === 'string') {
+      return <string>column.class;
+    } else if (typeof column.class === 'function'){
+      return (<GtTableClassFunc>column.class)(row, cell);
     }
     return '';
   }
@@ -237,23 +237,17 @@ export class TableComponent implements OnInit, OnChanges{
   /**
    * @docs-private
    * @param row
-   * @param val
+   * @param cell
    * @param column
-   * @returns {any}
+   * @returns {}
    */
-  getColumnStyle(row: any, val: any, column: GtColumnOption): Object {
-    if (column.style) {
-      if (this._isFunction(column.style)) {
-        return column.style(row, val);
-      } else {
-        return column.style;
-      }
+  getColumnStyle(row: any, cell: any, column: GtColumnOption): Object {
+    if (typeof column.style === 'object') {
+      return column.style;
+    } else if (typeof column.style === 'function'){
+      return (<GtTableStyleFunc>column.style)(row, cell);
     }
     return {};
-  }
-
-  private _isFunction(val: any): boolean {
-    return val && Object.prototype.toString.call(val) === '[object Function]';
   }
 
 }

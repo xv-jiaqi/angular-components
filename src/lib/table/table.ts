@@ -5,7 +5,7 @@ export type GT_SORT_ORDER = 'asc' | 'desc' | undefined;
 /** 文本居中模式 */
 export type GT_TABLE_COLUMN_ALIGN = 'left' | 'right' | 'center';
 
-export type GtTableClassFunc = (row: Object, cell: any) => string;
+export type GtTableClassFunc = (row: Object, cell: any) =>  string;
 
 export type GtTableStyleFunc = (row: Object, cell: any) => Object;
 
@@ -25,9 +25,9 @@ export interface GtColumnOption {
   /** 是否影藏 默认false */
   hidden?: boolean,
   /** 单元格样式类 */
-  class?: any,
+  class?: string | GtTableClassFunc,
   /** 单元格样式 */
-  style?: any,
+  style?: Object | GtTableStyleFunc,
   /** 点击回调 , 自动添加link链接样式 */
   click?: Function,
   /** 禁用点击 */
