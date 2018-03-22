@@ -19,7 +19,6 @@ import {
   GT_SORT_ORDER
 } from './table';
 
-
 const sortCycle: GT_SORT_ORDER[] = ['asc', 'desc', undefined];
 const getNextSortOrder: Function = (currentSortOrder: GT_SORT_ORDER): GT_SORT_ORDER =>  {
   const nextIndex: number = (sortCycle.indexOf(currentSortOrder) + 1) % sortCycle.length;
@@ -74,8 +73,9 @@ export class TableComponent implements OnInit, OnChanges{
   @Output() onSortStateChange: EventEmitter<GtSortOption> = new EventEmitter();
 
   /**
-   * @docs-private
    * 选择的关键key
+   * @docs-private
+   *
    */
   id: any;
 
@@ -85,9 +85,12 @@ export class TableComponent implements OnInit, OnChanges{
   /** @docs-private */
   isCheckedAll: boolean = false;
 
+  /** @docs-private */
+  isChecked: symbol = Symbol('isChecked');
+
   /**
-   * @docs-private
    * 是否禁用了全部
+   * @docs-private
    * @type {boolean}
    */
   isDisableCheckedAll: boolean = false;
@@ -100,19 +103,18 @@ export class TableComponent implements OnInit, OnChanges{
 
   constructor(){ }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+  ngOnChanges(): void {
     if (this.type.indexOf('select') !== -1) {
       this.id = this.type.split('.')[1];
+      this.data.forEach((iteam: any) => {
+        if (this.selected.indexOf(iteam[this.id]) == -1) {
+          iteam[this.isChecked] = false;
+        } else {
+          iteam[this.isChecked] = true;
+        }
+      });
+      this.isCheckedAll = this._isAllChecked();
     }
-
-    this.data.forEach((iteam: any) => {
-      if (this.selected.indexOf(iteam[this.id]) == -1) {
-        iteam.isChecked = false;
-      } else {
-        iteam.isChecked = true;
-      }
-    });
     this.colspanVal = this.colspan();
   }
   ngOnInit() {}
@@ -167,17 +169,19 @@ export class TableComponent implements OnInit, OnChanges{
   toggleAll(event: any): void {
     event.stopPropagation();
     this.isCheckedAll = !this.isCheckedAll;
-    if (this.isCheckedAll) {
-      this.data.forEach( row => {
-        row.isChecked = true;
+    console.log(event)
+    this.data.forEach( row => {
+      if (this.isDisabled(row)) {
+        return;
+      }
+      row[this.isChecked] = this.isCheckedAll;
+      if (this.isCheckedAll) {
         this._checkRow(row);
-      })
-    } else {
-      this.data.forEach( row => {
-        row.isChecked = false;
-        this.selected = [];
-      })
-    }
+      } else {
+        let _index = this.selected.indexOf(row[this.id]);
+        this.selected.splice(_index, 1);
+      }
+    });
     const selected = this.selected;
     this.onCheckedRow.emit({selected});
   }
@@ -188,11 +192,11 @@ export class TableComponent implements OnInit, OnChanges{
    */
   toggleRow(row: any, event: any): void {
     event.stopPropagation();
-    row.isChecked = !row.isChecked;
+    row[this.isChecked] = !row[this.isChecked];
     let _index = this.selected.indexOf(row[this.id]);
-    if (row.isChecked && !~_index) {
+    if (row[this.isChecked] && !~_index) {
       this.selected.push(row[this.id]);
-    } else if (!row.isChecked && ~_index) {
+    } else if (!row[this.isChecked] && ~_index) {
       this.selected.splice(_index, 1);
     }
     this.isCheckedAll = this._isAllChecked();
@@ -200,22 +204,35 @@ export class TableComponent implements OnInit, OnChanges{
     this.onCheckedRow.emit({selected, row});
   }
 
-  private _isAllChecked(): boolean{
+  protected _isAllChecked(): boolean {
     return this.data.every( row => {
-       return this._isCheckedRow(row);
+       return this._isCheckedRow(row) || this.isDisabled(row);
     })
   }
 
-  private _isCheckedRow(row: any): boolean {
+  protected _isCheckedRow(row: any): boolean {
     let _index = this.selected.indexOf(row[this.id]);
     return !~_index? false: true;
   }
 
-  private _checkRow(row: any): void{
+  protected _checkRow(row: any): void{
     let _index = this.selected.indexOf(row[this.id]);
-    if (row.isChecked && _index == -1) {
+    if (row[this.isChecked] && _index == -1) {
       this.selected.push(row[this.id]);
     }
+  }
+
+  /** @docs-private */
+  isAllDisabled(): boolean {
+    return this.data.every( row => {
+      return this.isDisabled(row);
+    })
+  }
+
+  /** @docs-private */
+  isDisabled(row: any): boolean {
+    let _index = this.disabledSelect?this.disabledSelect.indexOf(row[this.id]): -1;
+    return !!~_index;
   }
 
   /**

@@ -68,7 +68,9 @@ export class TableDemoComponent implements OnInit {
       }//点击后的回调
     }
   ];
-  expand = ExpandDemoComponent;
+  selected = [45,66];
+  disabledSelect= [45];
+  expand = TableDemoComponent;
   sortStatus = {};
   constructor() {
 

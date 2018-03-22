@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th *ngIf="type.indexOf('select') === 0">
-        <input type="checkbox" [checked]="isCheckedAll" (click)="toggleAll($event)" [disabled]="isDisableCheckedAll">
+        <input type="checkbox" [checked]="isCheckedAll" (click)="toggleAll($event)" [disabled]="isAllDisabled()">
       </th>
       <th *ngIf="ordinal">序号</th>
       <ng-container *ngFor="let _column of columns">
@@ -30,7 +30,7 @@
 
       <tr [ngClass]="{'gt-table__tr--point': expand}" (click)="clickRow(row, i)">
         <td  *ngIf="type.indexOf('select') === 0">
-          <input type="checkbox" [checked]="row.isChecked" (click)="toggleRow(row, $event)">
+          <input type="checkbox" [checked]="row[isChecked]" (click)="toggleRow(row, $event)" [disabled]="isDisabled(row)">
         </td>
 
         <td *ngIf="ordinal">{{ i+1 }}</td>
