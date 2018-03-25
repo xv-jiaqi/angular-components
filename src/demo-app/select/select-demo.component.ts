@@ -9,7 +9,8 @@ import { GtRadioSelectType } from 'get-ui-ng/base';
 })
 
 export class SelectDemoComponent implements OnInit {
-  key: any;
+  select1: any;
+  select2: any;
   options = [
     {
       value: 'https://angular.io/tutorial',
@@ -29,5 +30,9 @@ export class SelectDemoComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  getChange(e: any) {
+    console.log(e);
   }
 }

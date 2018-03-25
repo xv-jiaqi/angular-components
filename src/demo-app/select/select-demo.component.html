@@ -1,7 +1,9 @@
 <h3>基本使用</h3>
-<gt-select [options]="options" [(ngModel)]="key"></gt-select>
+onChange:{{select1 | json}}
+<gt-select [options]="options" [(ngModel)]="select1" (onChange)="getChange($event)"></gt-select>
 
 <hr/>
 
 <h3>可搜索</h3>
-<gt-select [options]="options" [(ngModel)]="key" [filter]="true"></gt-select>
+onChange:{{select2 | json}}
+<gt-select [options]="options" [(ngModel)]="select2" [filter]="true" (onChange)="getChange($event)"></gt-select>

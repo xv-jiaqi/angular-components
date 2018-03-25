@@ -20,7 +20,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'gt-select',
   template: `
     <div class="select-wrap">
-      <div (click)="onClick()">
+      <div (click)="onClick()" style="border:1px solid #ccc;">
         <label *ngIf="value">{{ value }}</label>
         <label *ngIf="!value">{{ pholder }}</label>
       </div>
