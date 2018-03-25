@@ -46,13 +46,40 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterContentInit, OnDestroy {
+
+  /**
+   *
+   */
   @Input() pholder = '请选择';
-  @Input() editable: boolean;
-  @Input() filter = true;
+
+  /**
+   *
+   */
+  @Input() isDisabled: boolean;
+
+  /**
+   *
+   */
+  @Input() filter: boolean;
+
+  /**
+   *
+   */
   @Input() selected: any;
+
+  /**
+   *
+   */
   @Output() onChange: EventEmitter<any> = new EventEmitter();
+
+  /**
+   *
+   */
   @ViewChild('filterInput') input: ElementRef;
 
+  /**
+   *
+   */
   @Input()
   get options(): any {
     return this._options;
@@ -62,18 +89,69 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
     this._options = value;
   }
 
+  /**
+   *
+   */
   _options: any;
+
+  /**
+   *
+   */
   opened: boolean;
-  _filterValue: any;
+
+  /**
+   *
+   */
+  _filterValue: any = '';
+
+  /**
+   *
+   */
   value: string;
+
+  /**
+   *
+   */
   itemClick: boolean;
+
+  /**
+   *
+   */
   items: GtSelectItemComponent[] = [];
+
+  /**
+   *
+   */
   selfClick: boolean;
+
+  /**
+   *
+   */
   bindDocumentClickListener: Function | null;
+
+  /**
+   *
+   */
   itemTemplate: any;
+
+  /**
+   *
+   */
   templates: any;
+
+  /**
+   *
+   */
   @ContentChildren(GtTemplateDirective) tempalateDirective: QueryList<GtTemplateDirective>;
+
+  /**
+   *
+   */
   onModelChange: Function = () => { };
+
+  /**
+   *
+   */
   onTouchedChange: Function = () => { };
 
   constructor(public renderer: Renderer2) {
@@ -112,6 +190,10 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
     this.onTouchedChange = fn;
   }
 
+  /**
+   *
+   * @param value
+   */
   compareWith(value: string) {
     let isEqual;
     if (value && this.selected) {
@@ -127,6 +209,10 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
     return isEqual;
   }
 
+  /**
+   *
+   * @param
+   */
   onItemClick($event) {
     this.itemClick = $event;
     this.selected = $event;
@@ -135,6 +221,9 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
     this.close();
   }
 
+  /**
+   *
+   */
   getValue() {
     this.value = '';
     const selectedValue: any[] = [];
@@ -148,23 +237,41 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
     }
   }
 
+  /**
+   *
+   */
   getSelectedValue() {
     this.getValue();
     this.onModelChange(this.selected);
     this.onChange.emit(this.selected);
   }
 
+  /**
+   *
+   * @param event
+   */
   onFilterChange(event: any) {
+    console.log(event);
   }
 
+  /**
+   *
+   * @param value
+   */
   addGroup(value: GtSelectItemComponent) {
     this.items.push(value);
   }
 
+  /**
+   *
+   */
   onMenuClick() {
     this.itemClick = true;
   }
 
+  /**
+   *
+   */
   onDocumentClickListener() {
     if (!this.bindDocumentClickListener) {
       this.bindDocumentClickListener = this.renderer.listen('body', 'click', () => {
@@ -177,6 +284,9 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
     }
   }
 
+  /**
+   *
+   */
   offDocumentClickListener() {
     if (this.bindDocumentClickListener) {
       this.bindDocumentClickListener();
@@ -184,8 +294,11 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
     }
   }
 
+  /**
+   *
+   */
   onClick() {
-    if (!this.editable) {
+    if (!this.isDisabled) {
       if (!this.opened) {
         this.open();
       } else {
@@ -194,9 +307,14 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
     }
   }
 
+  /**
+   *
+   * @param options
+   * @param value
+   */
   filterValue(options: any[], value: string) {
     if (this.filter && options && Array.isArray(options)) {
-      return options.filter((v, k, arr) => {
+      return options.filter(v => {
         const regexp = new RegExp(this._filterValue, 'ig');
         if (regexp.test(v[value])) {
           return true;
@@ -206,11 +324,17 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
     return options;
   }
 
+  /**
+   *
+   */
   open() {
     this.selfClick = true;
     this.opened = true;
   }
 
+  /**
+   *
+   */
   close() {
     this.opened = false;
     this.selfClick = false;

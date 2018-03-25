@@ -10,6 +10,7 @@ import {
   GtButtonModule,
   GtCheckboxModule,
   GtRadioModule,
+  GtSelectModule,
   GtTableModule,
   GtFileUploadModule,
   GtPopoverModule
@@ -25,6 +26,7 @@ import {
     GtButtonModule,
     GtCheckboxModule,
     GtRadioModule,
+    GtSelectModule,
     GtPaginationModule,
     GtSliderModule,
     GtButtonModule,
