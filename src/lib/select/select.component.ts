@@ -173,6 +173,10 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
   }
 
   ngOnInit() {
+    if (this.selected && this.selected.label) {
+      return this.value = this.selected.label;
+    }
+
     if (this.pholder) {
       this.value = this.pholder;
     }

@@ -1,6 +1,6 @@
 <h3>基本使用</h3>
 onChange:{{select1 | json}}
-<gt-select [options]="options" [(ngModel)]="select1" (onChange)="getChange($event)"></gt-select>
+<gt-select [options]="options" [(ngModel)]="select1" (onChange)="getChange($event)" [selected]="options[1]" ></gt-select>
 
 <hr/>
 

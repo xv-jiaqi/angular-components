@@ -8,10 +8,12 @@
 
 | 属性             | 说明            |类型           |默认值          |
 |-----------------|-----------------|--------------|---------------|
-|`value`          |     设置单选框value值，可选       |   `string`       | - |
-|`label`          |     自定义文本，可选      |    `string`  |       -        |
-|`name`           |     设置单选框的名称，可选    |   `string`   |   -     |
-|`disabled`       |     是否禁用      |  `boolean`   |  `false`  |
+|`options`          |     设置option       |   `Array`       | `[]` |
+|`pholder`          |     设置提示信息或已选值,可选      |    `string`  |       `请选择`        |
+|`filter`           |     是否显示搜索框    |   `boolean`   |   -     |
+|`filterKey`       |     设置搜索栏匹配的属性名      |  `string`   |  `label`  |
+|`isDisabled`       |     是否禁用      |  `boolean`   |  `false`  |
+|`selected`       |     默认选中项      |  `object`   |  `null`  |
 
 ### Events
 
@@ -19,5 +21,5 @@
 
 | 属性             | 说明            |参数           |
 |-----------------|-----------------|--------------|
-|`onClick`     | 单选框点击事件    | - |
+|`onChange`     | 下拉框值变更    | - |
 

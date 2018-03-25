@@ -7,7 +7,7 @@ import { GtSelectComponent } from './select.component';
       <li class="gt-select-item" [ngClass]="{'select-active': _active || selector.compareWith(option.value)}"
           (click)="itemClick()">
         <div class="gt-select-item-content">
-          <span *ngIf="option.label">{{ option.label }}/{{ selector.compareWith(option.value) }}</span>
+          <span *ngIf="option.label">{{ option.label }}</span>
           <gt-select-template *ngIf="selector.itemTemplate" [data]="option" [index]="index"
                          [template]="selector.itemTemplate"></gt-select-template>
         </div>
