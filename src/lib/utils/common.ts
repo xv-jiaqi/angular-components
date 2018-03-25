@@ -84,4 +84,6 @@ export function deepEqual(objA, objB) {
       }
     }
   }
+
+  return true;
 }

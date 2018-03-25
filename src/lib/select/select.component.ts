@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 
 import { deepEqual } from './../utils/common';
-
 import { GtTemplateComponent } from './select-template.component';
 import { GtTemplateDirective } from './select-template.directive';
 import { GtSelectItemComponent } from './select-item.component';
@@ -20,7 +19,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'gt-select',
   template: `
-    <div>
+    <div class="select-wrap">
       <div (click)="onClick()">
         <label *ngIf="value">{{ value }}</label>
         <label *ngIf="!value">{{ pholder }}</label>
@@ -35,7 +34,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
         <div>
           <ul>
             <gt-select-item
-              *ngFor="let option of filterValue(options, 'label'); index as i"
+              *ngFor="let option of filterValue(options, _filterKey); index as i"
               (onClick)="onItemClick($event)" [option]="option" [index]="i"></gt-select-item>
           </ul>
         </div>
@@ -43,10 +42,25 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
       </div>
     </div>
   `,
+  styles: [`
+    .select-wrap{
+      cursor: pointer;
+      max-width: 180px;
+    }
+  `],
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterContentInit, OnDestroy {
+  _filterKey = 'label';
 
+  @Input()
+  set filterKey(value: any) {
+    this._filterKey = value;
+  }
+
+  get filterKey() {
+    return this._filterKey;
+  }
   /**
    *
    */
@@ -195,16 +209,9 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
    * @param value
    */
   compareWith(value: string) {
-    let isEqual;
+    let isEqual = false;
     if (value && this.selected) {
-      if (Array.isArray(this.selected)) {
-        for (const o of this.selected) {
-          isEqual = deepEqual(value, o['value']);
-          break;
-        }
-      } else {
-        isEqual = deepEqual(value, this.selected.value);
-      }
+      isEqual = <boolean>deepEqual(value, this.selected.value);
     }
     return isEqual;
   }
@@ -251,7 +258,7 @@ export class GtSelectComponent implements ControlValueAccessor, OnInit, AfterCon
    * @param event
    */
   onFilterChange(event: any) {
-    console.log(event);
+    console.log('filter value:' + event.target.value);
   }
 
   /**
