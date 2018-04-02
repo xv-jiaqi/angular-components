@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges, forwardRef} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, SimpleChanges, forwardRef, ElementRef} from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import {
   startOfMonth, endOfMonth, addMonths, subMonths,
@@ -6,7 +6,7 @@ import {
   getDate, getMonth, getYear,
   isToday, isSameDay, isSameMonth, isSameYear,
   getDay, subDays, addDays, setDay, format} from 'date-fns';
-import {months} from 'moment';
+import {DomRendererService} from './dom';
 
 export interface DatepickerOptions {
   minYear?: number;
@@ -78,10 +78,12 @@ const isNil = (value: Date | any) => {
 };
 
 @Component({
+  moduleId: module.id,
   selector: 'gt-datepicker',
   templateUrl: './datepicker.component.html',
   styleUrls: ['./datepicker.component.css'],
   providers: [
+    DomRendererService,
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => GtDatepickerComponent), multi: true }
   ]
 })
@@ -106,6 +108,8 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   view: string;
   viewTypes: string[];
   years: {year: number; isThisYear: boolean}[];
+
+  bindDocumentClickListener: any;
 
   days: IDayTypes[][];
 
@@ -146,7 +150,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     this.onChangeCallback(this.innerValue);
   }
 
-  constructor() {
+  constructor(public domRenderer: DomRendererService, public elementRef: ElementRef) {
     this.local = new Local();
   }
 
@@ -157,6 +161,7 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     this.initDayNames();
     this.initYears();
     this.initMonths();
+    this.onDocumentClickListener();
     // this.options = this.options ? this.options : {};
     // this.local = this.local[this.lang];
     // console.log(this.options, this, 'options');
@@ -332,5 +337,21 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   // 表单ControlValueAccessor接口
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+  onDocumentClickListener(): void {
+    this.bindDocumentClickListener = this.domRenderer.listen('document', 'click', (e) => {
+      this.isOpened = this.elementRef.nativeElement.contains(e.target);
+    });
+  }
+
+  offDocumentClickListener(): void {
+    if (this.bindDocumentClickListener) {
+      this.bindDocumentClickListener = null;
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.offDocumentClickListener();
   }
 }

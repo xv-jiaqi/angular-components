@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GtDatepickerComponent } from './datepicker.component';
+import { GtTimepickerComponent } from './timepicker.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -9,10 +10,12 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   declarations: [
-    GtDatepickerComponent
+    GtDatepickerComponent,
+    GtTimepickerComponent
   ],
   exports: [
-    GtDatepickerComponent
+    GtDatepickerComponent,
+    GtTimepickerComponent
   ]
 })
 export class GtDatepickerModule { }

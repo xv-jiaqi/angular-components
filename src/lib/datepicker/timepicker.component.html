@@ -1,0 +1,21 @@
+<div class="gt-time gt-dropdown-wrap--open" [class.gt-dropdown-wrap--open]="isOpened">
+  <input type="text" class="gt-form-control gt--focus" [(ngModel)]="displayValue" [class.gt--focus]="isOpened" (click)="toggle()" readonly placeholder="选择时间"/>
+  <div class="gt-time__container">
+    <div class="gt-time__item">
+      <i class="gt-icon icon-arrow-up-solid" (click)="prevHour()"></i>
+      <div class="gt-time__item__form">
+        <input type="text" class="gt-time__item__form-control" [(ngModel)]="hour"/>
+        <span class="gt-time__unit">时</span>
+      </div>
+      <i class="gt-icon icon-arrow-down-solid" (click)="nextHour()"></i>
+    </div>
+    <div class="gt-time__item">
+      <i class="gt-icon icon-arrow-up-solid" (click)="prevMinute()"></i>
+      <div class="gt-time__item__form">
+        <input type="text" class="gt-time__item__form-control" [(ngModel)]="minute"/>
+        <span class="gt-time__unit">分</span>
+      </div>
+      <i class="gt-icon icon-arrow-down-solid" (click)="nextMinute()"></i>
+    </div>
+  </div>
+</div>

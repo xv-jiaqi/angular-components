@@ -8,7 +8,7 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "get-ui-ng/base/datepicker",
+    "flatModuleId": "get-ui-ng/base/picker",
     "skipTemplateCodegen": true,
     "fullTemplateTypeCheck": true
   }
