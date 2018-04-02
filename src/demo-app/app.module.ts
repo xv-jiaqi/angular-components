@@ -14,6 +14,7 @@ import { TableDemoComponent } from './table/table-demo.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { RadioDemoComponent } from './radio/radio-demo.component';
+import { SelectDemoComponent } from './select/select-demo.component';
 import { FileUploadDemoComponent } from './fileupload/fileupload-demo.component';
 import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { ExpandDemoComponent } from './table/expand-demo.component';
@@ -34,6 +35,7 @@ import { ExpandDemoComponent } from './table/expand-demo.component';
     ButtonDemoComponent,
     CheckboxDemoComponent,
     RadioDemoComponent,
+    SelectDemoComponent,
     TableDemoComponent,
     PaginationDemoComponent,
     SliderDemoComponent,

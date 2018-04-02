@@ -57,3 +57,33 @@ export function deepClone (source) {
   }
   return result;
 }
+
+export function deepEqual(objA, objB) {
+  if ((objA === undefined || objA === null) && (objB === undefined || objB === null)) { return objA === objB; }
+  const keysA = Object.getOwnPropertyNames(objA);
+  const keysB = Object.getOwnPropertyNames(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  for (const key of keysA) {
+    if (keysB.indexOf(key) === -1) {
+      return false;
+    }
+
+    if (Object.prototype.toString.call(objA[key]) !== Object.prototype.toString.call(objB[key])) {
+      return false;
+    }
+
+    if (typeof objA[key] === 'object') {
+      if (!this.deepEqual(objA[key], objB[key])) { return false; }
+    } else {
+      if (objA[key] !== objB[key]) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}

@@ -9,6 +9,7 @@ import {SliderDemoComponent} from './slider/slider-demo.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { RadioDemoComponent } from './radio/radio-demo.component';
+import { SelectDemoComponent } from './select/select-demo.component';
 import {TableDemoComponent} from './table/table-demo.component';
 import { FileUploadDemoComponent } from './fileupload/fileupload-demo.component';
 import { PopoverDemoComponent } from './popover/popover-demo.component';
@@ -35,6 +36,9 @@ const routes: Routes = [
   }, {
     path: 'radio',
     component: RadioDemoComponent
+  }, {
+    path: 'select',
+    component: SelectDemoComponent
   }, {
     path: 'pagination',
     component: PaginationDemoComponent
