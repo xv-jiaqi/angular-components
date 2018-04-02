@@ -354,4 +354,5 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   ngOnDestroy(): void {
     this.offDocumentClickListener();
   }
+
 }
