@@ -108,6 +108,8 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   view: string;
   viewTypes: string[];
   years: {year: number; isThisYear: boolean}[];
+  @Input() _minDate: Date;
+  @Input() _maxDate: Date;
 
   bindDocumentClickListener: any;
 
@@ -141,6 +143,25 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
       minDate < date && date < maxDate;
   }
 
+  // @Input()
+  // set minDate(value: Date) {
+  //   this._minDate = value;
+  //   this.options = Object.assign(this.options || {}, {minDate: this._minDate});
+  //   this.init();
+  // }
+  // get minDate() {
+  //   return this._minDate;
+  // }
+  // @Input()
+  // set maxDate(value: Date) {
+  //   this._maxDate = value;
+  //   this.options = Object.assign(this.options || {}, {maxDate: this._maxDate});
+  //   this.init();
+  // }
+  // get maxDate() {
+  //   return this._maxDate;
+  // }
+
   get value(): Date {
     return this.innerValue;
   }
@@ -157,8 +178,11 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
   ngOnInit() {
     this.view = 'days';
     this.date = new Date();
+    this.options = this.options || {};
+    Object.assign(this.options, {minDate: this._minDate, maxDate: this._maxDate});
     this.setOptions();
     this.initDayNames();
+    this.init();
     this.initYears();
     this.initMonths();
     this.onDocumentClickListener();
@@ -237,7 +261,6 @@ export class GtDatepickerComponent implements OnInit, ControlValueAccessor, OnCh
     }
 
     this.barTitle = `${getYear(start)}年${getMonth(start) + 1}月`;
-    console.log(this);
   }
 
   initYears(): void {

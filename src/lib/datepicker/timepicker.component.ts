@@ -56,22 +56,30 @@ export class GtTimepickerComponent {
 
   prevHour(): void {
     this.hour = this.hour === 0 ? 23 : --this.hour;
+    this.displayVal();
   }
 
   nextHour(): void {
     this.hour = this.hour === 23 ? 0 : ++this.hour;
+    this.displayVal();
   }
 
   prevMinute(): void {
     this.minute = this.minute === 0 ? 60 : --this.minute;
+    this.displayVal();
   }
 
   nextMinute(): void {
     this.minute = this.minute === 59 ? 0 : ++this.minute;
+    this.displayVal();
   }
 
   toggle(): void {
     this.isOpened = !this.isOpened;
+  }
+
+  displayVal(): void {
+    this.displayValue = `${this.hour}:${this.minute}`;
   }
 
   onDocumentClickListener(): void {

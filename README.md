@@ -51,15 +51,15 @@ npm run doc-app
 |Menu|舒荣贵|Done|
 |Tabs|舒荣贵|Done|
 |Stepper|陆文丽|Done|
-|DateTime<br>&emsp;&emsp;Datepicker<br>&emsp;&emsp;Timepicker<br>&emsp;&emsp;Datetimepicker<br>&emsp;&emsp;Datetimeranger|徐家琪|<br>Done<br>TODO<br>TODO<br>TODO|
-|Checkbox<br>Radio button|谢黎明|Done<br>TODO|
-|Selector|谢黎明|ing|
+|DateTime<br>&emsp;&emsp;Datepicker<br>&emsp;&emsp;Timepicker<br>&emsp;&emsp;Datetimepicker<br>&emsp;&emsp;Datetimeranger|徐家琪|<br>Done<br>Done<br>Done<br>Done|
+|Checkbox<br>Radio button|谢黎明|Done<br>Done|
+|Selector|谢黎明|Done|
 |Slider|舒荣贵|Done|
-|Fileupload|舒荣贵|ing|
-|Table|尹惠梁|ing|
+|Fileupload|舒荣贵|Done|
+|Table|尹惠梁|Done|
 |Paginator|舒荣贵|Done|
-|Popups|张继|ing|
-|Modals<br>&emsp;&emsp;Dialog<br>&emsp;&emsp;Info\confirm<br>&emsp;&emsp;Toast<br>&emsp;&emsp;Progress spinner|舒荣贵|<br>Done<br>Done<br>Done<br>TODO
+|Popups|张继|Done|
+|Modals<br>&emsp;&emsp;Dialog<br>&emsp;&emsp;Info\confirm<br>&emsp;&emsp;Toast<br>&emsp;&emsp;Progress spinner|舒荣贵|<br>Done<br>Done<br>Done<br>Done
 |Area selector & LBS|尹惠梁|TODO|
 |Password strength|陆文丽|TODO|
 |Zoom|徐家琪|TODO|

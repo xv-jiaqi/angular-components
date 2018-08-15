@@ -28,12 +28,12 @@
     </section>
     <section class="gt-date__bd" *ngIf="view === 'years'">
       <div class="gt-date_years">
-        <p class="year" *ngFor="let year of years; let i = index" [class.gt-date--thisYear]="year.isThisYear" (click)="setYear(year.year)">{{year.year}}</p>
+        <p class="year" *ngFor="let year of years; let i = index" [class.gt-date--thisYear]="year.isThisYear" (click)="setYear(year.year); $event.stopPropagation();">{{year.year}}</p>
       </div>
     </section>
     <section class="gt-date__bd" *ngIf="view === 'months'">
       <div class="gt-date_years">
-        <p class="year" *ngFor="let month of months; let i = index" [class.gt-date--thisMonth]="month.isThisMonth" (click)="setMonth(month.month)">{{month.month + 1}}</p>
+        <p class="year" *ngFor="let month of months; let i = index" [class.gt-date--thisMonth]="month.isThisMonth" (click)="setMonth(month.month); $event.stopPropagation()">{{month.month + 1}}</p>
       </div>
     </section>
   </div>

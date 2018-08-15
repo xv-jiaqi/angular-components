@@ -1,5 +1,21 @@
-<h2 class="gt-page-title">{{date}}</h2>
-<gt-datepicker [(ngModel)]="date" [options]="options"></gt-datepicker>
+<h2 class="gt-page-title">datepicker</h2>
+<gt-datepicker [(ngModel)]="date" [minDate]="minDate"></gt-datepicker>
 
+<br><br><br>
+<h2 class="gt-page-title">timepicker</h2>
 <gt-timepicker></gt-timepicker>
 
+<br><br><br>
+<h2 class="gt-page-title">datetimepicker</h2>
+<section>
+  <gt-datepicker [(ngModel)]="minDate"></gt-datepicker>
+  ~
+  <gt-datepicker [(ngModel)]="maxDate"></gt-datepicker>
+</section>
+
+<br><br><br>
+<h2 class="gt-page-title">rangepicker</h2>
+<section>
+  <gt-datepicker [(ngModel)]="minDate"></gt-datepicker>
+  <gt-timepicker></gt-timepicker>
+</section>
